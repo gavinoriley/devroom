@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Image Gallery</title>
+    <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
+    <style>
+        @font-face {
+            font-family: 'FSEX300';
+            src: url('/assets/FSEX300.woff2') format('woff2'),
+                 url('/assets/FSEX300.woff') format('woff'),
+                 url('/assets/FSEX300.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'FSEX300', Arial, sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000000;
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            z-index: 100;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 26px;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .navbar a:hover {
+            color: #ddd;
+        }
+
+        .navbar a.devlog-link {
+            color: #ffff00;
+        }
+
+        .navbar a.devlog-link:hover {
+            color: #cccc00;
+        }
+
+        .image-container {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            background-color: #fff;
+            border: 2px solid #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-top: 70px; /* Offset for fixed navbar */
+        }
+
+        .image-container.enlarged {
+            width: 1200px;
+            height: 750px;
+            z-index: 1000;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+        .date-time {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .description {
+            width: 800px;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .page-purpose {
+            width: 800px;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            display: none;
+            user-select: none;
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
+        .image-container:hover .arrow {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://hamachithepsychotickiller.com/about/">ABOUT</a>
+        <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank">BUY EARLY ACCESS</a>
+        <a href="https://store.steampowered.com/news/app/3355690/view/520845543638827040" target="_blank" class="devlog-link">NEWS</a>
+        <a href="https://itch.io/embed-upload/13425866?color=333333" target="_blank">PLAY IN BROWSER</a>
+    </nav>
+
+    <div class="image-container" id="imageContainer">
+        <div class="date-time" id="dateTime"></div>
+        <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
+        <div class="arrow left" id="leftArrow">&larr;</div>
+        <div class="arrow right" id="rightArrow">&rarr;</div>
+    </div>
+    <div class="description" id="description"></div>
+    <div class="page-purpose">This is a page to display work in progress stuffs</div>
+
+    <script>
+        // Image data array (newest first)
+        const images = [
+            {
+                src: 'https://gavinoriley.github.io/assets/1normal.png',
+                date: '2025-08-02T01:42:00-07:00',
+                description: 'Initial concept art for the 2D platformer game, showcasing the main character design.'
+            }
+            // Add more images here in the future
+        ];
+
+        let currentImageIndex = 0;
+        const imageContainer = document.getElementById('imageContainer');
+        const galleryImage = document.getElementById('galleryImage');
+        const dateTime = document.getElementById('dateTime');
+        const description = document.getElementById('description');
+        const leftArrow = document.getElementById('leftArrow');
+        const rightArrow = document.getElementById('rightArrow');
+
+        function updateImage() {
+            galleryImage.src = images[currentImageIndex].src;
+            dateTime.textContent = new Date(images[currentImageIndex].date).toLocaleString();
+            description.textContent = images[currentImageIndex].description;
+            leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
+            rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
+        }
+
+        // Initialize with the first (newest) image
+        updateImage();
+
+        // Toggle enlarge on click
+        galleryImage.addEventListener('click', () => {
+            imageContainer.classList.toggle('enlarged');
+        });
+
+        // Navigation arrows
+        leftArrow.addEventListener('click', () => {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                updateImage();
+            }
+        });
+
+        rightArrow.addEventListener('click', () => {
+            if (currentImageIndex < images.length - 1) {
+                currentImageIndex++;
+                updateImage();
+            }
+        });
+    </script>
+</body>
+</html>
