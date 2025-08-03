@@ -142,6 +142,39 @@
         .image-container:hover .arrow {
             display: block;
         }
+
+        .decorative-gif {
+            position: fixed;
+            width: 100px;
+            height: auto;
+            z-index: 10;
+        }
+
+        #gif1 {
+            left: 10px;
+            top: 60px;
+        }
+
+        #gif2 {
+            left: 10px;
+            bottom: 10px;
+        }
+
+        #gif3 {
+            right: 10px;
+            top: 60px;
+        }
+
+        #gif4 {
+            right: 10px;
+            bottom: 10px;
+        }
+
+        #gif5 {
+            left: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 <body>
@@ -160,6 +193,12 @@
     </div>
     <div class="description" id="description"></div>
     <div class="page-purpose">you found the developer room! here i share ingame images and work in progress stuffs</div>
+
+    <img src="https://gavinoriley.github.io/assets/OG1.gif" alt="" class="decorative-gif" id="gif1">
+    <img src="https://gavinoriley.github.io/assets/OG2.gif" alt="" class="decorative-gif" id="gif2">
+    <img src="https://gavinoriley.github.io/assets/OG3.gif" alt="" class="decorative-gif" id="gif3">
+    <img src="https://gavinoriley.github.io/assets/OG4.gif" alt="" class="decorative-gif" id="gif4">
+    <img src="https://gavinoriley.github.io/assets/OG5.gif" alt="" class="decorative-gif" id="gif5">
 
     <script>
         const images = [
