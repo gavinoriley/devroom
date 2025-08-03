@@ -145,7 +145,7 @@
 
         .decorative-gif {
             position: fixed;
-            width: 150px; /* Increased from 100px to make GIFs larger */
+            width: 150px;
             height: auto;
             z-index: 10;
         }
@@ -204,15 +204,16 @@
         const images = [
             {
                 src: 'https://gavinoriley.github.io/assets/dev2.png',
-                date: '2025-08-03T03:27:00-07:00',
+                date: '2025-08-03T3:27:00-07:00',
+                ampm: 'PM',
                 description: 'happy fun time yippie'
             },
             {
                 src: 'https://gavinoriley.github.io/assets/dev1.png',
                 date: '2025-08-02T02:06:00-07:00',
+                ampm: 'AM',
                 description: 'end world scene brainstorming.'
             }
-            
         ];
 
         let currentImageIndex = 0;
@@ -226,7 +227,11 @@
         function updateImage() {
             const currentImage = images[currentImageIndex];
             galleryImage.src = currentImage.src;
-            dateTime.textContent = new Date(currentImage.date).toLocaleString();
+            // Extract date and time parts from ISO string (YYYY-MM-DDTHH:MM:SS-07:00)
+            const dateParts = currentImage.date.split('T');
+            const date = dateParts[0]; // YYYY-MM-DD
+            const time = dateParts[1].split(':').slice(0, 2).join(':'); // HH:MM
+            dateTime.textContent = `${date}, ${time} ${currentImage.ampm}`;
             description.textContent = currentImage.description;
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
