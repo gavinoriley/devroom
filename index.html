@@ -39,7 +39,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #1a2a6c; /* Changed to deep blue */
+            background-color: #1a2a6c;
             padding: 12px 0;
             display: flex;
             justify-content: center;
@@ -75,7 +75,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             transition: all 0.3s ease;
-            margin-top: 70px; /* Offset for fixed navbar */
+            margin-top: 70px;
         }
 
         .image-container.enlarged {
@@ -102,23 +102,6 @@
             font-size: 14px;
         }
 
-        .view-counter {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .view-counter:hover {
-            opacity: 1;
-        }
-
         .description {
             width: 800px;
             text-align: center;
@@ -130,7 +113,7 @@
         .page-purpose {
             width: 800px;
             text-align: center;
-            margin-top: 50px; /* Increased to move text lower */
+            margin-top: 50px;
             font-size: 16px;
             color: #fff;
         }
@@ -174,49 +157,26 @@
         <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
         <div class="arrow left" id="leftArrow">&larr;</div>
         <div class="arrow right" id="rightArrow">&rarr;</div>
-        <div class="view-counter" id="viewCounter">Views: 0</div>
     </div>
     <div class="description" id="description"></div>
     <div class="page-purpose">you found the developer room! here i share ingame images and work in progress stuffs</div>
 
     <script>
-        // Image data array (newest first)
         const images = [
             {
                 src: 'https://gavinoriley.github.io/assets/dev1.png',
                 date: '2025-08-02T02:06:00-07:00',
                 description: 'end world scene brainstorming.'
-            },
-            //{
-             //   src: 'https://gavinoriley.github.io/assets/1normal.png',
-             //   date: '2025-08-02T01:42:00-07:00',
-             //   description: 'Initial concept art for the 2D platformer game, showcasing the main character design.'
-            //}
-        ];
-
-        // Initialize view counts in localStorage if not present
-        images.forEach(image => {
-            const key = `viewCount_${image.src}`;
-            if (!localStorage.getItem(key)) {
-                localStorage.setItem(key, '0');
             }
-        });
+        ];
 
         let currentImageIndex = 0;
         const imageContainer = document.getElementById('imageContainer');
         const galleryImage = document.getElementById('galleryImage');
         const dateTime = document.getElementById('dateTime');
         const description = document.getElementById('description');
-        const viewCounter = document.getElementById('viewCounter');
         const leftArrow = document.getElementById('leftArrow');
         const rightArrow = document.getElementById('rightArrow');
-
-        // Generate a session ID to track unique views per session
-        let sessionId = localStorage.getItem('sessionId');
-        if (!sessionId) {
-            sessionId = Math.random().toString(36).substring(2);
-            localStorage.setItem('sessionId', sessionId);
-        }
 
         function updateImage() {
             const currentImage = images[currentImageIndex];
@@ -225,27 +185,14 @@
             description.textContent = currentImage.description;
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
-
-            // Update view count
-            const viewKey = `viewCount_${currentImage.src}`;
-            const viewedKey = `viewed_${currentImage.src}_${sessionId}`;
-            if (!localStorage.getItem(viewedKey)) {
-                let count = parseInt(localStorage.getItem(viewKey) || '0') + 1;
-                localStorage.setItem(viewKey, count.toString());
-                localStorage.setItem(viewedKey, 'true');
-            }
-            viewCounter.textContent = `Views: ${localStorage.getItem(viewKey)}`;
         }
 
-        // Initialize with the first (newest) image
         updateImage();
 
-        // Toggle enlarge on click
         galleryImage.addEventListener('click', () => {
             imageContainer.classList.toggle('enlarged');
         });
 
-        // Navigation arrows
         leftArrow.addEventListener('click', () => {
             if (currentImageIndex > 0) {
                 currentImageIndex--;
