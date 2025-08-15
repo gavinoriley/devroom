@@ -91,6 +91,13 @@
             cursor: pointer;
         }
 
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
         .date-time {
             position: absolute;
             top: 10px;
@@ -175,6 +182,70 @@
             bottom: 10px;
             transform: translateX(-50%);
         }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap;
+                max-width: 100%;
+                overflow-x: auto;
+                padding: 10px 0;
+            }
+
+            .navbar a {
+                font-size: 16px;
+            }
+
+            .navbar a.play-game-link {
+                display: none;
+            }
+
+            .image-container {
+                width: 100%;
+                height: 300px;
+                margin-top: 50px;
+            }
+
+            .image-container.enlarged {
+                width: 100%;
+                height: 80vh;
+            }
+
+            .description {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            .page-purpose {
+                width: 100%;
+                font-size: 14px;
+                margin-top: 30px;
+            }
+
+            .date-time {
+                font-size: 12px;
+                padding: 3px 6px;
+            }
+
+            .arrow {
+                font-size: 20px;
+                padding: 8px;
+                display: block; /* Always show arrows on mobile for easier navigation */
+            }
+
+            .decorative-gif {
+                width: 100px;
+            }
+
+            #gif1, #gif3 {
+                top: 50px;
+            }
+
+            #gif2, #gif4, #gif5 {
+                bottom: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -183,7 +254,7 @@
         <a href="https://hamachithepsychotickiller.com/about/">GAME INFO</a>
         <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank">BUY EARLY ACCESS</a>
         <a href="https://store.steampowered.com/news/app/3355690/view/520845543638827040" target="_blank" class="devlog-link">NEWS</a>
-        <a href="https://itch.io/embed-upload/13425866?color=333333" target="_blank">PLAY GAME</a>
+        <a href="https://itch.io/embed-upload/13425866?color=333333" target="_blank" class="play-game-link">PLAY GAME</a>
     </nav>
 
     <div class="image-container" id="imageContainer">
