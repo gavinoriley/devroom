@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>developer room</title>
-   
+  
     <meta name="description" content="Hamachi the Psychotic Killer Developer Room.">
     <meta name="keywords" content="Hamachi the Psychotic Killer, dev room, developer room, wip, work in progress, devlog, indie game dev, behind the scenes, game development">
-   
-    <!-- Open Graph tags (Facebook, Instagram, Discord, etc. previews) -->
+  
+    <!-- Open Graph tags -->
     <meta property="og:title" content="Dev Room - Hamachi the Psychotic Killer">
     <meta property="og:description" content="Hamachi the Psychotic Killer Developer Room.">
     <meta property="og:image" content="https://gavinoriley.github.io/assets/2HamachiTitleLogo.png">
@@ -17,21 +17,18 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Hamachi the Psychotic Killer">
     <meta property="og:locale" content="en_US">
-
-    <!-- Twitter / X Card (appears when the link is shared on X/Twitter - uses the same logo for consistency) -->
+    <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Dev Room - Hamachi the Psychotic Killer">
     <meta name="twitter:description" content="Hamachi the Psychotic Killer Developer Room.">
     <meta name="twitter:image" content="https://gavinoriley.github.io/assets/2HamachiTitleLogo.png">
     <meta name="twitter:site" content="@imgavinoriley">
-
-    <!-- Robots & Canonical (helps search engines index this page correctly) -->
+    <!-- Robots & Canonical -->
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hamachithepsychotickiller.com/devroom/">
     <link rel="icon" type="image/x-icon" href="/assets/hamafavi.ico">
     <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
-   
-    <!-- Preconnect hint for faster loading of external links (Steam store) -->
+  
     <link rel="preconnect" href="https://store.steampowered.com">
     <style>
         @font-face {
@@ -59,39 +56,45 @@
             margin: 0;
             padding: 20px;
         }
+
+        /* === EXACT NAVBAR STYLE FROM HOMEPAGE === */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #00008B; /* ← CHANGED to match the deep blue from home & about pages */
-            padding: 12px 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            padding: 9px 0;
             display: flex;
             justify-content: center;
             gap: 48px;
             z-index: 100;
+            border-bottom: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
         }
+
         .navbar a {
             color: #fff;
             text-decoration: none;
-            font-size: 26px;
-            text-shadow: 1px 1px 2px black;
+            font-size: 24px;
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: color 0.3s ease;
         }
+
         .navbar a:hover {
-            color: #ddd;
+            color: #cccccc;
         }
-        .navbar a.devlog-link {
-            color: #ffff00;
-        }
-        .navbar a.devlog-link:hover {
-            color: #cccc00;
-        }
+
         .navbar a.buy-game-link {
-            color: #FFD700;
+            color: #ffdd88;
         }
+
         .navbar a.buy-game-link:hover {
-            color: #DAA520;
+            color: #e6b55c;
         }
+
         .image-container {
             position: relative;
             width: 800px;
@@ -186,6 +189,7 @@
             bottom: 10px;
             transform: translateX(-50%);
         }
+
         @media screen and (max-width: 768px) {
             .navbar {
                 justify-content: center;
@@ -193,7 +197,7 @@
                 flex-wrap: wrap;
                 max-width: 100%;
                 overflow-x: auto;
-                padding: 10px 0;
+                padding: 8px 0;
             }
             .navbar a {
                 font-size: 16px;
@@ -242,7 +246,8 @@
             }
         }
     </style>
-    <!-- JSON-LD structured data for search engines (helps Google understand this is a VideoGame page) -->
+
+    <!-- JSON-LD structured data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -273,6 +278,7 @@
         <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank" class="buy-game-link">BUY GAME</a>
         <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" class="play-game-link">PLAY ONLINE DEMO</a>
     </nav>
+
     <div class="image-container" id="imageContainer">
         <div class="date-time" id="dateTime"></div>
         <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
@@ -281,11 +287,13 @@
     </div>
     <div class="description" id="description"></div>
     <div class="page-purpose">you found the developer room! here i share ingame images and work in progress stuffs (hey, the game is fnished now, go play it!)</div>
+
     <img src="https://gavinoriley.github.io/assets/OG1.gif" alt="" class="decorative-gif" id="gif1">
     <img src="https://gavinoriley.github.io/assets/OG5.gif" alt="" class="decorative-gif" id="gif2">
     <img src="https://gavinoriley.github.io/assets/OG3.gif" alt="" class="decorative-gif" id="gif3">
     <img src="https://gavinoriley.github.io/assets/OG4.gif" alt="" class="decorative-gif" id="gif4">
     <img src="https://gavinoriley.github.io/assets/OG2.gif" alt="" class="decorative-gif" id="gif5">
+
     <script>
         const images = [
     {
@@ -386,28 +394,32 @@
         const description = document.getElementById('description');
         const leftArrow = document.getElementById('leftArrow');
         const rightArrow = document.getElementById('rightArrow');
+
         function updateImage() {
             const currentImage = images[currentImageIndex];
             galleryImage.src = currentImage.src;
-            // Extract date and time parts from ISO string (YYYY-MM-DDTHH:MM:SS-07:00)
             const dateParts = currentImage.date.split('T');
-            const date = dateParts[0]; // YYYY-MM-DD
-            const time = dateParts[1].split(':').slice(0, 2).join(':'); // HH:MM
+            const date = dateParts[0];
+            const time = dateParts[1].split(':').slice(0, 2).join(':');
             dateTime.textContent = `${date}, ${time} ${currentImage.ampm}`;
             description.textContent = currentImage.description;
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
         }
+
         updateImage();
+
         galleryImage.addEventListener('click', () => {
             imageContainer.classList.toggle('enlarged');
         });
+
         leftArrow.addEventListener('click', () => {
             if (currentImageIndex > 0) {
                 currentImageIndex--;
                 updateImage();
             }
         });
+
         rightArrow.addEventListener('click', () => {
             if (currentImageIndex < images.length - 1) {
                 currentImageIndex++;
