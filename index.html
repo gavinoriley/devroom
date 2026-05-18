@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>developer room</title>
-  
+ 
     <meta name="description" content="Hamachi the Psychotic Killer Developer Room.">
     <meta name="keywords" content="Hamachi the Psychotic Killer, dev room, developer room, wip, work in progress, devlog, indie game dev, behind the scenes, game development">
-  
+ 
     <!-- Open Graph tags -->
     <meta property="og:title" content="Dev Room - Hamachi the Psychotic Killer">
     <meta property="og:description" content="Hamachi the Psychotic Killer Developer Room.">
@@ -28,7 +28,7 @@
     <link rel="canonical" href="https://hamachithepsychotickiller.com/devroom/">
     <link rel="icon" type="image/x-icon" href="/assets/hamafavi.ico">
     <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
-  
+ 
     <link rel="preconnect" href="https://store.steampowered.com">
     <style>
         @font-face {
@@ -56,7 +56,6 @@
             margin: 0;
             padding: 20px;
         }
-
         /* === EXACT NAVBAR STYLE FROM HOMEPAGE === */
         .navbar {
             position: fixed;
@@ -73,7 +72,6 @@
             border-bottom: none;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
         }
-
         .navbar a {
             color: #fff;
             text-decoration: none;
@@ -82,19 +80,15 @@
             border-radius: 4px;
             transition: color 0.3s ease;
         }
-
         .navbar a:hover {
             color: #cccccc;
         }
-
         .navbar a.buy-game-link {
             color: #ffdd88;
         }
-
         .navbar a.buy-game-link:hover {
             color: #e6b55c;
         }
-
         .image-container {
             position: relative;
             width: 800px;
@@ -189,7 +183,6 @@
             bottom: 10px;
             transform: translateX(-50%);
         }
-
         @media screen and (max-width: 768px) {
             .navbar {
                 justify-content: center;
@@ -246,7 +239,6 @@
             }
         }
     </style>
-
     <!-- JSON-LD structured data -->
     <script type="application/ld+json">
     {
@@ -278,7 +270,6 @@
         <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank" class="buy-game-link">BUY GAME</a>
         <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" class="play-game-link">PLAY ONLINE DEMO</a>
     </nav>
-
     <div class="image-container" id="imageContainer">
         <div class="date-time" id="dateTime"></div>
         <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
@@ -287,113 +278,111 @@
     </div>
     <div class="description" id="description"></div>
     <div class="page-purpose">you found the developer room! here i share ingame images and work in progress stuffs (hey, the game is fnished now, go play it!)</div>
-
     <img src="https://gavinoriley.github.io/assets/OG1.gif" alt="" class="decorative-gif" id="gif1">
     <img src="https://gavinoriley.github.io/assets/OG5.gif" alt="" class="decorative-gif" id="gif2">
     <img src="https://gavinoriley.github.io/assets/OG3.gif" alt="" class="decorative-gif" id="gif3">
     <img src="https://gavinoriley.github.io/assets/OG4.gif" alt="" class="decorative-gif" id="gif4">
     <img src="https://gavinoriley.github.io/assets/OG2.gif" alt="" class="decorative-gif" id="gif5">
-
     <script>
         const images = [
+            {
+                src: 'https://gavinoriley.github.io/assets/oldhamadesign.png',
+                date: '',
+                ampm: 'PM',
+                description: 'found my old youtube channel from 2011 using the wayback machine, where the earliest iteration of hamachi was a reskin of the Hello Mario Engine for gamemaker'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev15.gif',
+                date: '2026-1-3T4:33:07-07:00',
+                ampm: 'PM',
+                description: 'wip costume room'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev14.gif',
+                date: '2025-12-31T1:00:07-07:00',
+                ampm: 'PM',
+                description: ''
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev13.gif',
+                date: '2025-09-25T4:10:07-07:00',
+                ampm: 'PM',
+                description: 'police mini boss'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev12.gif',
+                date: '2025-09-15T4:10:00-07:00',
+                ampm: 'PM',
+                description: '●︎□︎♍︎♋︎⧫︎♓︎□︎■︎ ♒︎♏︎●︎●︎'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev11.gif',
+                date: '2025-08-28T8:50:00-07:00',
+                ampm: 'PM',
+                description: '1,000 lines of code later, 2nd boss'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev10.gif',
+                date: '2025-08-28T1:00:00-07:00',
+                ampm: 'AM',
+                description: '(randomly) exploring'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev9.gif',
+                date: '2025-08-26T12:33:00-07:00',
+                ampm: 'PM',
+                description: 'interesting glitch'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev8.png',
+                date: '2025-08-22T6:18:00-07:00',
+                ampm: 'PM',
+                description: 'not sure what this game is coming to'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev7.png',
+                date: '2025-08-13T4:37:00-07:00',
+                ampm: 'PM',
+                description: 'pacify'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev6.png',
+                date: '2025-08-12T7:57:00-07:00',
+                ampm: 'AM',
+                description: 'added volume slider and options now save, updating game with this when next challenge level releases'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev5.png',
+                date: '2025-08-07T4:54:00-07:00',
+                ampm: 'PM',
+                description: ''
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev4.png',
+                date: '2025-08-07T4:31:00-07:00',
+                ampm: 'PM',
+                description: 'can now save and load games, insanity'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev3.png',
+                date: '2025-08-04T4:50:00-07:00',
+                ampm: 'PM',
+                description: 'programming a cinematic'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev2.png',
+                date: '2025-08-03T3:27:00-07:00',
+                ampm: 'PM',
+                description: 'happy fun time yippie'
+            },
+            {
+                src: 'https://gavinoriley.github.io/assets/dev1.png',
+                date: '2025-08-02T02:06:00-07:00',
+                ampm: 'AM',
+                description: 'end world scene brainstorming.'
+            }
+        ];
 
-    {
-        src: 'https://gavinoriley.github.io/assets/oldhamadesign.png',
-        date: '',
-        ampm: 'PM',
-        description: 'found my old youtube channel from 2011 using the wayback machine, where the earliest iteration of hamachi was a reskin of the Hello Mario Engine for gamemaker'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev15.gif',
-        date: '2026-1-3T4:33:07-07:00',
-        ampm: 'PM',
-        description: 'wip costume room'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev14.gif',
-        date: '2025-12-31T1:00:07-07:00',
-        ampm: 'PM',
-        description: ''
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev13.gif',
-        date: '2025-09-25T4:10:07-07:00',
-        ampm: 'PM',
-        description: 'police mini boss'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev12.gif',
-        date: '2025-09-15T4:10:00-07:00',
-        ampm: 'PM',
-        description: '●︎□︎♍︎♋︎⧫︎♓︎□︎■︎ ♒︎♏︎●︎●︎'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev11.gif',
-        date: '2025-08-28T8:50:00-07:00',
-        ampm: 'PM',
-        description: '1,000 lines of code later, 2nd boss'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev10.gif',
-        date: '2025-08-28T1:00:00-07:00',
-        ampm: 'AM',
-        description: '(randomly) exploring'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev9.gif',
-        date: '2025-08-26T12:33:00-07:00',
-        ampm: 'PM',
-        description: 'interesting glitch'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev8.png',
-        date: '2025-08-22T6:18:00-07:00',
-        ampm: 'PM',
-        description: 'not sure what this game is coming to'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev7.png',
-        date: '2025-08-13T4:37:00-07:00',
-        ampm: 'PM',
-        description: 'pacify'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev6.png',
-        date: '2025-08-12T7:57:00-07:00',
-        ampm: 'AM',
-        description: 'added volume slider and options now save, updating game with this when next challenge level releases'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev5.png',
-        date: '2025-08-07T4:54:00-07:00',
-        ampm: 'PM',
-        description: ''
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev4.png',
-        date: '2025-08-07T4:31:00-07:00',
-        ampm: 'PM',
-        description: 'can now save and load games, insanity'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev3.png',
-        date: '2025-08-04T4:50:00-07:00',
-        ampm: 'PM',
-        description: 'programming a cinematic'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev2.png',
-        date: '2025-08-03T3:27:00-07:00',
-        ampm: 'PM',
-        description: 'happy fun time yippie'
-    },
-    {
-        src: 'https://gavinoriley.github.io/assets/dev1.png',
-        date: '2025-08-02T02:06:00-07:00',
-        ampm: 'AM',
-        description: 'end world scene brainstorming.'
-    }
-];
         let currentImageIndex = 0;
         const imageContainer = document.getElementById('imageContainer');
         const galleryImage = document.getElementById('galleryImage');
@@ -405,29 +394,45 @@
         function updateImage() {
             const currentImage = images[currentImageIndex];
             galleryImage.src = currentImage.src;
-            const dateParts = currentImage.date.split('T');
-            const date = dateParts[0];
-            const time = dateParts[1].split(':').slice(0, 2).join(':');
-            dateTime.textContent = `${date}, ${time} ${currentImage.ampm}`;
-            description.textContent = currentImage.description;
+            
+            // Handle empty date (first/old image)
+            if (currentImage.date && currentImage.date.trim() !== '') {
+                const dateParts = currentImage.date.split('T');
+                const date = dateParts[0];
+                let time = '';
+                if (dateParts[1]) {
+                    time = dateParts[1].split(':').slice(0, 2).join(':');
+                }
+                dateTime.textContent = `${date}, ${time} ${currentImage.ampm}`;
+            } else {
+                dateTime.textContent = 'Circa 2011 (Wayback Machine)';
+            }
+            
+            description.textContent = currentImage.description || '';
+            
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
         }
 
+        // Initialize
         updateImage();
 
+        // Click to enlarge
         galleryImage.addEventListener('click', () => {
             imageContainer.classList.toggle('enlarged');
         });
 
-        leftArrow.addEventListener('click', () => {
+        // Navigation arrows
+        leftArrow.addEventListener('click', (e) => {
+            e.stopPropagation();
             if (currentImageIndex > 0) {
                 currentImageIndex--;
                 updateImage();
             }
         });
 
-        rightArrow.addEventListener('click', () => {
+        rightArrow.addEventListener('click', (e) => {
+            e.stopPropagation();
             if (currentImageIndex < images.length - 1) {
                 currentImageIndex++;
                 updateImage();
