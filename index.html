@@ -123,6 +123,7 @@
             margin-top: 10px;
             font-size: 16px;
             color: #fff;
+            line-height: 1.5;
         }
         .page-purpose {
             width: 800px;
@@ -158,27 +159,12 @@
             height: auto;
             z-index: 10;
         }
-        #gif1 {
-            left: 10px;
-            top: 60px;
-        }
-        #gif2 {
-            left: 10px;
-            bottom: 10px;
-        }
-        #gif3 {
-            right: 10px;
-            top: 60px;
-        }
-        #gif4 {
-            right: 10px;
-            bottom: 10px;
-        }
-        #gif5 {
-            left: 50%;
-            bottom: 10px;
-            transform: translateX(-50%);
-        }
+        #gif1 { left: 10px; top: 60px; }
+        #gif2 { left: 10px; bottom: 10px; }
+        #gif3 { right: 10px; top: 60px; }
+        #gif4 { right: 10px; bottom: 10px; }
+        #gif5 { left: 50%; bottom: 10px; transform: translateX(-50%); }
+
         @media screen and (max-width: 768px) {
             .navbar {
                 justify-content: center;
@@ -216,23 +202,6 @@
                 font-size: 12px;
                 padding: 3px 6px;
             }
-            .arrow {
-                font-size: 20px;
-                padding: 8px;
-                display: block;
-            }
-            .decorative-gif {
-                width: 100px;
-            }
-            #gif1, #gif3 {
-                display: none;
-            }
-            #gif2, #gif4 {
-                bottom: 5px;
-            }
-            #gif5 {
-                bottom: 5px;
-            }
         }
     </style>
     <!-- JSON-LD structured data -->
@@ -266,14 +235,17 @@
         <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank" class="buy-game-link">BUY GAME</a>
         <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" class="play-game-link">PLAY ONLINE DEMO</a>
     </nav>
+
     <div class="image-container" id="imageContainer">
         <div class="date-time" id="dateTime"></div>
         <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
         <div class="arrow left" id="leftArrow">&larr;</div>
         <div class="arrow right" id="rightArrow">&rarr;</div>
     </div>
+
     <div class="description" id="description"></div>
     <div class="page-purpose">a place where i share work in progress stuffs</div>
+
     <img src="https://gavinoriley.github.io/assets/OG1.gif" alt="" class="decorative-gif" id="gif1">
     <img src="https://gavinoriley.github.io/assets/OG5.gif" alt="" class="decorative-gif" id="gif2">
     <img src="https://gavinoriley.github.io/assets/OG3.gif" alt="" class="decorative-gif" id="gif3">
@@ -286,7 +258,7 @@
                 src: 'https://gavinoriley.github.io/assets/Harlequin.png',
                 date: '',
                 ampm: 'PM',
-                description: 'drafting ideas for future content in the chance i find a publisher for hamachi, majordomo (the first boss) would get a proper and unique "minigame" like scenario for his pacifist encounter much like the second boss. i would like to add a 9th world too, the boss of world 9 would be demon queen deity's younger sister, harlequin hurly burly highness, a demon taking the form of a human'
+                description: "drafting ideas for future content in the chance i find a publisher for hamachi, majordomo (the first boss) would get a proper and unique \"minigame\" like scenario for his pacifist encounter much like the second boss. i would like to add a 9th world too, the boss of world 9 would be demon queen deity's younger sister, harlequin hurly-burly highness, a demon taking the form of a human."
             },
             {
                 src: 'https://gavinoriley.github.io/assets/dev15.gif',
@@ -392,7 +364,6 @@
             const currentImage = images[currentImageIndex];
             galleryImage.src = currentImage.src;
 
-            // Handle empty date (first/old image)
             if (currentImage.date && currentImage.date.trim() !== '') {
                 const dateParts = currentImage.date.split('T');
                 const date = dateParts[0];
@@ -406,7 +377,7 @@
             }
 
             description.textContent = currentImage.description || '';
-
+            
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
         }
