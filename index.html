@@ -51,8 +51,9 @@
             align-items: center;
             margin: 0;
             padding: 20px;
+            min-height: 100vh;
         }
-        /* === EXACT NAVBAR STYLE FROM HOMEPAGE === */
+        /* === NAVBAR === */
         .navbar {
             position: fixed;
             top: 0;
@@ -65,7 +66,6 @@
             justify-content: center;
             gap: 48px;
             z-index: 100;
-            border-bottom: none;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
         }
         .navbar a {
@@ -76,15 +76,19 @@
             border-radius: 4px;
             transition: color 0.3s ease;
         }
-        .navbar a:hover {
-            color: #cccccc;
+        .navbar a:hover { color: #cccccc; }
+        .navbar a.buy-game-link { color: #ffdd88; }
+        .navbar a.buy-game-link:hover { color: #e6b55c; }
+
+        /* Main Content Wrapper */
+        .content-wrapper {
+            margin-top: 70px;
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .navbar a.buy-game-link {
-            color: #ffdd88;
-        }
-        .navbar a.buy-game-link:hover {
-            color: #e6b55c;
-        }
+
         .image-container {
             position: relative;
             width: 800px;
@@ -94,7 +98,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             transition: all 0.3s ease;
-            margin-top: 70px;
         }
         .image-container.enlarged {
             width: 1200px;
@@ -120,18 +123,23 @@
         .description {
             width: 800px;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 15px;
+            margin-bottom: 40px;
             font-size: 16px;
             color: #fff;
-            line-height: 1.5;
+            line-height: 1.6;
+            min-height: 60px;
         }
+
         .page-purpose {
             width: 800px;
             text-align: center;
-            margin-top: 50px;
             font-size: 16px;
             color: #fff;
+            margin-top: 30px;
+            margin-bottom: 140px;   /* Extra space to prevent overlap with fixed GIFs */
         }
+
         .arrow {
             position: absolute;
             top: 50%;
@@ -144,15 +152,10 @@
             display: none;
             user-select: none;
         }
-        .arrow.left {
-            left: 10px;
-        }
-        .arrow.right {
-            right: 10px;
-        }
-        .image-container:hover .arrow {
-            display: block;
-        }
+        .arrow.left { left: 10px; }
+        .arrow.right { right: 10px; }
+        .image-container:hover .arrow { display: block; }
+
         .decorative-gif {
             position: fixed;
             width: 150px;
@@ -166,44 +169,29 @@
         #gif5 { left: 50%; bottom: 10px; transform: translateX(-50%); }
 
         @media screen and (max-width: 768px) {
-            .navbar {
-                justify-content: center;
-                gap: 20px;
-                flex-wrap: wrap;
-                max-width: 100%;
-                overflow-x: auto;
-                padding: 8px 0;
+            .content-wrapper, .description, .page-purpose {
+                width: 100%;
             }
-            .navbar a {
-                font-size: 16px;
-            }
-            .navbar a.play-game-link {
-                display: none;
-            }
-            .image-container {
+            .image-container, .image-container.enlarged {
                 width: 100%;
                 height: 300px;
-                margin-top: 50px;
             }
             .image-container.enlarged {
-                width: 100%;
                 height: 80vh;
             }
-            .description {
-                width: 100%;
+            .description, .page-purpose {
                 font-size: 14px;
             }
             .page-purpose {
-                width: 100%;
-                font-size: 14px;
-                margin-top: 30px;
+                margin-bottom: 100px;
             }
-            .date-time {
-                font-size: 12px;
-                padding: 3px 6px;
+            .decorative-gif {
+                width: 100px;
             }
+            #gif1, #gif3 { display: none; }
         }
     </style>
+
     <!-- JSON-LD structured data -->
     <script type="application/ld+json">
     {
@@ -236,14 +224,16 @@
         <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" class="play-game-link">PLAY ONLINE DEMO</a>
     </nav>
 
-    <div class="image-container" id="imageContainer">
-        <div class="date-time" id="dateTime"></div>
-        <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
-        <div class="arrow left" id="leftArrow">&larr;</div>
-        <div class="arrow right" id="rightArrow">&rarr;</div>
+    <div class="content-wrapper">
+        <div class="image-container" id="imageContainer">
+            <div class="date-time" id="dateTime"></div>
+            <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
+            <div class="arrow left" id="leftArrow">&larr;</div>
+            <div class="arrow right" id="rightArrow">&rarr;</div>
+        </div>
+        <div class="description" id="description"></div>
     </div>
 
-    <div class="description" id="description"></div>
     <div class="page-purpose">a place where i share work in progress stuffs</div>
 
     <img src="https://gavinoriley.github.io/assets/OG1.gif" alt="" class="decorative-gif" id="gif1">
@@ -377,20 +367,17 @@
             }
 
             description.textContent = currentImage.description || '';
-            
+
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
         }
 
-        // Initialize
         updateImage();
 
-        // Click to enlarge
         galleryImage.addEventListener('click', () => {
             imageContainer.classList.toggle('enlarged');
         });
 
-        // Navigation arrows
         leftArrow.addEventListener('click', (e) => {
             e.stopPropagation();
             if (currentImageIndex > 0) {
