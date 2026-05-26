@@ -157,22 +157,22 @@
         /* === MUSIC PLAYER WINDOW === */
         .music-player-container {
             position: fixed;
-            right: 10px;
+            right: 50px; /* Pushed inward to the midground closer to the layout */
             top: 50%;
             transform: translateY(-50%);
-            width: 150px;
+            width: 220px; /* Widened so buttons are easily clickable */
             z-index: 10;
             text-align: center;
         }
         .music-player-title {
-            font-size: 13px;
+            font-size: 14px;
             color: #fff;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             line-height: 1.3;
         }
         .music-player-container iframe {
             width: 100%;
-            height: 85px;
+            height: 124px; /* Proportional 16:9 scaled height */
             border: 2px solid #333;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
