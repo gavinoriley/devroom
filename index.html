@@ -38,6 +38,7 @@
             box-sizing: border-box;
             font-family: 'FSEX300', Arial, sans-serif;
             cursor: url('https://gavinoriley.github.io/assets/sprCursor_3.png'), auto;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         body {
             background: #2b0000;
@@ -49,6 +50,29 @@
             padding: 20px;
             padding-bottom: 180px; /* Extra bottom padding to prevent overlap with fixed GIFs */
         }
+        
+        /* === LIGHTS OUT MODE OVERRIDES === */
+        body.lights-out {
+            background: #080000;
+            color: #ff3333;
+        }
+        body.lights-out .navbar {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+        }
+        body.lights-out .image-container {
+            background-color: #110000;
+            border-color: #ff3333;
+            box-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
+        }
+        body.lights-out .navbar a, 
+        body.lights-out .page-purpose, 
+        body.lights-out .description,
+        body.lights-out .fidget-title,
+        body.lights-out .music-player-title {
+            text-shadow: 0 0 6px #ff0000;
+        }
+
         /* === NAVBAR === */
         .navbar {
             position: fixed;
@@ -177,8 +201,110 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
+        /* === NEW LEFT FIDGET ROOM WIDGETS === */
+        .fidget-box {
+            position: fixed;
+            left: 50px;
+            width: 180px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #444;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 90;
+        }
+        .fidget-title {
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* 1. Light Switch Style */
+        #lightSwitchWidget { top: 20%; }
+        .switch-btn {
+            background: #440000;
+            border: 2px solid #772222;
+            color: #fff;
+            padding: 6px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-block;
+            width: 100%;
+        }
+        .switch-btn:active { background: #660000; }
+
+        /* 2. Magic 8-Ball Style */
+        #eightBallWidget { top: 45%; }
+        .ball-sphere {
+            width: 70px;
+            height: 70px;
+            background: #151515;
+            border: 3px double #888;
+            border-radius: 50%;
+            margin: 8px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 11px;
+            color: #ff4444;
+            font-weight: bold;
+            padding: 6px;
+            user-select: none;
+        }
+        .ball-sphere.shake-anim {
+            animation: ballShake 0.4s ease-in-out;
+        }
+        @keyframes ballShake {
+            0%, 100% { transform: translate(0, 0); }
+            20% { transform: translate(-4px, 4px) rotate(-3deg); }
+            40% { transform: translate(4px, -4px) rotate(3deg); }
+            60% { transform: translate(-4px, -4px) rotate(-1deg); }
+            80% { transform: translate(4px, 4px) rotate(1deg); }
+        }
+
+        /* 3. Bug Squisher Style */
+        #bugSquisherWidget { top: 72%; }
+        .bug-display {
+            font-size: 28px;
+            margin: 5px 0;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .squish-btn {
+            background: #111;
+            border: 1px solid #555;
+            color: #fff;
+            padding: 4px;
+            font-size: 13px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .squish-btn:active { background: #333; }
+        .bug-counter {
+            font-size: 11px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* === RESPONSIVENESS AND MOBILE HIDDEN ELEMENTS === */
+        @media screen and (max-width: 1024px) {
+            /* Hide room widgets on smaller viewports to prevent layout overlap */
+            .fidget-box, .music-player-container {
+                position: static;
+                margin: 20px auto;
+                width: 800px;
+                transform: none;
+            }
+            #gif1, #gif2, #gif3, #gif4, #gif5 { display: none; }
+        }
+
         @media screen and (max-width: 768px) {
-            .page-purpose, .description {
+            .page-purpose, .description, .fidget-box, .music-player-container {
                 width: 100%;
             }
             .image-container, .image-container.enlarged {
@@ -228,6 +354,22 @@
         <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" class="play-game-link">PLAY ONLINE DEMO</a>
     </nav>
 
+    <div class="fidget-box" id="lightSwitchWidget">
+        <div class="fidget-title">Room Lighting</div>
+        <button class="switch-btn" id="lightBtn">LIGHTS OUT</button>
+    </div>
+
+    <div class="fidget-box" id="eightBallWidget">
+        <div class="fidget-title">Dev Fortune Teller</div>
+        <div class="ball-sphere" id="eightBall">CLICK ME</div>
+    </div>
+
+    <div class="fidget-box" id="bugSquisherWidget">
+        <div class="fidget-title">Bug Squisher</div>
+        <div class="bug-display" id="bugIcon">🪲</div>
+        <button class="squish-btn" id="squishBtn">SQUISH!</button>
+        <div class="bug-counter">Bugs Exterminated: <span id="bugCount">0</span></div>
+    </div>
     <div class="page-purpose">a place where i share work in progress stuffs</div>
 
     <div class="image-container" id="imageContainer">
@@ -401,6 +543,54 @@
                 currentImageIndex++;
                 updateImage();
             }
+        });
+
+        /* === INTERACTIVE WIDGET LOGIC === */
+        
+        // 1. Light Switch Toggle
+        const lightBtn = document.getElementById('lightBtn');
+        lightBtn.addEventListener('click', () => {
+            document.body.classList.toggle('lights-out');
+            if(document.body.classList.contains('lights-out')) {
+                lightBtn.textContent = "LIGHTS ON";
+            } else {
+                lightBtn.textContent = "LIGHTS OUT";
+            }
+        });
+
+        // 2. Dev Magic 8-Ball
+        const eightBall = document.getElementById('eightBall');
+        const fortunes = [
+            "SHIP IT!", "IT'S A FEATURE", "BUG FOUND", "OUTLOOK GLITCHY", 
+            "WORKS ON MY MACHINE", "TRY REBOOTING", "CODE RED", "NEEDS CAFFEINE", 
+            "99 ERRORS LEFT", "COMPILING...", "DEPRECATED", "HARD REFRESH"
+        ];
+        eightBall.addEventListener('click', () => {
+            eightBall.classList.add('shake-anim');
+            eightBall.textContent = "...";
+            setTimeout(() => {
+                const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+                eightBall.textContent = randomFortune;
+                eightBall.classList.remove('shake-anim');
+            }, 400);
+        });
+
+        // 3. Fidget Bug Squisher
+        const bugIcon = document.getElementById('bugIcon');
+        const squishBtn = document.getElementById('squishBtn');
+        const bugCountDisplay = document.getElementById('bugCount');
+        const bugTypes = ['🪲', '🐛', '🐜', '🕷️', '🦟'];
+        let bugCount = 0;
+
+        squishBtn.addEventListener('click', () => {
+            bugIcon.textContent = '💥';
+            bugCount++;
+            bugCountDisplay.textContent = bugCount;
+            
+            setTimeout(() => {
+                const nextBug = bugTypes[Math.floor(Math.random() * bugTypes.length)];
+                bugIcon.textContent = nextBug;
+            }, 250);
         });
     </script>
 </body>
