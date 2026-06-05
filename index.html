@@ -22,6 +22,9 @@
     <link rel="icon" type="image/x-icon" href="/assets/hamafavi.ico">
     <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preconnect" href="https://store.steampowered.com">
+    
+    <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+    
     <style>
         @font-face {
             font-family: 'FSEX300';
@@ -41,36 +44,36 @@
             transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         body {
-            background: #2b0000;
-            color: #fff;
+            background: #1a2e1a; /* Demonic Fel Green */
+            color: #ccffcc;
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 0;
             padding: 20px;
-            padding-bottom: 180px; /* Extra bottom padding to prevent overlap with fixed GIFs */
+            padding-bottom: 180px;
         }
         
         /* === LIGHTS OUT MODE OVERRIDES === */
         body.lights-out {
-            background: #080000;
-            color: #ff3333;
+            background: #050a05; /* Dark Necrotic Green */
+            color: #66ff66;
         }
         body.lights-out .navbar {
-            background: rgba(0, 0, 0, 0.95);
-            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+            background: rgba(0, 10, 0, 0.95);
+            box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
         }
         body.lights-out .image-container {
-            background-color: #110000;
-            border-color: #ff3333;
-            box-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
+            background-color: #0a140a;
+            border-color: #66ff66;
+            box-shadow: 0 0 20px rgba(102, 255, 102, 0.3);
         }
         body.lights-out .navbar a, 
         body.lights-out .page-purpose, 
         body.lights-out .description,
         body.lights-out .fidget-title,
         body.lights-out .music-player-title {
-            text-shadow: 0 0 6px #ff0000;
+            text-shadow: 0 0 6px #00ff00;
         }
 
         /* === NAVBAR === */
@@ -79,7 +82,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(10, 20, 10, 0.9);
             backdrop-filter: blur(5px);
             padding: 9px 0;
             display: flex;
@@ -96,9 +99,9 @@
             border-radius: 4px;
             transition: color 0.3s ease;
         }
-        .navbar a:hover { color: #cccccc; }
-        .navbar a.buy-game-link { color: #ffdd88; }
-        .navbar a.buy-game-link:hover { color: #e6b55c; }
+        .navbar a:hover { color: #aaffaa; }
+        .navbar a.buy-game-link { color: #ccff88; }
+        .navbar a.buy-game-link:hover { color: #aadd66; }
 
         .page-purpose {
             width: 800px;
@@ -114,7 +117,7 @@
             width: 800px;
             height: 500px;
             background-color: #fff;
-            border: 2px solid #333;
+            border: 2px solid #224422;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             transition: all 0.3s ease;
@@ -124,27 +127,46 @@
             height: 750px;
             z-index: 1000;
         }
+        .image-container.embed-active {
+            height: auto !important;
+            min-height: 500px;
+            overflow: visible;
+        }
         .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: contain;
             cursor: pointer;
         }
+        
+        #embedContainer {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: #0f1a0f;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+
         .date-time {
             position: absolute;
             top: 10px;
             left: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
+            background-color: rgba(0, 20, 0, 0.7);
+            color: #ccffcc;
             padding: 5px 10px;
             border-radius: 3px;
             font-size: 14px;
+            z-index: 10;
         }
         .description {
             width: 800px;
             text-align: center;
             margin-top: 15px;
-            margin-bottom: 120px;   /* Increased gap to prevent overlap with bottom GIFs */
+            margin-bottom: 120px;
             font-size: 16px;
             color: #fff;
             line-height: 1.6;
@@ -154,13 +176,14 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 20, 0, 0.7);
             color: white;
             font-size: 24px;
             padding: 10px;
             cursor: pointer;
             display: none;
             user-select: none;
+            z-index: 10;
         }
         .arrow.left { left: 10px; }
         .arrow.right { right: 10px; }
@@ -178,13 +201,12 @@
         #gif4 { right: 10px; bottom: 10px; }
         #gif5 { left: 50%; bottom: 10px; transform: translateX(-50%); }
 
-        /* === MUSIC PLAYER WINDOW === */
         .music-player-container {
             position: fixed;
-            right: 50px; /* Pushed inward to the midground closer to the layout */
+            right: 50px;
             top: 50%;
             transform: translateY(-50%);
-            width: 220px; /* Widened so buttons are easily clickable */
+            width: 220px;
             z-index: 10;
             text-align: center;
         }
@@ -196,18 +218,17 @@
         }
         .music-player-container iframe {
             width: 100%;
-            height: 124px; /* Proportional 16:9 scaled height */
-            border: 2px solid #333;
+            height: 124px;
+            border: 2px solid #224422;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
-        /* === NEW LEFT FIDGET ROOM WIDGETS === */
         .fidget-box {
             position: fixed;
             left: 50px;
             width: 180px;
-            background: rgba(0, 0, 0, 0.85);
-            border: 2px solid #444;
+            background: rgba(10, 20, 10, 0.9);
+            border: 2px solid #336633;
             padding: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             text-align: center;
@@ -215,17 +236,16 @@
         }
         .fidget-title {
             font-size: 13px;
-            color: #aaa;
+            color: #88aa88;
             margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
-        /* 1. Light Switch Style */
         #lightSwitchWidget { top: 20%; }
         .switch-btn {
-            background: #440000;
-            border: 2px solid #772222;
+            background: #112211;
+            border: 2px solid #336633;
             color: #fff;
             padding: 6px 12px;
             font-size: 14px;
@@ -233,15 +253,14 @@
             display: inline-block;
             width: 100%;
         }
-        .switch-btn:active { background: #660000; }
+        .switch-btn:active { background: #224422; }
 
-        /* 2. Magic 8-Ball Style */
         #eightBallWidget { top: 45%; }
         .ball-sphere {
             width: 70px;
             height: 70px;
-            background: #151515;
-            border: 3px double #888;
+            background: #0a140a;
+            border: 3px double #448844;
             border-radius: 50%;
             margin: 8px auto;
             display: flex;
@@ -249,14 +268,12 @@
             justify-content: center;
             cursor: pointer;
             font-size: 11px;
-            color: #ff4444;
+            color: #66ff66;
             font-weight: bold;
             padding: 6px;
             user-select: none;
         }
-        .ball-sphere.shake-anim {
-            animation: ballShake 0.4s ease-in-out;
-        }
+        .ball-sphere.shake-anim { animation: ballShake 0.4s ease-in-out; }
         @keyframes ballShake {
             0%, 100% { transform: translate(0, 0); }
             20% { transform: translate(-4px, 4px) rotate(-3deg); }
@@ -265,86 +282,22 @@
             80% { transform: translate(4px, 4px) rotate(1deg); }
         }
 
-        /* 3. Bug Squisher Style */
         #bugSquisherWidget { top: 72%; }
-        .bug-display {
-            font-size: 28px;
-            margin: 5px 0;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .squish-btn {
-            background: #111;
-            border: 1px solid #555;
-            color: #fff;
-            padding: 4px;
-            font-size: 13px;
-            width: 100%;
-            cursor: pointer;
-        }
-        .squish-btn:active { background: #333; }
-        .bug-counter {
-            font-size: 11px;
-            color: #888;
-            margin-top: 5px;
-        }
+        .bug-display { font-size: 28px; margin: 5px 0; height: 40px; display: flex; align-items: center; justify-content: center; }
+        .squish-btn { background: #0a140a; border: 1px solid #336633; color: #fff; padding: 4px; font-size: 13px; width: 100%; cursor: pointer; }
+        .squish-btn:active { background: #224422; }
+        .bug-counter { font-size: 11px; color: #668866; margin-top: 5px; }
 
-        /* === RESPONSIVENESS AND MOBILE HIDDEN ELEMENTS === */
         @media screen and (max-width: 1024px) {
-            /* Hide room widgets on smaller viewports to prevent layout overlap */
-            .fidget-box, .music-player-container {
-                position: static;
-                margin: 20px auto;
-                width: 800px;
-                transform: none;
-            }
+            .fidget-box, .music-player-container { position: static; margin: 20px auto; width: 800px; transform: none; }
             #gif1, #gif2, #gif3, #gif4, #gif5 { display: none; }
         }
-
         @media screen and (max-width: 768px) {
-            .page-purpose, .description, .fidget-box, .music-player-container {
-                width: 100%;
-            }
-            .image-container, .image-container.enlarged {
-                width: 100%;
-                height: 300px;
-            }
-            .image-container.enlarged {
-                height: 80vh;
-            }
-            .page-purpose, .description {
-                font-size: 14px;
-            }
-            .description {
-                margin-bottom: 100px;
-            }
+            .page-purpose, .description, .fidget-box, .music-player-container { width: 100%; }
+            .image-container, .image-container.enlarged { width: 100%; height: 300px; }
+            .image-container.enlarged { height: 80vh; }
         }
     </style>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "VideoGame",
-        "name": "Hamachi the Psychotic Killer",
-        "description": "HAMACHI THE PSYCHOTIC KILLER: The platformer game where you can play as the BAD GUY.",
-        "image": "https://gavinoriley.github.io/assets/2HamachiTitleLogo.png",
-        "url": "https://hamachithepsychotickiller.com/devroom/",
-        "genre": "Action, Platformer, Indie",
-        "gamePlatform": "PC",
-        "publisher": {
-            "@type": "Person",
-            "name": "Gavin ORiley"
-        },
-        "offers": {
-            "@type": "Offer",
-            "url": "https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/",
-            "price": "0",
-            "priceCurrency": "USD"
-        }
-    }
-    </script>
 </head>
 <body>
     <nav class="navbar">
@@ -375,6 +328,7 @@
     <div class="image-container" id="imageContainer">
         <div class="date-time" id="dateTime"></div>
         <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
+        <div id="embedContainer"></div>
         <div class="arrow left" id="leftArrow">&larr;</div>
         <div class="arrow right" id="rightArrow">&rarr;</div>
     </div>
@@ -387,7 +341,7 @@
     
     <div class="music-player-container">
         <div class="music-player-title">music that im listening to right now</div>
-        <iframe src="https://www.youtube.com/embed/vabnZ9-ex7o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/aw2DMMtXWVY?list=PL_pMhvP2461aMfrmUovT6OoGirNI53JOx&index=3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
     <img src="https://gavinoriley.github.io/assets/OG4.gif" alt="" class="decorative-gif" id="gif4">
@@ -396,96 +350,119 @@
     <script>
         const images = [
             {
+                type: 'embed',
+                html: `<blockquote class="twitter-tweet" data-theme="dark"><p lang="und" dir="ltr">.<a href="https://x.com/BlumhouseGames?ref_src=twsrc%5Etfw">@BlumhouseGames</a> <a href="https://t.co/dE9FkUXug7">pic.twitter.com/dE9FkUXug7</a></p>&mdash; gavinoriley (@imgavinoriley) <a href="https://x.com/imgavinoriley/status/2061930293981003922?ref_src=twsrc%5Etfw">June 2, 2026</a></blockquote>`,
+                date: '2026-6-25T5:00:07-07:00',
+                ampm: 'PM',
+                description: "@BlumhouseGames"
+            },
+            {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/Harlequin.png',
                 date: '2026-5-25T1:30:07-07:00',
                 ampm: 'AM',
                 description: "drafting ideas for future content in the chance i find a publisher for hamachi, majordomo (the first boss) would get a proper and unique \"minigame\" like scenario for his pacifist encounter much like the second boss. i would like to add a 9th world too, consisting of a southern gothic town aesthetic, the boss of world 9 would be demon queen deity's younger sister, harlequin hurly-burly highness, a demon taking the form of a human."
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev15.gif',
                 date: '2026-1-3T4:33:07-07:00',
                 ampm: 'PM',
                 description: 'wip costume room'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev14.gif',
                 date: '2025-12-31T1:00:07-07:00',
                 ampm: 'PM',
                 description: ''
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev13.gif',
                 date: '2025-09-25T4:10:07-07:00',
                 ampm: 'PM',
                 description: 'police mini boss'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev12.gif',
                 date: '2025-09-15T4:10:00-07:00',
                 ampm: 'PM',
                 description: '●︎□︎♍︎♋︎⧫︎♓︎□︎■︎ ♒︎♏︎●︎●'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev11.gif',
                 date: '2025-08-28T8:50:00-07:00',
                 ampm: 'PM',
                 description: '1,000 lines of code later, 2nd boss'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev10.gif',
                 date: '2025-08-28T1:00:00-07:00',
                 ampm: 'AM',
                 description: '(randomly) exploring'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev9.gif',
                 date: '2025-08-26T12:33:00-07:00',
                 ampm: 'PM',
                 description: 'interesting glitch'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev8.png',
                 date: '2025-08-22T6:18:00-07:00',
                 ampm: 'PM',
                 description: 'not sure what this game is coming to'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev7.png',
                 date: '2025-08-13T4:37:00-07:00',
                 ampm: 'PM',
                 description: 'pacify'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev6.png',
                 date: '2025-08-12T7:57:00-07:00',
                 ampm: 'AM',
                 description: 'added volume slider and options now save, updating game with this when next challenge level releases'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev5.png',
                 date: '2025-08-07T4:54:00-07:00',
                 ampm: 'PM',
                 description: ''
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev4.png',
                 date: '2025-08-07T4:31:00-07:00',
                 ampm: 'PM',
                 description: 'can now save and load games, insanity'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev3.png',
                 date: '2025-08-04T4:50:00-07:00',
                 ampm: 'PM',
                 description: 'programming a cinematic'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev2.png',
                 date: '2025-08-03T3:27:00-07:00',
                 ampm: 'PM',
                 description: 'happy fun time yippie'
             },
             {
+                type: 'image',
                 src: 'https://gavinoriley.github.io/assets/dev1.png',
                 date: '2025-08-02T02:06:00-07:00',
                 ampm: 'AM',
@@ -496,6 +473,7 @@
         let currentImageIndex = 0;
         const imageContainer = document.getElementById('imageContainer');
         const galleryImage = document.getElementById('galleryImage');
+        const embedContainer = document.getElementById('embedContainer');
         const dateTime = document.getElementById('dateTime');
         const description = document.getElementById('description');
         const leftArrow = document.getElementById('leftArrow');
@@ -503,7 +481,23 @@
 
         function updateImage() {
             const currentImage = images[currentImageIndex];
-            galleryImage.src = currentImage.src;
+            
+            if (currentImage.type === 'embed') {
+                imageContainer.classList.remove('enlarged');
+                imageContainer.classList.add('embed-active');
+                galleryImage.style.display = 'none';
+                embedContainer.style.display = 'flex';
+                embedContainer.innerHTML = currentImage.html;
+                
+                if (typeof twttr !== 'undefined' && twttr.widgets) {
+                    twttr.widgets.load(embedContainer);
+                }
+            } else {
+                imageContainer.classList.remove('embed-active');
+                embedContainer.style.display = 'none';
+                galleryImage.style.display = 'block';
+                galleryImage.src = currentImage.src;
+            }
 
             if (currentImage.date && currentImage.date.trim() !== '') {
                 const dateParts = currentImage.date.split('T');
@@ -545,9 +539,6 @@
             }
         });
 
-        /* === INTERACTIVE WIDGET LOGIC === */
-        
-        // 1. Light Switch Toggle
         const lightBtn = document.getElementById('lightBtn');
         lightBtn.addEventListener('click', () => {
             document.body.classList.toggle('lights-out');
@@ -558,7 +549,6 @@
             }
         });
 
-        // 2. Dev Magic 8-Ball
         const eightBall = document.getElementById('eightBall');
         const fortunes = [
             "SHIP IT!", "IT'S A FEATURE", "BUG FOUND", "OUTLOOK GLITCHY", 
@@ -575,7 +565,6 @@
             }, 400);
         });
 
-        // 3. Fidget Bug Squisher
         const bugIcon = document.getElementById('bugIcon');
         const squishBtn = document.getElementById('squishBtn');
         const bugCountDisplay = document.getElementById('bugCount');
