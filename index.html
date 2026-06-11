@@ -321,19 +321,30 @@
         .squish-btn:active { background: #224422; }
         .bug-counter { font-size: 11px; color: #668866; margin-top: 5px; }
 
+        /* === RESPONSIVE LAYOUT BREAKPOINTS === */
         @media screen and (max-width: 1024px) {
             .fidget-box, .music-player-container { position: static; margin: 20px auto; width: 800px; transform: none; }
             #gif1, #gif2, #gif3, #gif4, #gif5 { display: none; }
         }
         @media screen and (max-width: 768px) {
+            .navbar {
+                gap: 12px;
+                padding: 8px 4px;
+            }
+            .navbar a {
+                font-size: 16px;
+                padding: 4px 8px;
+            }
+            .navbar a.play-game-link {
+                display: none; /* Hide Online Demo on Mobile devices */
+            }
             .page-purpose, .description, .fidget-box, .music-player-container, .publisher-notice { width: 100%; }
             .image-container, .image-container.enlarged { width: 100%; height: 300px; }
             .image-container.enlarged { height: 80vh; }
         }
     </style>
 </head>
-<body>
-    <nav class="navbar">
+<body class="lights-out"> <nav class="navbar">
         <a href="https://hamachithepsychotickiller.com/about/">GAME INFO</a>
         <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank" class="buy-game-link">BUY GAME</a>
         <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" class="play-game-link">PLAY ONLINE DEMO</a>
@@ -342,7 +353,7 @@
 
     <div class="fidget-box" id="lightSwitchWidget">
         <div class="fidget-title">Room Lighting</div>
-        <button class="switch-btn" id="lightBtn">LIGHTS OUT</button>
+        <button class="switch-btn" id="lightBtn">LIGHTS ON</button>
     </div>
 
     <div class="fidget-box" id="eightBallWidget">
@@ -358,7 +369,7 @@
     </div>
     <div class="page-purpose">a place where i share work in progress stuffs</div>
 
-    <a href="mailto:img.oriley@gmail.com?subject=Publisher%20Inquiry%20-%20Hamachi%20the%20Psychotic%20Killer" class="publisher-notice">
+    <a href="mailto:contact@hamachithepsychotickiller.com?subject=Publisher%20Inquiry%20-%20Hamachi%20the%20Psychotic%20Killer" class="publisher-notice">
         Hamachi is looking for a publisher! Wanna chat? Click me
     </a>
 
