@@ -115,7 +115,10 @@
 
         /* === PUBLISHER NOTICE LINK === */
         .publisher-notice {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
             color: #ccff88;
             text-decoration: none;
             font-size: 18px;
@@ -132,6 +135,10 @@
             color: #fff;
             border-color: #fff;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        .publisher-gif {
+            height: 24px;
+            width: auto;
         }
 
         @keyframes smoothRandomBob {
@@ -344,7 +351,8 @@
         }
     </style>
 </head>
-<body class="lights-out"> <nav class="navbar">
+<body class="lights-out">
+    <nav class="navbar">
         <a href="https://hamachithepsychotickiller.com/about/">GAME INFO</a>
         <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank" class="buy-game-link">BUY GAME</a>
         <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" class="play-game-link">PLAY ONLINE DEMO</a>
@@ -370,7 +378,9 @@
     <div class="page-purpose">a place where i share work in progress stuffs</div>
 
     <a href="mailto:contact@hamachithepsychotickiller.com?subject=Publisher%20Inquiry%20-%20Hamachi%20the%20Psychotic%20Killer" class="publisher-notice">
+        <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
         Hamachi is looking for a publisher! Wanna chat? Click me
+        <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
     </a>
 
     <div class="image-container" id="imageContainer">
