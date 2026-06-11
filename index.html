@@ -72,7 +72,8 @@
         body.lights-out .page-purpose, 
         body.lights-out .description,
         body.lights-out .fidget-title,
-        body.lights-out .music-player-title {
+        body.lights-out .music-player-title,
+        body.lights-out .publisher-notice {
             text-shadow: 0 0 6px #00ff00;
         }
 
@@ -107,9 +108,41 @@
             width: 800px;
             text-align: center;
             margin-top: 80px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             font-size: 16px;
             color: #fff;
+        }
+
+        /* === PUBLISHER NOTICE LINK === */
+        .publisher-notice {
+            display: inline-block;
+            color: #ccff88;
+            text-decoration: none;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 6px 16px;
+            border: 1px dashed #ccff88;
+            border-radius: 4px;
+            background: rgba(10, 20, 10, 0.4);
+            animation: smoothRandomBob 7s ease-in-out infinite;
+            user-select: none;
+        }
+        .publisher-notice:hover {
+            color: #fff;
+            border-color: #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes smoothRandomBob {
+            0% { transform: translate(0px, 0px); }
+            15% { transform: translate(5px, -6px); }
+            30% { transform: translate(-4px, 3px); }
+            45% { transform: translate(6px, 5px); }
+            60% { transform: translate(-5px, -4px); }
+            75% { transform: translate(4px, -2px); }
+            90% { transform: translate(-2px, 4px); }
+            100% { transform: translate(0px, 0px); }
         }
 
         .image-container {
@@ -293,7 +326,7 @@
             #gif1, #gif2, #gif3, #gif4, #gif5 { display: none; }
         }
         @media screen and (max-width: 768px) {
-            .page-purpose, .description, .fidget-box, .music-player-container { width: 100%; }
+            .page-purpose, .description, .fidget-box, .music-player-container, .publisher-notice { width: 100%; }
             .image-container, .image-container.enlarged { width: 100%; height: 300px; }
             .image-container.enlarged { height: 80vh; }
         }
@@ -324,6 +357,10 @@
         <div class="bug-counter">Bugs Exterminated: <span id="bugCount">0</span></div>
     </div>
     <div class="page-purpose">a place where i share work in progress stuffs</div>
+
+    <a href="mailto:contact@hamachithepsychotickiller.com?subject=Publisher%20Inquiry%20-%20Hamachi%20the%20Psychotic%20Killer" class="publisher-notice">
+        Hamachi is looking for a publisher! Wanna chat? Click me
+    </a>
 
     <div class="image-container" id="imageContainer">
         <div class="date-time" id="dateTime"></div>
