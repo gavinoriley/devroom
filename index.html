@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -74,7 +75,8 @@
         body.lights-out .fidget-title,
         body.lights-out .music-player-title,
         body.lights-out .publisher-notice,
-        body.lights-out .crossover-title {
+        body.lights-out .crossover-title,
+        body.lights-out .promo-text {
             text-shadow: 0 0 6px #ff0000;
         }
         /* === NAVBAR === */
@@ -213,7 +215,7 @@
             border: 2px dashed #771111;
             border-radius: 6px;
             padding: 24px;
-            margin-bottom: 120px;
+            margin-bottom: 40px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
@@ -364,6 +366,31 @@
         .squish-btn { background: #1a0505; border: 1px solid #771111; color: #fff; padding: 4px; font-size: 13px; width: 100%; cursor: pointer; }
         .squish-btn:active { background: #551111; }
         .bug-counter { font-size: 11px; color: #886666; margin-top: 5px; }
+
+        /* === BOTTOM SKETCH & PROMO STYLES === */
+        .bottom-promo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 800px;
+        }
+        .bottom-sketch {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            object-fit: contain;
+        }
+        .promo-text {
+            font-size: 16px;
+            color: #fff;
+            line-height: 1.5;
+            max-width: 650px;
+        }
+
         /* === RESPONSIVE LAYOUT BREAKPOINTS === */
         @media screen and (max-width: 1024px) {
             .fidget-box, .music-player-container { position: static; margin: 20px auto; width: 800px; transform: none; }
@@ -381,7 +408,7 @@
             .navbar a.play-game-link {
                 display: none;
             }
-            .page-purpose, .description, .fidget-box, .music-player-container, .publisher-notice, .crossover-container { width: 100%; }
+            .page-purpose, .description, .fidget-box, .music-player-container, .publisher-notice, .crossover-container, .bottom-promo-container { width: 100%; }
             .image-container, .image-container.enlarged { width: 100%; height: 300px; }
             .image-container.enlarged { height: 80vh; }
         }
@@ -445,6 +472,12 @@
     </div>
     <img src="https://gavinoriley.github.io/assets/5e1f23fe.gif" alt="" class="decorative-gif" id="gif4">
     <img src="https://gavinoriley.github.io/assets/002d8809.gif" alt="" class="decorative-gif" id="gif5">
+    
+    <div class="bottom-promo-container">
+        <img src="https://gavinoriley.github.io/assets/1gavinorileyhamasketch.png" alt="Hamachi Concept Sketch" class="bottom-sketch">
+        <div class="promo-text">setting up a new page on gamejolt strictly for concepts, experiments, prototypes, and other ideas soon!</div>
+    </div>
+
     <script>
         const images = [
             {
@@ -577,14 +610,14 @@
         const rightArrow = document.getElementById('rightArrow');
         function updateImage() {
             const currentImage = images[currentImageIndex];
-           
+            
             if (currentImage.type === 'embed') {
                 imageContainer.classList.remove('enlarged');
                 imageContainer.classList.add('embed-active');
                 galleryImage.style.display = 'none';
                 embedContainer.style.display = 'flex';
                 embedContainer.innerHTML = currentImage.html;
-               
+                
                 if (typeof twttr !== 'undefined' && twttr.widgets) {
                     twttr.widgets.load(embedContainer);
                 }
@@ -660,7 +693,7 @@
             bugIcon.textContent = '💥';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
-           
+            
             setTimeout(() => {
                 const nextBug = bugTypes[Math.floor(Math.random() * bugTypes.length)];
                 bugIcon.textContent = nextBug;
