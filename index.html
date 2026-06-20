@@ -487,6 +487,13 @@
     <script>
         const images = [
             {
+                type: 'embed',
+                html: '<blockquote class="twitter-tweet" data-theme="dark" data-align="center"><a href="https://x.com/imgavinoriley/status/2068302846442000537"></a></blockquote>',
+                date: '2026-06-20T05:00:00-07:00',
+                ampm: 'AM',
+                description: "feed it ❤️"
+            },
+            {
                 type: 'image',
                 src: 'https://gavinoriley.github.io/assets/titleseason.gif',
                 date: '2026-6-14T4:35:07-07:00',
@@ -623,14 +630,14 @@
         const rightArrow = document.getElementById('rightArrow');
         function updateImage() {
             const currentImage = images[currentImageIndex];
-            
+           
             if (currentImage.type === 'embed') {
                 imageContainer.classList.remove('enlarged');
                 imageContainer.classList.add('embed-active');
                 galleryImage.style.display = 'none';
                 embedContainer.style.display = 'flex';
                 embedContainer.innerHTML = currentImage.html;
-                
+               
                 if (typeof twttr !== 'undefined' && twttr.widgets) {
                     twttr.widgets.load(embedContainer);
                 }
@@ -706,7 +713,7 @@
             bugIcon.textContent = '💥';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
-            
+           
             setTimeout(() => {
                 const nextBug = bugTypes[Math.floor(Math.random() * bugTypes.length)];
                 bugIcon.textContent = nextBug;
