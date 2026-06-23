@@ -23,9 +23,9 @@
     <link rel="icon" type="image/x-icon" href="/assets/hamafavi.ico">
     <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preconnect" href="https://store.steampowered.com">
-   
+    
     <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
-   
+    
     <style>
         @font-face {
             font-family: 'FSEX300';
@@ -54,7 +54,7 @@
             padding: 20px;
             padding-bottom: 180px;
         }
-       
+        
         /* === LIGHTS OUT MODE OVERRIDES === */
         body.lights-out {
             background: #0d0202; /* Dark Abyssal Red */
@@ -68,6 +68,11 @@
             background-color: #1a0505;
             border-color: #ff4444;
             box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
+        }
+        body.lights-out .pinned-section {
+            background: rgba(15, 5, 5, 0.75);
+            border-color: #ff4444;
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.15);
         }
         body.lights-out .navbar a,
         body.lights-out .page-purpose,
@@ -150,9 +155,26 @@
             90% { transform: translate(-2px, 4px); }
             100% { transform: translate(0px, 0px); }
         }
+
+        /* === WORKSPACE MAIN LAYOUT === */
+        .workspace-container {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            align-items: flex-start;
+            justify-content: center;
+            width: 1240px;
+            margin-bottom: 20px;
+        }
+        .carousel-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 800px;
+        }
         .image-container {
             position: relative;
-            width: 800px;
+            width: 100%;
             height: 500px;
             background-color: #fff;
             border: 2px solid #551111;
@@ -165,28 +187,11 @@
             height: 750px;
             z-index: 1000;
         }
-        .image-container.embed-active {
-            height: auto !important;
-            min-height: 500px;
-            overflow: visible;
-        }
         .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: contain;
             cursor: pointer;
-        }
-       
-        #embedContainer {
-            display: none;
-            width: 100%;
-            height: 100%;
-            background: #1f0a0a;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow-y: auto;
-            padding: 20px 0;
         }
         .date-time {
             position: absolute;
@@ -200,7 +205,7 @@
             z-index: 10;
         }
         .description {
-            width: 800px;
+            width: 100%;
             text-align: center;
             margin-top: 15px;
             margin-bottom: 40px;
@@ -208,6 +213,26 @@
             color: #fff;
             line-height: 1.6;
         }
+
+        /* === PINNED TRANSMISSION SIDEBAR === */
+        .pinned-section {
+            width: 400px;
+            background: rgba(30, 10, 10, 0.5);
+            border: 2px solid #551111;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        .pinned-section:hover {
+            border-color: #ff8866;
+            box-shadow: 0 0 20px rgba(255, 136, 102, 0.25);
+        }
+        .pinned-tweet-wrapper {
+            width: 100%;
+            min-height: 450px;
+        }
+
         /* === CROSSOVER SPOTLIGHT STYLES === */
         .crossover-container {
             width: 800px;
@@ -322,7 +347,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-       
+        
         #lightSwitchWidget { top: 20%; }
         .switch-btn {
             background: #220505;
@@ -396,6 +421,17 @@
         }
 
         /* === RESPONSIVE LAYOUT BREAKPOINTS === */
+        @media screen and (max-width: 1300px) {
+            .workspace-container {
+                flex-direction: column;
+                align-items: center;
+                width: 800px;
+                gap: 30px;
+            }
+            .pinned-section {
+                width: 100%;
+            }
+        }
         @media screen and (max-width: 1024px) {
             .fidget-box, .music-player-container { position: static; margin: 20px auto; width: 800px; transform: none; }
             #gif1, #gif2, #gif3, #gif4, #gif5 { display: none; }
@@ -412,6 +448,7 @@
             .navbar a.play-game-link {
                 display: none;
             }
+            .workspace-container, .carousel-section, .pinned-section { width: 100%; }
             .page-purpose, .description, .fidget-box, .music-player-container, .publisher-notice, .crossover-container, .bottom-promo-container { width: 100%; }
             .image-container, .image-container.enlarged { width: 100%; height: 300px; }
             .image-container.enlarged { height: 80vh; }
@@ -439,21 +476,38 @@
         <button class="squish-btn" id="squishBtn">crush</button>
         <div class="bug-counter">broken skulls: <span id="bugCount">0</span></div>
     </div>
-   
+    
     <div class="page-purpose">a place where i share work in progress stuffs</div>
     <a href="mailto:contact@hamachithepsychotickiller.com?subject=Publisher%20Inquiry%20-%20Hamachi%20the%20Psychotic%20Killer" class="publisher-notice">
         <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
         🩸 if you're a publisher and wish to reach me, click here 🩸
         <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
     </a>
-    <div class="image-container" id="imageContainer">
-        <div class="date-time" id="dateTime"></div>
-        <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
-        <div id="embedContainer"></div>
-        <div class="arrow left" id="leftArrow">&larr;</div>
-        <div class="arrow right" id="rightArrow">&rarr;</div>
+
+    <!-- === MAIN CONTENT WORKSPACE === -->
+    <div class="workspace-container">
+        <!-- Main Dev Carousel Section -->
+        <div class="carousel-section">
+            <div class="image-container" id="imageContainer">
+                <div class="date-time" id="dateTime"></div>
+                <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
+                <div class="arrow left" id="leftArrow">&larr;</div>
+                <div class="arrow right" id="rightArrow">&rarr;</div>
+            </div>
+            <div class="description" id="description"></div>
+        </div>
+
+        <!-- Permanently Split Pinned X Transmission -->
+        <div class="pinned-section">
+            <div class="fidget-title" style="position: static; margin-bottom: 12px; text-align: center;">𝕏</div>
+            <div class="pinned-tweet-wrapper">
+                <blockquote class="twitter-tweet" data-theme="dark" data-align="center">
+                    <a href="https://x.com/imgavinoriley/status/2068302846442000537"></a>
+                </blockquote>
+            </div>
+        </div>
     </div>
-    <div class="description" id="description"></div>
+
     <div class="crossover-container">
         <a href="https://x.com/TheDeepRoblox" target="_blank" rel="noopener noreferrer" class="crossover-link">
             <div class="fidget-title" style="position: static; margin-bottom: 12px;">Community Works 🛠️</div>
@@ -478,7 +532,7 @@
     <img src="https://gavinoriley.github.io/assets/002d8809.gif" alt="" class="decorative-gif" id="gif5">
     
     <div class="bottom-promo-container">
-        <a href="https://gamejolt.com/games/hamachithepsychotickillersandbox/1076404" target="_blank" rel="noopener noreferrer">
+        <a href="https://gamejolt.com/games/hamachithepsychotillersandbox/1076404" target="_blank" rel="noopener noreferrer">
             <img src="https://gavinoriley.github.io/assets/1gavinorileyhamasketch.png" alt="Hamachi Concept Sketch" class="bottom-sketch">
         </a>
         <div class="promo-text">click the drawing to visit 'hamachi sandbox' on gamejolt</div>
@@ -487,11 +541,11 @@
     <script>
         const images = [
             {
-                type: 'embed',
-                html: '<blockquote class="twitter-tweet" data-theme="dark" data-align="center"><a href="https://x.com/imgavinoriley/status/2068302846442000537"></a></blockquote>',
-                date: '2026-6-20T05:00:00-07:00',
-                ampm: 'AM',
-                description: "feed it ❤️"
+                type: 'image',
+                src: 'https://gavinoriley.github.io/assets/moving eyes.gif',
+                date: '2026-6-22T4:35:07-07:00',
+                ampm: 'PM',
+                description: "he now has eyes"
             },
             {
                 type: 'image',
@@ -623,30 +677,16 @@
         let currentImageIndex = 0;
         const imageContainer = document.getElementById('imageContainer');
         const galleryImage = document.getElementById('galleryImage');
-        const embedContainer = document.getElementById('embedContainer');
         const dateTime = document.getElementById('dateTime');
         const description = document.getElementById('description');
         const leftArrow = document.getElementById('leftArrow');
         const rightArrow = document.getElementById('rightArrow');
+
         function updateImage() {
             const currentImage = images[currentImageIndex];
-           
-            if (currentImage.type === 'embed') {
-                imageContainer.classList.remove('enlarged');
-                imageContainer.classList.add('embed-active');
-                galleryImage.style.display = 'none';
-                embedContainer.style.display = 'flex';
-                embedContainer.innerHTML = currentImage.html;
-               
-                if (typeof twttr !== 'undefined' && twttr.widgets) {
-                    twttr.widgets.load(embedContainer);
-                }
-            } else {
-                imageContainer.classList.remove('embed-active');
-                embedContainer.style.display = 'none';
-                galleryImage.style.display = 'block';
-                galleryImage.src = currentImage.src;
-            }
+            
+            galleryImage.src = currentImage.src;
+            
             if (currentImage.date && currentImage.date.trim() !== '') {
                 const dateParts = currentImage.date.split('T');
                 const date = dateParts[0];
@@ -662,10 +702,13 @@
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
         }
+        
         updateImage();
+        
         galleryImage.addEventListener('click', () => {
             imageContainer.classList.toggle('enlarged');
         });
+        
         leftArrow.addEventListener('click', (e) => {
             e.stopPropagation();
             if (currentImageIndex > 0) {
@@ -673,6 +716,7 @@
                 updateImage();
             }
         });
+        
         rightArrow.addEventListener('click', (e) => {
             e.stopPropagation();
             if (currentImageIndex < images.length - 1) {
@@ -680,6 +724,7 @@
                 updateImage();
             }
         });
+        
         const lightBtn = document.getElementById('lightBtn');
         lightBtn.addEventListener('click', () => {
             document.body.classList.toggle('lights-out');
@@ -689,6 +734,7 @@
                 lightBtn.textContent = "LIGHTS OUT";
             }
         });
+        
         const eightBall = document.getElementById('eightBall');
         const fortunes = [
             "👁️", "𓃵", "⛧⃝", "𖤐",
@@ -704,6 +750,7 @@
                 eightBall.classList.remove('shake-anim');
             }, 400);
         });
+        
         const bugIcon = document.getElementById('bugIcon');
         const squishBtn = document.getElementById('squishBtn');
         const bugCountDisplay = document.getElementById('bugCount');
@@ -713,7 +760,7 @@
             bugIcon.textContent = '💥';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
-           
+            
             setTimeout(() => {
                 const nextBug = bugTypes[Math.floor(Math.random() * bugTypes.length)];
                 bugIcon.textContent = nextBug;
