@@ -23,9 +23,9 @@
     <link rel="icon" type="image/x-icon" href="/assets/hamafavi.ico">
     <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preconnect" href="https://store.steampowered.com">
-    
+   
     <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
-    
+   
     <style>
         @font-face {
             font-family: 'FSEX300';
@@ -54,7 +54,7 @@
             padding: 20px;
             padding-bottom: 180px;
         }
-        
+       
         /* === LIGHTS OUT MODE OVERRIDES === */
         body.lights-out {
             background: #0d0202; /* Dark Abyssal Red */
@@ -155,7 +155,6 @@
             90% { transform: translate(-2px, 4px); }
             100% { transform: translate(0px, 0px); }
         }
-
         /* === WORKSPACE MAIN LAYOUT === */
         .workspace-container {
             display: flex;
@@ -213,7 +212,6 @@
             color: #fff;
             line-height: 1.6;
         }
-
         /* === PINNED TRANSMISSION SIDEBAR === */
         .pinned-section {
             width: 400px;
@@ -232,7 +230,6 @@
             width: 100%;
             min-height: 450px;
         }
-
         /* === CROSSOVER SPOTLIGHT STYLES === */
         .crossover-container {
             width: 800px;
@@ -347,7 +344,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+       
         #lightSwitchWidget { top: 20%; }
         .switch-btn {
             background: #220505;
@@ -391,7 +388,6 @@
         .squish-btn { background: #1a0505; border: 1px solid #771111; color: #fff; padding: 4px; font-size: 13px; width: 100%; cursor: pointer; }
         .squish-btn:active { background: #551111; }
         .bug-counter { font-size: 11px; color: #886666; margin-top: 5px; }
-
         /* === BOTTOM SKETCH & PROMO STYLES === */
         .bottom-promo-container {
             display: flex;
@@ -419,7 +415,6 @@
             line-height: 1.5;
             max-width: 650px;
         }
-
         /* === RESPONSIVE LAYOUT BREAKPOINTS === */
         @media screen and (max-width: 1300px) {
             .workspace-container {
@@ -476,14 +471,13 @@
         <button class="squish-btn" id="squishBtn">crush</button>
         <div class="bug-counter">broken skulls: <span id="bugCount">0</span></div>
     </div>
-    
+   
     <div class="page-purpose">a place where i share work in progress stuffs, the game is complete and publicly available but i continuously experiment, polish and add new things outside of the public game which you can see here, no estimated time on when new stuff will be pushed to the main game atm</div>
     <a href="mailto:contact@hamachithepsychotickiller.com?subject=Publisher%20Inquiry%20-%20Hamachi%20the%20Psychotic%20Killer" class="publisher-notice">
         <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
         🩸 if you're a publisher and wish to reach me, click here 🩸
         <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
     </a>
-
     <!-- === MAIN CONTENT WORKSPACE === -->
     <div class="workspace-container">
         <!-- Main Dev Carousel Section -->
@@ -496,7 +490,6 @@
             </div>
             <div class="description" id="description"></div>
         </div>
-
         <!-- Permanently Split Pinned X Transmission -->
         <div class="pinned-section">
             <div class="fidget-title" style="position: static; margin-bottom: 12px; text-align: center;">𝕏</div>
@@ -507,7 +500,6 @@
             </div>
         </div>
     </div>
-
     <div class="crossover-container">
         <a href="https://x.com/TheDeepRoblox" target="_blank" rel="noopener noreferrer" class="crossover-link">
             <div class="fidget-title" style="position: static; margin-bottom: 12px;">Community Works 🛠️</div>
@@ -523,21 +515,20 @@
     <img src="https://gavinoriley.github.io/assets/5e1f23fe.gif" alt="" class="decorative-gif" id="gif1">
     <img src="https://gavinoriley.github.io/assets/5e1f23fe.gif" alt="" class="decorative-gif" id="gif2">
     <img src="https://gavinoriley.github.io/assets/5e1f23fe.gif" alt="" class="decorative-gif" id="gif3">
-   
+  
     <div class="music-player-container">
         <div class="music-player-title">music that im listening to right now</div>
-        <iframe src="https://www.youtube.com/embed/OzgoJWjJVDI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/ly1lWkRwm6g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <img src="https://gavinoriley.github.io/assets/5e1f23fe.gif" alt="" class="decorative-gif" id="gif4">
     <img src="https://gavinoriley.github.io/assets/002d8809.gif" alt="" class="decorative-gif" id="gif5">
-    
+   
     <div class="bottom-promo-container">
         <a href="https://gamejolt.com/games/hamachithepsychotillersandbox/1076404" target="_blank" rel="noopener noreferrer">
             <img src="https://gavinoriley.github.io/assets/1gavinorileyhamasketch.png" alt="Hamachi Concept Sketch" class="bottom-sketch">
         </a>
         <div class="promo-text">click the drawing to visit 'hamachi sandbox' on gamejolt</div>
     </div>
-
     <script>
         const images = [
              {
@@ -688,12 +679,11 @@
         const description = document.getElementById('description');
         const leftArrow = document.getElementById('leftArrow');
         const rightArrow = document.getElementById('rightArrow');
-
         function updateImage() {
             const currentImage = images[currentImageIndex];
-            
+           
             galleryImage.src = currentImage.src;
-            
+           
             if (currentImage.date && currentImage.date.trim() !== '') {
                 const dateParts = currentImage.date.split('T');
                 const date = dateParts[0];
@@ -709,13 +699,13 @@
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
         }
-        
+       
         updateImage();
-        
+       
         galleryImage.addEventListener('click', () => {
             imageContainer.classList.toggle('enlarged');
         });
-        
+       
         leftArrow.addEventListener('click', (e) => {
             e.stopPropagation();
             if (currentImageIndex > 0) {
@@ -723,7 +713,7 @@
                 updateImage();
             }
         });
-        
+       
         rightArrow.addEventListener('click', (e) => {
             e.stopPropagation();
             if (currentImageIndex < images.length - 1) {
@@ -731,7 +721,7 @@
                 updateImage();
             }
         });
-        
+       
         const lightBtn = document.getElementById('lightBtn');
         lightBtn.addEventListener('click', () => {
             document.body.classList.toggle('lights-out');
@@ -741,7 +731,7 @@
                 lightBtn.textContent = "LIGHTS OUT";
             }
         });
-        
+       
         const eightBall = document.getElementById('eightBall');
         const fortunes = [
             "👁️", "𓃵", "⛧⃝", "𖤐",
@@ -757,7 +747,7 @@
                 eightBall.classList.remove('shake-anim');
             }, 400);
         });
-        
+       
         const bugIcon = document.getElementById('bugIcon');
         const squishBtn = document.getElementById('squishBtn');
         const bugCountDisplay = document.getElementById('bugCount');
@@ -767,7 +757,7 @@
             bugIcon.textContent = '💥';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
-            
+           
             setTimeout(() => {
                 const nextBug = bugTypes[Math.floor(Math.random() * bugTypes.length)];
                 bugIcon.textContent = nextBug;
