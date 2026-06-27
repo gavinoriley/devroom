@@ -23,9 +23,9 @@
     <link rel="icon" type="image/x-icon" href="/assets/hamafavi.ico">
     <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preconnect" href="https://store.steampowered.com">
-   
+    
     <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
-   
+    
     <style>
         @font-face {
             font-family: 'FSEX300';
@@ -54,7 +54,7 @@
             padding: 20px;
             padding-bottom: 180px;
         }
-       
+        
         /* === LIGHTS OUT MODE OVERRIDES === */
         body.lights-out {
             background: #0d0202; /* Dark Abyssal Red */
@@ -305,12 +305,14 @@
         #gif3 { right: 10px; top: 60px; }
         #gif4 { right: 10px; bottom: 10px; }
         #gif5 { left: 50%; bottom: 10px; transform: translateX(-50%); }
+        
+        /* === MUSIC PLAYER AREA === */
         .music-player-container {
             position: fixed;
-            right: 50px;
+            right: 30px;
             top: 50%;
             transform: translateY(-50%);
-            width: 220px;
+            width: 260px;
             z-index: 10;
             text-align: center;
         }
@@ -322,7 +324,7 @@
         }
         .music-player-container iframe {
             width: 100%;
-            height: 124px;
+            height: 150px;
             border: 2px solid #551111;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
@@ -344,7 +346,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-       
+        
         #lightSwitchWidget { top: 20%; }
         .switch-btn {
             background: #220505;
@@ -416,6 +418,9 @@
             max-width: 650px;
         }
         /* === RESPONSIVE LAYOUT BREAKPOINTS === */
+        @media screen and (max-width: 1340px) {
+            .music-player-container { right: 10px; }
+        }
         @media screen and (max-width: 1300px) {
             .workspace-container {
                 flex-direction: column;
@@ -429,6 +434,7 @@
         }
         @media screen and (max-width: 1024px) {
             .fidget-box, .music-player-container { position: static; margin: 20px auto; width: 800px; transform: none; }
+            .music-player-container iframe { height: 450px; } /* Expand cleanly inside desktop flow */
             #gif1, #gif2, #gif3, #gif4, #gif5 { display: none; }
         }
         @media screen and (max-width: 768px) {
@@ -445,6 +451,7 @@
             }
             .workspace-container, .carousel-section, .pinned-section { width: 100%; }
             .page-purpose, .description, .fidget-box, .music-player-container, .publisher-notice, .crossover-container, .bottom-promo-container { width: 100%; }
+            .music-player-container iframe { height: 200px; }
             .image-container, .image-container.enlarged { width: 100%; height: 300px; }
             .image-container.enlarged { height: 80vh; }
         }
@@ -471,11 +478,11 @@
         <button class="squish-btn" id="squishBtn">crush</button>
         <div class="bug-counter">broken skulls: <span id="bugCount">0</span></div>
     </div>
-   
+    
     <div class="page-purpose">a place where i share work in progress stuffs, the game is complete and publicly available but i continuously experiment, polish and add new things outside of the public game which you can see here, no estimated time on when new stuff will be pushed to the main game atm</div>
     <a href="mailto:contact@hamachithepsychotickiller.com?subject=Publisher%20Inquiry%20-%20Hamachi%20the%20Psychotic%20Killer" class="publisher-notice">
         <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
-        🩸 if you're a publisher and wish to reach me, click here 🩸
+        血液 if you're a publisher and wish to reach me, click here 血液
         <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
     </a>
     <!-- === MAIN CONTENT WORKSPACE === -->
@@ -681,9 +688,9 @@
         const rightArrow = document.getElementById('rightArrow');
         function updateImage() {
             const currentImage = images[currentImageIndex];
-           
+            
             galleryImage.src = currentImage.src;
-           
+            
             if (currentImage.date && currentImage.date.trim() !== '') {
                 const dateParts = currentImage.date.split('T');
                 const date = dateParts[0];
@@ -699,13 +706,13 @@
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
         }
-       
+        
         updateImage();
-       
+        
         galleryImage.addEventListener('click', () => {
             imageContainer.classList.toggle('enlarged');
         });
-       
+        
         leftArrow.addEventListener('click', (e) => {
             e.stopPropagation();
             if (currentImageIndex > 0) {
@@ -713,7 +720,7 @@
                 updateImage();
             }
         });
-       
+        
         rightArrow.addEventListener('click', (e) => {
             e.stopPropagation();
             if (currentImageIndex < images.length - 1) {
@@ -721,7 +728,7 @@
                 updateImage();
             }
         });
-       
+        
         const lightBtn = document.getElementById('lightBtn');
         lightBtn.addEventListener('click', () => {
             document.body.classList.toggle('lights-out');
@@ -731,7 +738,7 @@
                 lightBtn.textContent = "LIGHTS OUT";
             }
         });
-       
+        
         const eightBall = document.getElementById('eightBall');
         const fortunes = [
             "👁️", "𓃵", "⛧⃝", "𖤐",
@@ -747,7 +754,7 @@
                 eightBall.classList.remove('shake-anim');
             }, 400);
         });
-       
+        
         const bugIcon = document.getElementById('bugIcon');
         const squishBtn = document.getElementById('squishBtn');
         const bugCountDisplay = document.getElementById('bugCount');
@@ -757,7 +764,7 @@
             bugIcon.textContent = '💥';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
-           
+            
             setTimeout(() => {
                 const nextBug = bugTypes[Math.floor(Math.random() * bugTypes.length)];
                 bugIcon.textContent = nextBug;
