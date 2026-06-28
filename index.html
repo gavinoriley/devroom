@@ -23,9 +23,9 @@
     <link rel="icon" type="image/x-icon" href="/assets/hamafavi.ico">
     <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preconnect" href="https://store.steampowered.com">
-    
+  
     <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
-    
+  
     <style>
         @font-face {
             font-family: 'FSEX300';
@@ -45,7 +45,7 @@
             transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         body {
-            background: #2b0505; /* Demonic Deep Blood Red */
+            background: #2b0505;
             color: #ffcccc;
             display: flex;
             flex-direction: column;
@@ -54,8 +54,7 @@
             padding: 20px;
             padding-bottom: 180px;
         }
-        
-        /* === CRT CLAUSTROPHOBIC VIGNETTE === */
+      
         body::before {
             content: " ";
             display: block;
@@ -67,10 +66,9 @@
             pointer-events: none;
             transition: opacity 0.5s ease, background 0.5s ease;
         }
-        
-        /* === LIGHTS OUT MODE OVERRIDES === */
+      
         body.lights-out {
-            background: #0d0202; /* Dark Abyssal Red */
+            background: #0d0202;
             color: #ff4444;
         }
         body.lights-out::before {
@@ -102,8 +100,7 @@
         body.lights-out .promo-text {
             text-shadow: 0 0 6px #ff0000;
         }
-        
-        /* === NAVBAR === */
+      
         .navbar {
             position: fixed;
             top: 0;
@@ -126,14 +123,14 @@
             border-radius: 4px;
             transition: color 0.3s ease;
         }
-        .navbar a:hover { 
-            color: #fff !important; 
+        .navbar a:hover {
+            color: #fff !important;
             text-shadow: -2px 0 #ff0000, 2px 0 #00ffff, 0 0 8px rgba(255, 0, 0, 0.8);
             animation: textShiver 0.1s linear infinite;
         }
         .navbar a.buy-game-link { color: #ff8866; }
         .navbar a.buy-game-link:hover { color: #ff6644; }
-        
+      
         .page-purpose {
             width: 800px;
             text-align: center;
@@ -142,8 +139,7 @@
             font-size: 20px;
             color: #fff;
         }
-        
-        /* === PUBLISHER NOTICE LINK === */
+      
         .publisher-notice {
             display: inline-flex;
             align-items: center;
@@ -172,8 +168,7 @@
             height: 24px;
             width: auto;
         }
-        
-        /* === WORKSPACE MAIN LAYOUT === */
+      
         .workspace-container {
             display: flex;
             flex-direction: row;
@@ -204,20 +199,16 @@
             height: 750px;
             z-index: 1000;
         }
-        
+      
         .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: contain;
             cursor: pointer;
             filter: brightness(0.95) contrast(1.05);
+            transition: opacity 0.4s ease-in-out;
         }
-        /* STATIC TEAR COUPLING CLASS */
-        .gallery-image.tear {
-            animation: glitchTear 0.15s steps(2) infinite;
-            mix-blend-mode: difference;
-        }
-
+      
         .date-time {
             position: absolute;
             top: 10px;
@@ -238,8 +229,7 @@
             color: #fff;
             line-height: 1.6;
         }
-        
-        /* === PINNED TRANSMISSION SIDEBAR === */
+      
         .pinned-section {
             width: 400px;
             background: rgba(30, 10, 10, 0.5);
@@ -257,8 +247,7 @@
             width: 100%;
             min-height: 450px;
         }
-        
-        /* === CROSSOVER SPOTLIGHT STYLES === */
+      
         .crossover-container {
             width: 800px;
             background: rgba(30, 10, 10, 0.5);
@@ -333,8 +322,7 @@
         #gif3 { right: 10px; top: 60px; }
         #gif4 { right: 10px; bottom: 10px; }
         #gif5 { left: 50%; bottom: 10px; transform: translateX(-50%); }
-        
-        /* === MUSIC PLAYER AREA === */
+      
         .music-player-container {
             position: fixed;
             right: 30px;
@@ -374,7 +362,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+      
         #lightSwitchWidget { top: 20%; }
         .switch-btn {
             background: #220505;
@@ -387,6 +375,7 @@
             width: 100%;
         }
         .switch-btn:active { background: #551111; }
+      
         #eightBallWidget { top: 45%; }
         .ball-sphere {
             width: 70px;
@@ -406,14 +395,13 @@
             user-select: none;
         }
         .ball-sphere.shake-anim { animation: ballShake 0.4s ease-in-out; }
-        
+      
         #bugSquisherWidget { top: 72%; }
         .bug-display { font-size: 28px; margin: 5px 0; height: 40px; display: flex; align-items: center; justify-content: center; }
         .squish-btn { background: #1a0505; border: 1px solid #771111; color: #fff; padding: 4px; font-size: 13px; width: 100%; cursor: pointer; }
         .squish-btn:active { background: #551111; }
         .bug-counter { font-size: 11px; color: #886666; margin-top: 5px; }
-        
-        /* === BOTTOM SKETCH & PROMO STYLES === */
+      
         .bottom-promo-container {
             display: flex;
             flex-direction: column;
@@ -440,8 +428,7 @@
             line-height: 1.5;
             max-width: 650px;
         }
-        
-        /* === KEYFRAMES AND ANIMATIONS === */
+      
         @keyframes smoothRandomBob {
             0% { transform: translate(0px, 0px); }
             15% { transform: translate(5px, -6px); }
@@ -463,18 +450,12 @@
             0% { opacity: 0.90; }
             100% { opacity: 0.98; }
         }
-        @keyframes glitchTear {
-            0% { transform: translate(3px, -1px) skewX(6deg); filter: invert(1); }
-            50% { transform: translate(-3px, 1px) skewX(-6deg); }
-            100% { transform: translate(0, 0); }
-        }
         @keyframes textShiver {
             0% { transform: translate(0.6px, 0.6px); }
             50% { transform: translate(-0.6px, -0.6px); }
-            100% { transform: translate(0px, 0px); }
+            100% { transform(0px, 0px); }
         }
-        
-        /* === RESPONSIVE LAYOUT BREAKPOINTS === */
+      
         @media screen and (max-width: 1340px) {
             .music-player-container { right: 10px; }
         }
@@ -535,8 +516,8 @@
         <button class="squish-btn" id="squishBtn">crush</button>
         <div class="bug-counter">broken skulls: <span id="bugCount">0</span></div>
     </div>
-    
-    <div class="page-purpose">a place where i share work in progress stuffs, the game is complete and publicly available but i continuously experiment, polish and add new things outside of the public game which you can see here, no estimated time on when new stuff will be pushed to the main game atm</div>
+  
+    <div class="page-purpose possessed" id="pagePurpose">a place where i share work in progress stuffs, the game is complete and publicly available but i continuously experiment, polish and add new things outside of the public game which you can see here, no estimated time on when new stuff will be pushed to the main game atm</div>
     <a href="mailto:contact@hamachithepsychotickiller.com?subject=Publisher%20Inquiry%20-%20Hamachi%20the%20Psychotic%20Killer" class="publisher-notice">
         <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
         血液 if you're a publisher and wish to reach me, click here 血液
@@ -550,7 +531,7 @@
                 <div class="arrow left" id="leftArrow">&larr;</div>
                 <div class="arrow right" id="rightArrow">&rarr;</div>
             </div>
-            <div class="description" id="description"></div>
+            <div class="description possessed" id="description"></div>
         </div>
         <div class="pinned-section">
             <div class="fidget-title" style="position: static; margin-bottom: 12px; text-align: center;">𝕏</div>
@@ -566,7 +547,7 @@
             <div class="fidget-title" style="position: static; margin-bottom: 12px;">Community Works 🛠️</div>
             <img src="https://gavinoriley.github.io/assets/Hamachi_RenderAlt.png" alt="Hamachi 3D Model" class="crossover-render">
             <div class="crossover-title">The Deep Silence</div>
-            <div class="crossover-desc">
+            <div class="crossover-desc possessed">
                 Hamachi will be featured as a playable killer in the upcoming Roblox game, <i>The Deep Silence</i>, which is currently in development. Click here to view their work & support the creators!
                 <br><br>
                 <i>Note: I am not affiliated with the development of The Deep Silence, nor is The Deep Silence development team affiliated with the development of Hamachi the Psychotic Killer. All credit for The Deep Silence belongs to its development team.</i>
@@ -576,164 +557,44 @@
     <img src="https://gavinoriley.github.io/assets/5e1f23fe.gif" alt="" class="decorative-gif" id="gif1">
     <img src="https://gavinoriley.github.io/assets/5e1f23fe.gif" alt="" class="decorative-gif" id="gif2">
     <img src="https://gavinoriley.github.io/assets/5e1f23fe.gif" alt="" class="decorative-gif" id="gif3">
-  
     <div class="music-player-container">
         <div class="music-player-title">music that im listening to right now</div>
         <iframe src="https://www.youtube.com/embed/OAgc5hRw5Zw?start=481" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <img src="https://gavinoriley.github.io/assets/5e1f23fe.gif" alt="" class="decorative-gif" id="gif4">
     <img src="https://gavinoriley.github.io/assets/002d8809.gif" alt="" class="decorative-gif" id="gif5">
-   
+ 
     <div class="bottom-promo-container">
         <a href="https://gamejolt.com/games/hamachithepsychotillersandbox/1076404" target="_blank" rel="noopener noreferrer">
             <img src="https://gavinoriley.github.io/assets/1gavinorileyhamasketch.png" alt="Hamachi Concept Sketch" class="bottom-sketch">
         </a>
-        <div class="promo-text">click the drawing to visit 'hamachi sandbox' on gamejolt</div>
+        <div class="promo-text possessed">click the drawing to visit 'hamachi sandbox' on gamejolt</div>
     </div>
+
     <script>
         const images = [
-             {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/defiance.png',
-                date: '2026-6-23T11:18:07-07:00',
-                ampm: 'PM',
-                description: "𓃵"
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/eyecu.gif',
-                date: '2026-6-22T8:36:07-07:00',
-                ampm: 'PM',
-                description: "giving him pupils so he can look at u"
-                
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/titleseason.gif',
-                date: '2026-6-14T4:35:07-07:00',
-                ampm: 'PM',
-                description: "adding a thing to the title screen to make it change based on the irl season, spring - summer - autumn - dry season - winter because i have nothing better to do rn"
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/demonicbuild.png',
-                date: '2026-6-10T11:52:07-07:00',
-                ampm: 'PM',
-                description: "experimenting with a new mechanic for future iterations of the game, i want hamachi to turn into a demon, being a demon would briefly unlock special attributes that modify the way hamachi kills and controls throughout levels. im not sure how the player would possess this ability just yet, but as of right now the idea is that the more enemies you kill, the more demonic energy you'd acquire, and once you gain enough energy, you can transform into a demon and release all sorts of hell."
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/Harlequin.png',
-                date: '2026-5-25T1:30:07-07:00',
-                ampm: 'AM',
-                description: "drafting ideas for future content in the chance i find a publisher for hamachi, majordomo (the first boss) would get a proper and unique \"minigame\" like scenario for his pacifist encounter much like the second boss. i would like to add a 9th world too, consisting of a southern gothic town aesthetic, the boss of world 9 would be demon queen deity's younger sister, harlequin hurly-burly highness, a demon taking the form of a human."
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev15.gif',
-                date: '2026-1-3T4:33:07-07:00',
-                ampm: 'PM',
-                description: 'wip costume room'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev14.gif',
-                date: '2025-12-31T1:00:07-07:00',
-                ampm: 'PM',
-                description: ''
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev13.gif',
-                date: '2025-09-25T4:10:07-07:00',
-                ampm: 'PM',
-                description: 'police mini boss'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev12.gif',
-                date: '2025-09-15T4:10:00-07:00',
-                ampm: 'PM',
-                description: '●︎□︎♍︎♋︎⧫︎♓︎□︎■︎ ♒︎♏︎●'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev11.gif',
-                date: '2025-08-28T8:50:00-07:00',
-                ampm: 'PM',
-                description: '1,000 lines of code later, 2nd boss'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev10.gif',
-                date: '2025-08-28T1:00:00-07:00',
-                ampm: 'AM',
-                description: '(randomly) exploring'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev9.gif',
-                date: '2025-08-26T12:33:00-07:00',
-                ampm: 'PM',
-                description: 'interesting glitch'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev8.png',
-                date: '2025-08-22T6:18:00-07:00',
-                ampm: 'PM',
-                description: 'not sure what this game is coming to'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev7.png',
-                date: '2025-08-13T4:37:00-07:00',
-                ampm: 'PM',
-                description: 'pacify'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev6.png',
-                date: '2025-08-12T7:57:00-07:00',
-                ampm: 'AM',
-                description: 'added volume slider and options now save, updating game with this when next challenge level releases'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev5.png',
-                date: '2025-08-07T4:54:00-07:00',
-                ampm: 'PM',
-                description: ''
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev4.png',
-                date: '2025-08-07T4:31:00-07:00',
-                ampm: 'PM',
-                description: 'can now save and load games, insanity'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev3.png',
-                date: '2025-08-04T4:50:00-07:00',
-                ampm: 'PM',
-                description: 'programming a cinematic'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev2.png',
-                date: '2025-08-03T3:27:00-07:00',
-                ampm: 'PM',
-                description: 'happy fun time yippie'
-            },
-            {
-                type: 'image',
-                src: 'https://gavinoriley.github.io/assets/dev1.png',
-                date: '2025-08-02T02:06:00-07:00',
-                ampm: 'AM',
-                description: 'end world scene brainstorming.'
-            }
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/defiance.png', date: '2026-6-23T11:18:07-07:00', ampm: 'PM', description: "𓃵" },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/eyecu.gif', date: '2026-6-22T8:36:07-07:00', ampm: 'PM', description: "giving him pupils so he can look at u" },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/titleseason.gif', date: '2026-6-14T4:35:07-07:00', ampm: 'PM', description: "adding a thing to the title screen to make it change based on the irl season..." },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/demonicbuild.png', date: '2026-6-10T11:52:07-07:00', ampm: 'PM', description: "experimenting with a new mechanic for future iterations..." },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/Harlequin.png', date: '2026-5-25T1:30:07-07:00', ampm: 'AM', description: "drafting ideas for future content..." },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev15.gif', date: '2026-1-3T4:33:07-07:00', ampm: 'PM', description: 'wip costume room' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev14.gif', date: '2025-12-31T1:00:07-07:00', ampm: 'PM', description: '' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev13.gif', date: '2025-09-25T4:10:07-07:00', ampm: 'PM', description: 'police mini boss' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev12.gif', date: '2025-09-15T4:10:00-07:00', ampm: 'PM', description: '●︎□︎♍︎♋︎⧫︎♓︎□︎■︎ ♒︎♏︎●' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev11.gif', date: '2025-08-28T8:50:00-07:00', ampm: 'PM', description: '1,000 lines of code later, 2nd boss' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev10.gif', date: '2025-08-28T1:00:00-07:00', ampm: 'AM', description: '(randomly) exploring' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev9.gif', date: '2025-08-26T12:33:00-07:00', ampm: 'PM', description: 'interesting glitch' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev8.png', date: '2025-08-22T6:18:00-07:00', ampm: 'PM', description: 'not sure what this game is coming to' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev7.png', date: '2025-08-13T4:37:00-07:00', ampm: 'PM', description: 'pacify' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev6.png', date: '2025-08-12T7:57:00-07:00', ampm: 'AM', description: 'added volume slider and options now save...' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev5.png', date: '2025-08-07T4:54:00-07:00', ampm: 'PM', description: '' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev4.png', date: '2025-08-07T4:31:00-07:00', ampm: 'PM', description: 'can now save and load games, insanity' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev3.png', date: '2025-08-04T4:50:00-07:00', ampm: 'PM', description: 'programming a cinematic' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev2.png', date: '2025-08-03T3:27:00-07:00', ampm: 'PM', description: 'happy fun time yippie' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev1.png', date: '2025-08-02T02:06:00-07:00', ampm: 'AM', description: 'end world scene brainstorming.' }
         ];
+
         let currentImageIndex = 0;
         const imageContainer = document.getElementById('imageContainer');
         const galleryImage = document.getElementById('galleryImage');
@@ -741,46 +602,41 @@
         const description = document.getElementById('description');
         const leftArrow = document.getElementById('leftArrow');
         const rightArrow = document.getElementById('rightArrow');
-        
+
         function updateImage() {
             const currentImage = images[currentImageIndex];
-            
-            // Trigger static transition tear
-            galleryImage.classList.add('tear');
+           
+            galleryImage.classList.add('fade-out');
+           
             setTimeout(() => {
-                galleryImage.classList.remove('tear');
-            }, 150);
-            
-            if (currentImage.hideReferrer) {
-                galleryImage.referrerPolicy = "no-referrer";
-            } else {
-                galleryImage.removeAttribute('referrerpolicy');
-            }
-            
-            galleryImage.src = currentImage.src;
-            
-            if (currentImage.date && currentImage.date.trim() !== '') {
-                const dateParts = currentImage.date.split('T');
-                const date = dateParts[0];
-                let time = '';
-                if (dateParts[1]) {
-                    time = dateParts[1].split(':').slice(0, 2).join(':');
+                galleryImage.src = currentImage.src;
+               
+                if (currentImage.date && currentImage.date.trim() !== '') {
+                    const dateParts = currentImage.date.split('T');
+                    const date = dateParts[0];
+                    let time = '';
+                    if (dateParts[1]) {
+                        time = dateParts[1].split(':').slice(0, 2).join(':');
+                    }
+                    dateTime.textContent = `${date}, ${time} ${currentImage.ampm}`;
+                } else {
+                    dateTime.textContent = 'Circa 2011 (Wayback Machine)';
                 }
-                dateTime.textContent = `${date}, ${time} ${currentImage.ampm}`;
-            } else {
-                dateTime.textContent = 'Circa 2011 (Wayback Machine)';
-            }
-            description.textContent = currentImage.description || '';
+                description.textContent = currentImage.description || '';
+               
+                galleryImage.classList.remove('fade-out');
+            }, 200);
+          
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
         }
-        
+      
         updateImage();
-        
+      
         galleryImage.addEventListener('click', () => {
             imageContainer.classList.toggle('enlarged');
         });
-        
+      
         leftArrow.addEventListener('click', (e) => {
             e.stopPropagation();
             if (currentImageIndex > 0) {
@@ -788,7 +644,7 @@
                 updateImage();
             }
         });
-        
+      
         rightArrow.addEventListener('click', (e) => {
             e.stopPropagation();
             if (currentImageIndex < images.length - 1) {
@@ -796,45 +652,74 @@
                 updateImage();
             }
         });
-        
+
+        // === POSSESSED TYPOGRAPHY (Slower) ===
+        function possessText(element) {
+            if (!element) return;
+            const text = element.textContent;
+            const chars = text.split('');
+           
+            element.innerHTML = chars.map((char, i) => {
+                if (char.trim() === '') return char;
+                return `<span class="glitch-char" data-index="${i}">${char}</span>`;
+            }).join('');
+           
+            const glitchSpans = element.querySelectorAll('.glitch-char');
+           
+            setInterval(() => {
+                const randomSpan = glitchSpans[Math.floor(Math.random() * glitchSpans.length)];
+                if (!randomSpan) return;
+               
+                const original = randomSpan.textContent;
+                const demonicChars = ['∅', '†', '⛧', '𓃵', '𖤐', '⁶⁶⁶', '☠︎', 'ℵ', '𓉸', '×̷'];
+                const randomDemonic = demonicChars[Math.floor(Math.random() * demonicChars.length)];
+               
+                randomSpan.style.transform = 'scale(1.15) rotate(8deg)';
+                randomSpan.style.color = '#ff4444';
+                randomSpan.textContent = randomDemonic;
+               
+                setTimeout(() => {
+                    randomSpan.style.transform = 'scale(1) rotate(0deg)';
+                    randomSpan.style.color = '';
+                    randomSpan.textContent = original;
+                }, 110);
+            }, 2200 + Math.random() * 2300); // Dramatically slower
+        }
+       
+        window.addEventListener('load', () => {
+            possessText(document.getElementById('pagePurpose'));
+            possessText(document.getElementById('description'));
+            possessText(document.querySelector('.crossover-desc'));
+            possessText(document.querySelector('.promo-text'));
+        });
+      
         const lightBtn = document.getElementById('lightBtn');
         lightBtn.addEventListener('click', () => {
             document.body.classList.toggle('lights-out');
-            if(document.body.classList.contains('lights-out')) {
-                lightBtn.textContent = "LIGHTS ON";
-            } else {
-                lightBtn.textContent = "LIGHTS OUT";
-            }
+            lightBtn.textContent = document.body.classList.contains('lights-out') ? "LIGHTS ON" : "LIGHTS OUT";
         });
-        
+      
         const eightBall = document.getElementById('eightBall');
-        const fortunes = [
-            "👁️", "𓃵", "⛧⃝", "𖤐",
-            "👁️⃤", "☠︎︎", "⁶⁶⁶", "𐕣",
-            "×̷̷͜×̷", "𓉸ྀི", "´ཀ`", "𓉸"
-        ];
+        const fortunes = ["👁️", "𓃵", "⛧⃝", "𖤐", "👁️⃤", "☠︎︎", "⁶⁶⁶", "𐕣", "×̷̷͜×̷", "𓉸ྀི", "´ཀ`", "𓉸"];
         eightBall.addEventListener('click', () => {
             eightBall.classList.add('shake-anim');
             eightBall.textContent = "...";
             setTimeout(() => {
-                const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-                eightBall.textContent = randomFortune;
+                eightBall.textContent = fortunes[Math.floor(Math.random() * fortunes.length)];
                 eightBall.classList.remove('shake-anim');
             }, 400);
         });
-        
+      
         const bugIcon = document.getElementById('bugIcon');
         const squishBtn = document.getElementById('squishBtn');
         const bugCountDisplay = document.getElementById('bugCount');
-        const bugTypes = ['💀', '💀', '💀', '💀', '💀'];
         let bugCount = 0;
-        
+      
         squishBtn.addEventListener('click', () => {
             bugIcon.textContent = '💥';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
-            
-            // Anomalous structural layout changes based on milestones
+          
             if (bugCount === 6) {
                 document.title = "he is watching you";
                 document.body.style.transform = "rotate(0.5deg)";
@@ -845,10 +730,9 @@
                 document.title = "💀💀💀💀💀💀";
                 document.body.style.filter = "invert(1) hue-rotate(180deg)";
             }
-            
+          
             setTimeout(() => {
-                const nextBug = bugTypes[Math.floor(Math.random() * bugTypes.length)];
-                bugIcon.textContent = nextBug;
+                bugIcon.textContent = '💀';
             }, 250);
         });
     </script>
