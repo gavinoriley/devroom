@@ -547,7 +547,8 @@
                 src: 'https://gavinoriley.github.io/assets/movingeyes.gif',
                 date: '2026-6-22T8:36:07-07:00',
                 ampm: 'PM',
-                description: "giving him pupils so he can look at u"
+                description: "giving him pupils so he can look at u",
+                hideReferrer: true // Flagged to completely bypass domain checks
             },
             {
                 type: 'image',
@@ -683,8 +684,16 @@
         const description = document.getElementById('description');
         const leftArrow = document.getElementById('leftArrow');
         const rightArrow = document.getElementById('rightArrow');
+        
         function updateImage() {
             const currentImage = images[currentImageIndex];
+            
+            // Apply or remove the referrerpolicy bypass rule dynamically based on image flag
+            if (currentImage.hideReferrer) {
+                galleryImage.referrerPolicy = "no-referrer";
+            } else {
+                galleryImage.removeAttribute('referrerpolicy');
+            }
             
             galleryImage.src = currentImage.src;
             
