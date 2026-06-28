@@ -55,10 +55,28 @@
             padding-bottom: 180px;
         }
         
+        /* === CRT CLAUSTROPHOBIC VIGNETTE === */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.85) 150%);
+            opacity: 0.6;
+            z-index: 9999;
+            pointer-events: none;
+            transition: opacity 0.5s ease, background 0.5s ease;
+        }
+        
         /* === LIGHTS OUT MODE OVERRIDES === */
         body.lights-out {
             background: #0d0202; /* Dark Abyssal Red */
             color: #ff4444;
+        }
+        body.lights-out::before {
+            background: radial-gradient(circle, transparent 20%, rgba(10, 0, 0, 0.95) 130%);
+            opacity: 0.95;
+            animation: pulseVignette 6s ease-in-out infinite alternate;
         }
         body.lights-out .navbar {
             background: rgba(15, 0, 0, 0.95);
@@ -84,6 +102,7 @@
         body.lights-out .promo-text {
             text-shadow: 0 0 6px #ff0000;
         }
+        
         /* === NAVBAR === */
         .navbar {
             position: fixed;
@@ -107,9 +126,14 @@
             border-radius: 4px;
             transition: color 0.3s ease;
         }
-        .navbar a:hover { color: #ffbbaa; }
+        .navbar a:hover { 
+            color: #fff !important; 
+            text-shadow: -2px 0 #ff0000, 2px 0 #00ffff, 0 0 8px rgba(255, 0, 0, 0.8);
+            animation: textShiver 0.1s linear infinite;
+        }
         .navbar a.buy-game-link { color: #ff8866; }
         .navbar a.buy-game-link:hover { color: #ff6644; }
+        
         .page-purpose {
             width: 800px;
             text-align: center;
@@ -118,6 +142,7 @@
             font-size: 20px;
             color: #fff;
         }
+        
         /* === PUBLISHER NOTICE LINK === */
         .publisher-notice {
             display: inline-flex;
@@ -137,24 +162,17 @@
             user-select: none;
         }
         .publisher-notice:hover {
-            color: #fff;
+            color: #fff !important;
             border-color: #fff;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            text-shadow: -2px 0 #ff0000, 2px 0 #00ffff, 0 0 8px rgba(255, 0, 0, 0.8);
+            animation: textShiver 0.1s linear infinite;
         }
         .publisher-gif {
             height: 24px;
             width: auto;
         }
-        @keyframes smoothRandomBob {
-            0% { transform: translate(0px, 0px); }
-            15% { transform: translate(5px, -6px); }
-            30% { transform: translate(-4px, 3px); }
-            45% { transform: translate(6px, 5px); }
-            60% { transform: translate(-5px, -4px); }
-            75% { transform: translate(4px, -2px); }
-            90% { transform: translate(-2px, 4px); }
-            100% { transform: translate(0px, 0px); }
-        }
+        
         /* === WORKSPACE MAIN LAYOUT === */
         .workspace-container {
             display: flex;
@@ -186,12 +204,20 @@
             height: 750px;
             z-index: 1000;
         }
+        
         .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: contain;
             cursor: pointer;
+            filter: brightness(0.95) contrast(1.05);
         }
+        /* STATIC TEAR COUPLING CLASS */
+        .gallery-image.tear {
+            animation: glitchTear 0.15s steps(2) infinite;
+            mix-blend-mode: difference;
+        }
+
         .date-time {
             position: absolute;
             top: 10px;
@@ -212,6 +238,7 @@
             color: #fff;
             line-height: 1.6;
         }
+        
         /* === PINNED TRANSMISSION SIDEBAR === */
         .pinned-section {
             width: 400px;
@@ -230,6 +257,7 @@
             width: 100%;
             min-height: 450px;
         }
+        
         /* === CROSSOVER SPOTLIGHT STYLES === */
         .crossover-container {
             width: 800px;
@@ -378,18 +406,13 @@
             user-select: none;
         }
         .ball-sphere.shake-anim { animation: ballShake 0.4s ease-in-out; }
-        @keyframes ballShake {
-            0%, 100% { transform: translate(0, 0); }
-            20% { transform: translate(-4px, 4px) rotate(-3deg); }
-            40% { transform: translate(4px, -4px) rotate(3deg); }
-            60% { transform: translate(-4px, -4px) rotate(-1deg); }
-            80% { transform: translate(4px, 4px) rotate(1deg); }
-        }
+        
         #bugSquisherWidget { top: 72%; }
         .bug-display { font-size: 28px; margin: 5px 0; height: 40px; display: flex; align-items: center; justify-content: center; }
         .squish-btn { background: #1a0505; border: 1px solid #771111; color: #fff; padding: 4px; font-size: 13px; width: 100%; cursor: pointer; }
         .squish-btn:active { background: #551111; }
         .bug-counter { font-size: 11px; color: #886666; margin-top: 5px; }
+        
         /* === BOTTOM SKETCH & PROMO STYLES === */
         .bottom-promo-container {
             display: flex;
@@ -417,6 +440,40 @@
             line-height: 1.5;
             max-width: 650px;
         }
+        
+        /* === KEYFRAMES AND ANIMATIONS === */
+        @keyframes smoothRandomBob {
+            0% { transform: translate(0px, 0px); }
+            15% { transform: translate(5px, -6px); }
+            30% { transform: translate(-4px, 3px); }
+            45% { transform: translate(6px, 5px); }
+            60% { transform: translate(-5px, -4px); }
+            75% { transform: translate(4px, -2px); }
+            90% { transform: translate(-2px, 4px); }
+            100% { transform: translate(0px, 0px); }
+        }
+        @keyframes ballShake {
+            0%, 100% { transform: translate(0, 0); }
+            20% { transform: translate(-4px, 4px) rotate(-3deg); }
+            40% { transform: translate(4px, -4px) rotate(3deg); }
+            60% { transform: translate(-4px, -4px) rotate(-1deg); }
+            80% { transform: translate(4px, 4px) rotate(1deg); }
+        }
+        @keyframes pulseVignette {
+            0% { opacity: 0.90; }
+            100% { opacity: 0.98; }
+        }
+        @keyframes glitchTear {
+            0% { transform: translate(3px, -1px) skewX(6deg); filter: invert(1); }
+            50% { transform: translate(-3px, 1px) skewX(-6deg); }
+            100% { transform: translate(0, 0); }
+        }
+        @keyframes textShiver {
+            0% { transform: translate(0.6px, 0.6px); }
+            50% { transform: translate(-0.6px, -0.6px); }
+            100% { transform: translate(0px, 0px); }
+        }
+        
         /* === RESPONSIVE LAYOUT BREAKPOINTS === */
         @media screen and (max-width: 1340px) {
             .music-player-container { right: 10px; }
@@ -434,7 +491,7 @@
         }
         @media screen and (max-width: 1024px) {
             .fidget-box, .music-player-container { position: static; margin: 20px auto; width: 800px; transform: none; }
-            .music-player-container iframe { height: 450px; } /* Expand cleanly inside desktop flow */
+            .music-player-container iframe { height: 450px; }
             #gif1, #gif2, #gif3, #gif4, #gif5 { display: none; }
         }
         @media screen and (max-width: 768px) {
@@ -547,7 +604,7 @@
                 src: 'https://gavinoriley.github.io/assets/eyecu.gif',
                 date: '2026-6-22T8:36:07-07:00',
                 ampm: 'PM',
-                description: "giving him pupils so he can look at u",
+                description: "giving him pupils so he can look at u"
                 
             },
             {
@@ -688,7 +745,12 @@
         function updateImage() {
             const currentImage = images[currentImageIndex];
             
-            // Apply or remove the referrerpolicy bypass rule dynamically based on image flag
+            // Trigger static transition tear
+            galleryImage.classList.add('tear');
+            setTimeout(() => {
+                galleryImage.classList.remove('tear');
+            }, 150);
+            
             if (currentImage.hideReferrer) {
                 galleryImage.referrerPolicy = "no-referrer";
             } else {
@@ -766,10 +828,23 @@
         const bugCountDisplay = document.getElementById('bugCount');
         const bugTypes = ['💀', '💀', '💀', '💀', '💀'];
         let bugCount = 0;
+        
         squishBtn.addEventListener('click', () => {
             bugIcon.textContent = '💥';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
+            
+            // Anomalous structural layout changes based on milestones
+            if (bugCount === 6) {
+                document.title = "he is watching you";
+                document.body.style.transform = "rotate(0.5deg)";
+            } else if (bugCount === 13) {
+                document.title = "STOP CRUSHING THEM";
+                document.body.style.transform = "rotate(-0.5deg) scale(0.99)";
+            } else if (bugCount === 66) {
+                document.title = "💀💀💀💀💀💀";
+                document.body.style.filter = "invert(1) hue-rotate(180deg)";
+            }
             
             setTimeout(() => {
                 const nextBug = bugTypes[Math.floor(Math.random() * bugTypes.length)];
