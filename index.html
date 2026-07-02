@@ -544,10 +544,10 @@
             <div class="fidget-title" style="position: static; margin-bottom: 12px;">Community Works 🛠️</div>
             <img src="https://gavinoriley.github.io/assets/Hamachi_RenderAlt.png" alt="Hamachi 3D Model" class="crossover-render">
             <div class="crossover-title">The Deep Silence</div>
-            <div class="crossover-desc possessed">
-                Hamachi will be featured as a playable killer in the upcoming Roblox game, <i>The Deep Silence</i>, which is currently in development. Click here to view their work & support the creators!
-                <br><br>
-                <i>Note: I am not affiliated with the development of The Deep Silence, nor is The Deep Silence development team affiliated with the development of Hamachi the Psychotic Killer. All credit for The Deep Silence belongs to its development team.</i>
+            <div class="crossover-desc">
+                <div id="crossoverMain" class="possessed">Hamachi will be featured as a playable killer in the upcoming Roblox game, The Deep Silence, which is currently in development. Click here to view their work & support the creators!</div>
+                <br>
+                <div id="crossoverNote" class="possessed" style="font-style: italic;">Note: I am not affiliated with the development of The Deep Silence, nor is The Deep Silence development team affiliated with the development of Hamachi the Psychotic Killer. All credit for The Deep Silence belongs to its development team.</div>
             </div>
         </a>
     </div>
@@ -681,7 +681,8 @@
         window.addEventListener('load', () => {
             possessText(document.getElementById('pagePurpose'));
             possessText(document.getElementById('description'));
-            possessText(document.querySelector('.crossover-desc'));
+            possessText(document.getElementById('crossoverMain'));
+            possessText(document.getElementById('crossoverNote'));
             possessText(document.querySelector('.promo-text'));
         });
     
