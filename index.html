@@ -1206,6 +1206,14 @@
         #gif4 { right: 10px; bottom: 20px; }
         #gif5 { left: 50%; bottom: 10px; transform: translateX(-50%); width: 140px; }
 
+        /* Hide decorative gifs when Blood Red theme is not selected */
+        body.demonic-green .decorative-gif,
+        body.light-mode .decorative-gif,
+        body.dark-mode .decorative-gif,
+        body.hot-pink .decorative-gif {
+            display: none;
+        }
+
         @keyframes smoothRandomBob {
             0% { transform: translate(0px, 0px); }
             15% { transform: translate(4px, -5px); }
@@ -1264,7 +1272,7 @@
                 <img src="https://gavinoriley.github.io/assets/hamaprofilepicture.png" alt="Developer Profile Picture" class="dev-profile-pic">
             </div>
             <div class="myspace-stats-bar">
-                <div>Status: <span>ONLINE</span></div>
+                <div>Status: <span>GONE 4 NOW</span></div>
                 <div>Mood: <span>PSYCHOTIC </span></div>
                 <div>Views: <span>666</span></div>
             </div>
@@ -1306,7 +1314,7 @@
                     </div>
                     <div class="fidget-box" id="bugSquisherWidget">
                         <div class="fidget-title">Skull Crusher</div>
-                        <div class="bug-display" id="bugIcon"></div>
+                        <div class="bug-display" id="bugIcon">💀</div>
                         <button class="squish-btn" id="squishBtn">CRUSH SKULL</button>
                         <div class="bug-counter">broken skulls: <span id="bugCount">0</span></div>
                     </div>
@@ -1322,7 +1330,7 @@
                 <div class="module-body">
                     <div class="fidget-title" style="margin-bottom: 6px;">music that im listening to right now</div>
                     <div class="music-player-container">
-                        <iframe src="https://www.youtube.com/embed/r_F9gnHqI2s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/6qmUTclZhUo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </section>
@@ -1609,10 +1617,10 @@
         const bugCountDisplay = document.getElementById('bugCount');
         let bugCount = 0;
 
-        bugIcon.textContent = '';
+        bugIcon.textContent = '💀';
    
         squishBtn.addEventListener('click', () => {
-            bugIcon.textContent = '';
+            bugIcon.textContent = '💥';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
        
@@ -1628,7 +1636,7 @@
             }
        
             setTimeout(() => {
-                bugIcon.textContent = '';
+                bugIcon.textContent = '💀';
             }, 250);
         });
 
