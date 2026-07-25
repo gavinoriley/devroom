@@ -497,6 +497,7 @@
         body.dark-mode .navbar a:hover {
             background: linear-gradient(180deg, #434c5e 0%, #2e3440 100%);
             color: #88c0d0 !important;
+            text-shadow: none;
         }
         body.dark-mode .navbar a.buy-game-link {
             background: linear-gradient(180deg, #3b4252 0%, #2e3440 100%);
@@ -506,6 +507,7 @@
         body.dark-mode .navbar a.buy-game-link:hover {
             background: linear-gradient(180deg, #434c5e 0%, #3b4252 100%);
             color: #ffffff !important;
+            text-shadow: none;
         }
         body.dark-mode .page-purpose-box,
         body.dark-mode .fidget-box,
@@ -1257,8 +1259,8 @@
     <header class="myspace-header-card">
         <div class="channel-top-bar">
             <div class="channel-title-group">
-                <h1>HAMACHI // DEV ROOM</h1>
-                <div class="channel-subtext">Official Developer Vlog</div>
+                <h1>HAMACHI THE PSYCHOTIC KILLER // DEV ROOM</h1>
+                <div class="channel-subtext">Official Developer Blog</div>
                 <img src="https://gavinoriley.github.io/assets/hamaprofilepicture.png" alt="Developer Profile Picture" class="dev-profile-pic">
             </div>
             <div class="myspace-stats-bar">
@@ -1304,7 +1306,7 @@
                     </div>
                     <div class="fidget-box" id="bugSquisherWidget">
                         <div class="fidget-title">Skull Crusher</div>
-                        <div class="bug-display" id="bugIcon">💀</div>
+                        <div class="bug-display" id="bugIcon"></div>
                         <button class="squish-btn" id="squishBtn">CRUSH SKULL</button>
                         <div class="bug-counter">broken skulls: <span id="bugCount">0</span></div>
                     </div>
@@ -1607,10 +1609,10 @@
         const bugCountDisplay = document.getElementById('bugCount');
         let bugCount = 0;
 
-        bugIcon.textContent = '💀';
+        bugIcon.textContent = '';
    
         squishBtn.addEventListener('click', () => {
-            bugIcon.textContent = '💥';
+            bugIcon.textContent = '';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
        
@@ -1626,7 +1628,7 @@
             }
        
             setTimeout(() => {
-                bugIcon.textContent = '💀';
+                bugIcon.textContent = '';
             }, 250);
         });
 
