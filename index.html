@@ -102,6 +102,12 @@
             background: linear-gradient(180deg, #550000 0%, #220000 100%);
             border-bottom: 1px solid #ff0000;
         }
+        body.lights-out .publisher-notice {
+            background: #1a0000;
+            border-color: #ff0000;
+            color: #ff4444;
+            box-shadow: inset 0 0 8px rgba(255, 0, 0, 0.4);
+        }
 
         /* Demonic Green Theme Overrides */
         body.demonic-green {
@@ -351,9 +357,16 @@
             background: #cccccc;
         }
         body.light-mode .publisher-notice {
-            background: #fff0f0;
-            border-color: #cc3333;
-            color: #aa0000;
+            background: #ffffff;
+            border-color: #888888;
+            color: #222222;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+        }
+        body.light-mode .publisher-notice:hover {
+            background: #e8e8e8;
+            border-color: #333333;
+            color: #000000 !important;
+            text-shadow: none;
         }
         body.light-mode .youtube-player-frame,
         body.light-mode .image-container {
@@ -440,6 +453,13 @@
             background: #1a202c;
             border-color: #5e81ac;
             color: #88c0d0;
+            box-shadow: inset 0 0 8px rgba(94, 129, 172, 0.2);
+        }
+        body.dark-mode .publisher-notice:hover {
+            background: #242c3d;
+            border-color: #81a1c1;
+            color: #ffffff !important;
+            text-shadow: 0 0 8px #88c0d0;
         }
         body.dark-mode .youtube-player-frame,
         body.dark-mode .image-container {
@@ -548,6 +568,8 @@
         body.hot-pink .publisher-notice:hover {
             text-shadow: 0 0 8px #ff007f;
             background: #5e0040;
+            color: #ffffff !important;
+            border-color: #ffffff;
         }
         body.hot-pink .youtube-player-frame,
         body.hot-pink .image-container {
@@ -1088,7 +1110,7 @@
         }
     </style>
 </head>
-<body>
+<body class="hot-pink">
 
     <!-- MySpace / YouTube Hybrid Top Header Banner -->
     <header class="myspace-header-card">
@@ -1141,7 +1163,7 @@
                     </div>
                     <div class="fidget-box" id="bugSquisherWidget">
                         <div class="fidget-title">Skull Crusher</div>
-                        <div class="bug-display" id="bugIcon"></div>
+                        <div class="bug-display" id="bugIcon">💀</div>
                         <button class="squish-btn" id="squishBtn">CRUSH SKULL</button>
                         <div class="bug-counter">broken skulls: <span id="bugCount">0</span></div>
                     </div>
@@ -1442,9 +1464,12 @@
         const squishBtn = document.getElementById('squishBtn');
         const bugCountDisplay = document.getElementById('bugCount');
         let bugCount = 0;
+
+        // Display initial skull emoji
+        bugIcon.textContent = '💀';
    
         squishBtn.addEventListener('click', () => {
-            bugIcon.textContent = '';
+            bugIcon.textContent = '💥';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
        
@@ -1460,7 +1485,7 @@
             }
        
             setTimeout(() => {
-                bugIcon.textContent = '';
+                bugIcon.textContent = '💀';
             }, 250);
         });
 
