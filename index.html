@@ -36,7 +36,7 @@
 
         /* Custom Retro Scrollbar */
         ::-webkit-scrollbar {
-            width: 12px;
+            width: 14px;
         }
         ::-webkit-scrollbar-track {
             background: #110202;
@@ -67,7 +67,7 @@
             flex-direction: column;
             align-items: center;
             margin: 0;
-            padding: 15px;
+            padding: 20px;
             padding-bottom: 120px;
         }
 
@@ -134,6 +134,9 @@
         }
         body.demonic-green .channel-title-group .channel-subtext {
             color: #aaffaa;
+        }
+        body.demonic-green .dev-profile-pic {
+            border-color: #116611;
         }
         body.demonic-green .myspace-stats-bar {
             background: #021102;
@@ -270,39 +273,357 @@
             border-bottom: 1px solid #00ff00;
         }
 
+        /* Light Mode Theme Overrides */
+        body.light-mode {
+            background-color: #eaeaea;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+            color: #111111;
+        }
+        body.light-mode ::-webkit-scrollbar-track {
+            background: #dddddd;
+            border-left: 1px solid #bbbbbb;
+        }
+        body.light-mode ::-webkit-scrollbar-thumb {
+            background: #aaaaaa;
+            border: 2px outset #cccccc;
+        }
+        body.light-mode .myspace-header-card,
+        body.light-mode .retro-module {
+            background: #ffffff;
+            border-color: #888888;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.15);
+        }
+        body.light-mode .module-header {
+            background: linear-gradient(180deg, #dddddd 0%, #bbbbbb 100%);
+            color: #111111;
+            border-bottom: 2px solid #999999;
+        }
+        body.light-mode .channel-top-bar {
+            border-bottom-color: #cccccc;
+        }
+        body.light-mode .channel-title-group h1 {
+            color: #222222;
+            text-shadow: 1px 1px 0px #aaaaaa;
+        }
+        body.light-mode .channel-title-group .channel-subtext {
+            color: #444444;
+        }
+        body.light-mode .dev-profile-pic {
+            border-color: #888888;
+        }
+        body.light-mode .myspace-stats-bar {
+            background: #eee8e8;
+            border-color: #cccccc;
+            color: #333333;
+        }
+        body.light-mode .myspace-stats-bar span {
+            color: #000000;
+        }
+        body.light-mode .navbar a {
+            background: linear-gradient(180deg, #eeeeee 0%, #cccccc 100%);
+            border-color: #aaaaaa;
+            color: #111111;
+        }
+        body.light-mode .navbar a:hover {
+            background: linear-gradient(180deg, #ffffff 0%, #dddddd 100%);
+            color: #cc0000 !important;
+            text-shadow: none;
+        }
+        body.light-mode .page-purpose-box,
+        body.light-mode .fidget-box,
+        body.light-mode .description,
+        body.light-mode .promo-text,
+        body.light-mode .crossover-desc {
+            background: #f7f7f9;
+            border-color: #cccccc;
+            color: #222222;
+        }
+        body.light-mode .switch-btn,
+        body.light-mode .squish-btn {
+            background: #e0e0e0;
+            border: 2px outset #aaaaaa;
+            color: #111111;
+        }
+        body.light-mode .switch-btn:active,
+        body.light-mode .squish-btn:active {
+            background: #cccccc;
+        }
+        body.light-mode .publisher-notice {
+            background: #fff0f0;
+            border-color: #cc3333;
+            color: #aa0000;
+        }
+        body.light-mode .youtube-player-frame,
+        body.light-mode .image-container {
+            background: #ffffff;
+            border-color: #bbbbbb;
+        }
+        body.light-mode .yt-control-bar {
+            background: linear-gradient(180deg, #eeeeee 0%, #dddddd 100%);
+            border-color: #cccccc;
+        }
+        body.light-mode .yt-btn {
+            background: #ffffff;
+            border-color: #aaaaaa;
+            color: #111111;
+        }
+
+        /* Dark Mode Theme Overrides */
+        body.dark-mode {
+            background-color: #0f1115;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            color: #d1d5db;
+        }
+        body.dark-mode ::-webkit-scrollbar-track {
+            background: #0b0c0e;
+            border-left: 1px solid #22252e;
+        }
+        body.dark-mode ::-webkit-scrollbar-thumb {
+            background: #2a2e3d;
+            border: 2px outset #3b4254;
+        }
+        body.dark-mode .myspace-header-card,
+        body.dark-mode .retro-module {
+            background: #181b22;
+            border-color: #2e3440;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+        }
+        body.dark-mode .module-header {
+            background: linear-gradient(180deg, #282e3d 0%, #161922 100%);
+            border-bottom: 2px solid #3b4252;
+            color: #eceff4;
+        }
+        body.dark-mode .channel-title-group h1 {
+            text-shadow: 2px 2px 0px #4c566a;
+            color: #ffffff;
+        }
+        body.dark-mode .channel-title-group .channel-subtext {
+            color: #8892b0;
+        }
+        body.dark-mode .dev-profile-pic {
+            border-color: #3b4252;
+        }
+        body.dark-mode .myspace-stats-bar {
+            background: #12141a;
+            border-color: #2e3440;
+            color: #81a1c1;
+        }
+        body.dark-mode .navbar a {
+            background: linear-gradient(180deg, #2e3440 0%, #1e222a 100%);
+            border-color: #434c5e;
+            color: #eceff4;
+        }
+        body.dark-mode .navbar a:hover {
+            background: linear-gradient(180deg, #434c5e 0%, #2e3440 100%);
+            color: #88c0d0 !important;
+        }
+        body.dark-mode .page-purpose-box,
+        body.dark-mode .fidget-box,
+        body.dark-mode .description,
+        body.dark-mode .promo-text,
+        body.dark-mode .crossover-desc {
+            background: #12141a;
+            border-color: #2e3440;
+            color: #d8dee9;
+        }
+        body.dark-mode .switch-btn,
+        body.dark-mode .squish-btn {
+            background: #242933;
+            border: 2px outset #3b4252;
+            color: #eceff4;
+        }
+        body.dark-mode .publisher-notice {
+            background: #1a202c;
+            border-color: #5e81ac;
+            color: #88c0d0;
+        }
+        body.dark-mode .youtube-player-frame,
+        body.dark-mode .image-container {
+            background: #0b0c0e;
+            border-color: #2e3440;
+        }
+
+        /* Hot Pink Theme Overrides (Scene / Kawaii Inspired) */
+        body.hot-pink {
+            background-color: #1a0011;
+            background-image: 
+                linear-gradient(rgba(255, 20, 147, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 20, 147, 0.2) 1px, transparent 1px);
+            color: #ffb3e6;
+        }
+        body.hot-pink ::-webkit-scrollbar-track {
+            background: #10000a;
+            border-left: 1px solid #660044;
+        }
+        body.hot-pink ::-webkit-scrollbar-thumb {
+            background: #ff007f;
+            border: 2px outset #ff66cc;
+        }
+        body.hot-pink .myspace-header-card,
+        body.hot-pink .retro-module {
+            background: #2d001f;
+            border-color: #ff007f;
+            box-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
+        }
+        body.hot-pink .module-header {
+            background: linear-gradient(180deg, #880055 0%, #330022 100%);
+            border-bottom: 2px solid #ff66cc;
+            color: #ffffff;
+        }
+        body.hot-pink .channel-top-bar {
+            border-bottom-color: #ff007f;
+        }
+        body.hot-pink .channel-title-group h1 {
+            text-shadow: 2px 2px 0px #ff007f;
+            color: #ffffff;
+        }
+        body.hot-pink .channel-title-group .channel-subtext {
+            color: #ff99dd;
+        }
+        body.hot-pink .dev-profile-pic {
+            border-color: #ff007f;
+        }
+        body.hot-pink .myspace-stats-bar {
+            background: #1a0011;
+            border-color: #aa0066;
+            color: #ff80df;
+        }
+        body.hot-pink .navbar a {
+            background: linear-gradient(180deg, #990055 0%, #440026 100%);
+            border-color: #ff33aa;
+            color: #ffffff;
+        }
+        body.hot-pink .navbar a:hover {
+            background: linear-gradient(180deg, #cc0077 0%, #660039 100%);
+            color: #ffffaa !important;
+            text-shadow: 0 0 6px #ff00aa;
+        }
+        body.hot-pink .page-purpose-box,
+        body.hot-pink .fidget-box,
+        body.hot-pink .description,
+        body.hot-pink .promo-text,
+        body.hot-pink .crossover-desc {
+            background: #1a0011;
+            border-color: #aa0066;
+            color: #ffcce6;
+        }
+        body.hot-pink .switch-btn,
+        body.hot-pink .squish-btn {
+            background: #4a0033;
+            border: 2px outset #ff007f;
+            color: #ffffff;
+        }
+        body.hot-pink .switch-btn:active,
+        body.hot-pink .squish-btn:active {
+            background: #ff007f;
+        }
+        body.hot-pink .ball-sphere {
+            background: #10000a;
+            border-color: #ff007f;
+            color: #ff66cc;
+            box-shadow: inset 0 0 10px #ff007f;
+        }
+        body.hot-pink .bug-counter {
+            color: #ff80bf;
+        }
+        body.hot-pink .badge-btn {
+            border-color: #ff007f;
+            color: #ff99dd;
+        }
+        body.hot-pink .badge-btn:hover {
+            border-color: #ffffff;
+            color: #ffffff;
+            background: #aa0066;
+        }
+        body.hot-pink .publisher-notice {
+            background: #3d002a;
+            border-color: #ff66cc;
+            color: #ffb3e6;
+            box-shadow: inset 0 0 8px rgba(255, 102, 204, 0.3);
+        }
+        body.hot-pink .publisher-notice:hover {
+            text-shadow: 0 0 8px #ff007f;
+            background: #5e0040;
+        }
+        body.hot-pink .youtube-player-frame,
+        body.hot-pink .image-container {
+            background: #10000a;
+            border-color: #aa0066;
+        }
+        body.hot-pink .date-time {
+            background-color: rgba(20, 0, 15, 0.85);
+            color: #ffb3e6;
+            border-color: #ff007f;
+        }
+        body.hot-pink .arrow {
+            background-color: rgba(60, 0, 40, 0.8);
+            border-color: #ff007f;
+        }
+        body.hot-pink .arrow:hover {
+            background-color: #ff007f;
+        }
+        body.hot-pink .yt-control-bar {
+            background: linear-gradient(180deg, #330022 0%, #1a0011 100%);
+            border-color: #aa0066;
+        }
+        body.hot-pink .yt-btn {
+            background: #550033;
+            border-color: #ff007f;
+            color: #ffcce6;
+        }
+        body.hot-pink .yt-btn:hover {
+            background: #ff007f;
+            color: #ffffff;
+        }
+
         /* Top Page Header - MySpace & YouTube Style Banner */
         .myspace-header-card {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1600px;
             background: #240606;
             border: 2px outset #661111;
             box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
-            margin-bottom: 15px;
-            padding: 15px;
+            margin-bottom: 20px;
+            padding: 20px;
         }
 
         .channel-top-bar {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             border-bottom: 2px dashed #661111;
-            padding-bottom: 10px;
-            margin-bottom: 12px;
+            padding-bottom: 14px;
+            margin-bottom: 14px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
 
         .channel-title-group h1 {
-            font-size: 28px;
+            font-size: 32px;
             color: #ffffff;
             text-shadow: 2px 2px 0px #880000;
             letter-spacing: 1px;
         }
 
         .channel-title-group .channel-subtext {
-            font-size: 14px;
+            font-size: 16px;
             color: #ffaaaa;
             margin-top: 2px;
+        }
+
+        /* Developer Profile Picture Styling */
+        .dev-profile-pic {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border: 2px outset #882222;
+            margin-top: 10px;
+            display: block;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
         }
 
         .myspace-stats-bar {
@@ -310,8 +631,8 @@
             gap: 15px;
             background: #110202;
             border: 1px solid #441111;
-            padding: 6px 12px;
-            font-size: 13px;
+            padding: 8px 14px;
+            font-size: 14px;
             color: #ff9999;
         }
 
@@ -323,17 +644,17 @@
         /* 2000s Classic Channel / Profile Navigation Buttons */
         .navbar {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-top: 8px;
+            margin-top: 10px;
         }
         .navbar a {
             background: linear-gradient(180deg, #4a0c0c 0%, #220303 100%);
             color: #ffffff;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: bold;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border: 2px outset #882222;
             display: inline-block;
             box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
@@ -358,27 +679,27 @@
         .page-purpose-box {
             background: #150303;
             border: 1px inset #551111;
-            padding: 10px 14px;
-            margin-top: 10px;
-            font-size: 15px;
+            padding: 12px 16px;
+            margin-top: 12px;
+            font-size: 16px;
             color: #ffcccc;
             line-height: 1.4;
         }
 
-        /* Two-Column Layout Grid (Classic MySpace / Old YouTube layout) */
+        /* Two-Column Layout Grid (Expanded for wide screens) */
         .page-grid {
             display: flex;
             width: 100%;
-            max-width: 1200px;
-            gap: 15px;
+            max-width: 1600px;
+            gap: 20px;
             align-items: flex-start;
         }
 
         .left-sidebar {
-            width: 320px;
+            width: 360px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
             flex-shrink: 0;
         }
 
@@ -386,11 +707,11 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
             min-width: 0;
         }
 
-        /* Reusable Module Box (Classic MySpace Box / YouTube Box) */
+        /* Reusable Module Box */
         .retro-module {
             background: #200505;
             border: 2px outset #551111;
@@ -401,9 +722,9 @@
         .module-header {
             background: linear-gradient(180deg, #440a0a 0%, #1a0303 100%);
             color: #ffffff;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: bold;
-            padding: 6px 10px;
+            padding: 8px 12px;
             border-bottom: 2px solid #661111;
             display: flex;
             justify-content: space-between;
@@ -413,7 +734,7 @@
         }
 
         .module-body {
-            padding: 12px;
+            padding: 14px;
         }
 
         /* Publisher Bulletin Notice */
@@ -424,9 +745,9 @@
             gap: 10px;
             color: #ff9988;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 16px;
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             border: 2px dashed #ff5533;
             background: #2a0808;
             box-shadow: inset 0 0 8px rgba(255, 68, 0, 0.2);
@@ -440,7 +761,7 @@
             text-shadow: 0 0 8px #ff0000;
         }
         .publisher-gif {
-            height: 22px;
+            height: 24px;
             width: auto;
         }
 
@@ -448,19 +769,19 @@
         .youtube-player-frame {
             background: #0a0101;
             border: 2px solid #441111;
-            padding: 6px;
+            padding: 8px;
         }
 
         .image-container {
             position: relative;
             width: 100%;
-            height: 480px;
+            height: 560px;
             background-color: #000;
             border: 1px solid #330000;
             overflow: hidden;
         }
         .image-container.enlarged {
-            height: 650px;
+            height: 750px;
         }
 
         .gallery-image {
@@ -474,13 +795,13 @@
 
         .date-time {
             position: absolute;
-            top: 8px;
-            left: 8px;
+            top: 10px;
+            left: 10px;
             background-color: rgba(10, 0, 0, 0.85);
             color: #ffaaaa;
-            padding: 4px 8px;
+            padding: 5px 10px;
             border: 1px solid #551111;
-            font-size: 12px;
+            font-size: 13px;
             z-index: 10;
         }
 
@@ -491,8 +812,8 @@
             background-color: rgba(40, 0, 0, 0.8);
             border: 1px solid #aa2222;
             color: white;
-            font-size: 20px;
-            padding: 8px 14px;
+            font-size: 22px;
+            padding: 10px 16px;
             cursor: pointer;
             display: none;
             user-select: none;
@@ -501,31 +822,31 @@
         .arrow:hover {
             background-color: #aa1111;
         }
-        .arrow.left { left: 8px; }
-        .arrow.right { right: 8px; }
+        .arrow.left { left: 10px; }
+        .arrow.right { right: 10px; }
         .image-container:hover .arrow { display: block; }
 
         /* Fake YouTube 2007 Controls Bar & Rating */
         .yt-control-bar {
             background: linear-gradient(180deg, #220505 0%, #110202 100%);
             border: 1px solid #330d0d;
-            margin-top: 6px;
-            padding: 6px 10px;
+            margin-top: 8px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 13px;
+            font-size: 14px;
         }
         .yt-buttons {
             display: flex;
-            gap: 6px;
+            gap: 8px;
         }
         .yt-btn {
             background: #330a0a;
             border: 1px outset #661111;
             color: #ffcccc;
-            padding: 3px 8px;
-            font-size: 12px;
+            padding: 4px 10px;
+            font-size: 13px;
             cursor: pointer;
         }
         .yt-btn:hover {
@@ -535,18 +856,18 @@
         .star-rating {
             color: #ffcc00;
             letter-spacing: 2px;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .description {
-            margin-top: 10px;
-            padding: 10px;
+            margin-top: 12px;
+            padding: 12px;
             background: #140303;
             border: 1px inset #441111;
-            font-size: 15px;
+            font-size: 16px;
             color: #ffffff;
             line-height: 1.5;
-            min-height: 50px;
+            min-height: 55px;
         }
 
         /* Pinned Section / Tweet Box */
@@ -566,24 +887,24 @@
         }
         .crossover-render {
             width: 100%;
-            max-height: 420px;
+            max-height: 480px;
             object-fit: contain;
             border: 1px solid #551111;
             margin-bottom: 12px;
             background: #120202;
         }
         .crossover-title {
-            font-size: 20px;
+            font-size: 22px;
             color: #ff8866;
             margin-bottom: 8px;
             font-weight: bold;
         }
         .crossover-desc {
-            font-size: 14px;
+            font-size: 15px;
             color: #ffcccc;
             line-height: 1.4;
             background: #140303;
-            padding: 10px;
+            padding: 12px;
             border: 1px inset #330a0a;
         }
 
@@ -591,17 +912,17 @@
         .fidget-box {
             background: #140303;
             border: 1px solid #441111;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
             text-align: center;
         }
         .fidget-box:last-child {
             margin-bottom: 0;
         }
         .fidget-title {
-            font-size: 13px;
+            font-size: 14px;
             color: #ff8888;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: bold;
@@ -611,8 +932,8 @@
             background: #2a0505;
             border: 2px outset #771111;
             color: #fff;
-            padding: 6px 12px;
-            font-size: 13px;
+            padding: 8px 14px;
+            font-size: 14px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
@@ -623,17 +944,17 @@
         }
 
         .ball-sphere {
-            width: 65px;
-            height: 65px;
+            width: 70px;
+            height: 70px;
             background: #0a0101;
             border: 3px double #882222;
             border-radius: 50%;
-            margin: 6px auto;
+            margin: 8px auto;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 12px;
             color: #ff4444;
             font-weight: bold;
             padding: 4px;
@@ -642,15 +963,15 @@
         }
         .ball-sphere.shake-anim { animation: ballShake 0.4s ease-in-out; }
 
-        .bug-display { font-size: 26px; margin: 4px 0; height: 35px; display: flex; align-items: center; justify-content: center; }
-        .squish-btn { background: #2a0505; border: 2px outset #771111; color: #fff; padding: 4px; font-size: 12px; width: 100%; cursor: pointer; font-weight: bold; }
+        .bug-display { font-size: 28px; margin: 4px 0; height: 35px; display: flex; align-items: center; justify-content: center; }
+        .squish-btn { background: #2a0505; border: 2px outset #771111; color: #fff; padding: 6px; font-size: 13px; width: 100%; cursor: pointer; font-weight: bold; }
         .squish-btn:active { border-style: inset; background: #551111; }
-        .bug-counter { font-size: 12px; color: #aa7777; margin-top: 5px; }
+        .bug-counter { font-size: 13px; color: #aa7777; margin-top: 6px; }
 
         /* Music Player Module */
         .music-player-container iframe {
             width: 100%;
-            height: 180px;
+            height: 190px;
             border: 1px solid #441111;
             display: block;
         }
@@ -659,15 +980,15 @@
         .badges-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 8px;
             justify-content: center;
         }
         .badge-btn {
             background: #000;
             border: 1px solid #661111;
             color: #ff9999;
-            font-size: 10px;
-            padding: 4px 8px;
+            font-size: 11px;
+            padding: 5px 10px;
             text-decoration: none;
             display: inline-block;
             font-family: monospace;
@@ -689,7 +1010,7 @@
         .bottom-promo-container a {
             display: inline-block;
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
         }
         .bottom-sketch {
             width: 100%;
@@ -698,10 +1019,10 @@
             object-fit: contain;
         }
         .promo-text {
-            font-size: 15px;
+            font-size: 16px;
             color: #ffcccc;
             background: #140303;
-            padding: 8px 14px;
+            padding: 10px 16px;
             border: 1px solid #441111;
         }
 
@@ -758,16 +1079,16 @@
                 align-items: flex-start;
             }
             .image-container, .image-container.enlarged {
-                height: 280px;
+                height: 320px;
             }
             .navbar a {
-                font-size: 13px;
-                padding: 5px 8px;
+                font-size: 14px;
+                padding: 6px 10px;
             }
         }
     </style>
 </head>
-<body class="lights-out">
+<body>
 
     <!-- MySpace / YouTube Hybrid Top Header Banner -->
     <header class="myspace-header-card">
@@ -775,6 +1096,7 @@
             <div class="channel-title-group">
                 <h1>HAMACHI // DEV ROOM</h1>
                 <div class="channel-subtext">Official Developer Vlog</div>
+                <img src="https://gavinoriley.github.io/assets/hamaprofilepicture.png" alt="Developer Profile Picture" class="dev-profile-pic">
             </div>
             <div class="myspace-stats-bar">
                 <div>Status: <span>ONLINE</span></div>
@@ -811,7 +1133,7 @@
                 <div class="module-body">
                     <div class="fidget-box" id="lightSwitchWidget">
                         <div class="fidget-title">Room Lighting</div>
-                        <button class="switch-btn" id="lightBtn">LIGHTS ON</button>
+                        <button class="switch-btn" id="lightBtn">LIGHTS OUT</button>
                     </div>
                     <div class="fidget-box" id="eightBallWidget">
                         <div class="fidget-title">Demonic Orb</div>
@@ -819,7 +1141,7 @@
                     </div>
                     <div class="fidget-box" id="bugSquisherWidget">
                         <div class="fidget-title">Skull Crusher</div>
-                        <div class="bug-display" id="bugIcon">💀</div>
+                        <div class="bug-display" id="bugIcon"></div>
                         <button class="squish-btn" id="squishBtn">CRUSH SKULL</button>
                         <div class="bug-counter">broken skulls: <span id="bugCount">0</span></div>
                     </div>
@@ -868,6 +1190,9 @@
                         <div style="display: flex; gap: 8px; flex-direction: column;">
                             <button class="switch-btn" id="themeDefaultBtn">Blood Red</button>
                             <button class="switch-btn" id="themeDemonicGreenBtn" style="border-color: #11aa11; color: #44ff44;">Demonic Green</button>
+                            <button class="switch-btn" id="themeLightModeBtn" style="border-color: #aaaaaa; color: #ffffff;">Light Mode</button>
+                            <button class="switch-btn" id="themeDarkModeBtn" style="border-color: #555588; color: #aaaaff;">Dark Mode</button>
+                            <button class="switch-btn" id="themeHotPinkBtn" style="border-color: #ff007f; color: #ff66cc;">Hot Pink</button>
                         </div>
                     </div>
                 </div>
@@ -931,7 +1256,7 @@
             <!-- Crossover / Community Works Box -->
             <section class="retro-module crossover-container">
                 <div class="module-header">
-                    <span>COMMUNITY WORKS 🛠️</span>
+                    <span>COMMUNITY WORKS </span>
                     <span></span>
                 </div>
                 <div class="module-body">
@@ -1103,7 +1428,7 @@
         });
    
         const eightBall = document.getElementById('eightBall');
-        const fortunes = ["∅", "†", "⛧", "𓃵", "⁶⁶⁶", "☠︎", "𓉸", "×̷"];
+        const fortunes = ["", "†", "", "", "", "", "", "×"];
         eightBall.addEventListener('click', () => {
             eightBall.classList.add('shake-anim');
             eightBall.textContent = "...";
@@ -1119,7 +1444,7 @@
         let bugCount = 0;
    
         squishBtn.addEventListener('click', () => {
-            bugIcon.textContent = '💥';
+            bugIcon.textContent = '';
             bugCount++;
             bugCountDisplay.textContent = bugCount;
        
@@ -1135,20 +1460,43 @@
             }
        
             setTimeout(() => {
-                bugIcon.textContent = '💀';
+                bugIcon.textContent = '';
             }, 250);
         });
 
         // === THEME SWITCHER HANDLERS ===
         const themeDefaultBtn = document.getElementById('themeDefaultBtn');
         const themeDemonicGreenBtn = document.getElementById('themeDemonicGreenBtn');
+        const themeLightModeBtn = document.getElementById('themeLightModeBtn');
+        const themeDarkModeBtn = document.getElementById('themeDarkModeBtn');
+        const themeHotPinkBtn = document.getElementById('themeHotPinkBtn');
+
+        function clearThemes() {
+            document.body.classList.remove('demonic-green', 'light-mode', 'dark-mode', 'hot-pink');
+        }
 
         themeDefaultBtn.addEventListener('click', () => {
-            document.body.classList.remove('demonic-green');
+            clearThemes();
         });
 
         themeDemonicGreenBtn.addEventListener('click', () => {
+            clearThemes();
             document.body.classList.add('demonic-green');
+        });
+
+        themeLightModeBtn.addEventListener('click', () => {
+            clearThemes();
+            document.body.classList.add('light-mode');
+        });
+
+        themeDarkModeBtn.addEventListener('click', () => {
+            clearThemes();
+            document.body.classList.add('dark-mode');
+        });
+
+        themeHotPinkBtn.addEventListener('click', () => {
+            clearThemes();
+            document.body.classList.add('hot-pink');
         });
     </script>
 </body>
