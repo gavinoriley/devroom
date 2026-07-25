@@ -334,8 +334,17 @@
         }
         body.light-mode .navbar a:hover {
             background: linear-gradient(180deg, #ffffff 0%, #dddddd 100%);
-            color: #cc0000 !important;
+            color: #000000 !important;
             text-shadow: none;
+        }
+        body.light-mode .navbar a.buy-game-link {
+            background: linear-gradient(180deg, #e0e0e0 0%, #cccccc 100%);
+            border-color: #888888;
+            color: #111111;
+        }
+        body.light-mode .navbar a.buy-game-link:hover {
+            background: linear-gradient(180deg, #ffffff 0%, #dddddd 100%);
+            color: #000000 !important;
         }
         body.light-mode .page-purpose-box,
         body.light-mode .fidget-box,
@@ -346,6 +355,9 @@
             border-color: #cccccc;
             color: #222222;
         }
+        body.light-mode .fidget-title {
+            color: #333333;
+        }
         body.light-mode .switch-btn,
         body.light-mode .squish-btn {
             background: #e0e0e0;
@@ -355,6 +367,25 @@
         body.light-mode .switch-btn:active,
         body.light-mode .squish-btn:active {
             background: #cccccc;
+        }
+        body.light-mode .ball-sphere {
+            background: #e8e8e8;
+            border-color: #888888;
+            color: #222222;
+            box-shadow: inset 0 0 10px #cccccc;
+        }
+        body.light-mode .bug-counter {
+            color: #555555;
+        }
+        body.light-mode .badge-btn {
+            background: #f0f0f0;
+            border-color: #aaaaaa;
+            color: #222222;
+        }
+        body.light-mode .badge-btn:hover {
+            background: #dddddd;
+            border-color: #666666;
+            color: #000000;
         }
         body.light-mode .publisher-notice {
             background: #ffffff;
@@ -373,6 +404,19 @@
             background: #ffffff;
             border-color: #bbbbbb;
         }
+        body.light-mode .date-time {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #222222;
+            border-color: #aaaaaa;
+        }
+        body.light-mode .arrow {
+            background-color: rgba(220, 220, 220, 0.9);
+            border-color: #888888;
+            color: #111111;
+        }
+        body.light-mode .arrow:hover {
+            background-color: #cccccc;
+        }
         body.light-mode .yt-control-bar {
             background: linear-gradient(180deg, #eeeeee 0%, #dddddd 100%);
             border-color: #cccccc;
@@ -381,6 +425,23 @@
             background: #ffffff;
             border-color: #aaaaaa;
             color: #111111;
+        }
+        body.light-mode .yt-btn:hover {
+            background: #e0e0e0;
+            color: #000000;
+        }
+        body.light-mode .music-player-container iframe {
+            border-color: #bbbbbb;
+        }
+        body.light-mode .crossover-render {
+            border-color: #bbbbbb;
+            background: #f0f0f0;
+        }
+        body.light-mode .crossover-title {
+            color: #2255aa;
+        }
+        body.light-mode .bottom-sketch {
+            border-color: #aaaaaa;
         }
 
         /* Dark Mode Theme Overrides */
@@ -410,6 +471,9 @@
             border-bottom: 2px solid #3b4252;
             color: #eceff4;
         }
+        body.dark-mode .channel-top-bar {
+            border-bottom-color: #2e3440;
+        }
         body.dark-mode .channel-title-group h1 {
             text-shadow: 2px 2px 0px #4c566a;
             color: #ffffff;
@@ -434,6 +498,15 @@
             background: linear-gradient(180deg, #434c5e 0%, #2e3440 100%);
             color: #88c0d0 !important;
         }
+        body.dark-mode .navbar a.buy-game-link {
+            background: linear-gradient(180deg, #3b4252 0%, #2e3440 100%);
+            border-color: #5e81ac;
+            color: #eceff4;
+        }
+        body.dark-mode .navbar a.buy-game-link:hover {
+            background: linear-gradient(180deg, #434c5e 0%, #3b4252 100%);
+            color: #ffffff !important;
+        }
         body.dark-mode .page-purpose-box,
         body.dark-mode .fidget-box,
         body.dark-mode .description,
@@ -443,11 +516,37 @@
             border-color: #2e3440;
             color: #d8dee9;
         }
+        body.dark-mode .fidget-title {
+            color: #81a1c1;
+        }
         body.dark-mode .switch-btn,
         body.dark-mode .squish-btn {
             background: #242933;
             border: 2px outset #3b4252;
             color: #eceff4;
+        }
+        body.dark-mode .switch-btn:active,
+        body.dark-mode .squish-btn:active {
+            background: #3b4252;
+        }
+        body.dark-mode .ball-sphere {
+            background: #12141a;
+            border-color: #3b4252;
+            color: #88c0d0;
+            box-shadow: inset 0 0 10px #2e3440;
+        }
+        body.dark-mode .bug-counter {
+            color: #81a1c1;
+        }
+        body.dark-mode .badge-btn {
+            background: #12141a;
+            border-color: #3b4252;
+            color: #81a1c1;
+        }
+        body.dark-mode .badge-btn:hover {
+            background: #2e3440;
+            border-color: #5e81ac;
+            color: #ffffff;
         }
         body.dark-mode .publisher-notice {
             background: #1a202c;
@@ -464,6 +563,45 @@
         body.dark-mode .youtube-player-frame,
         body.dark-mode .image-container {
             background: #0b0c0e;
+            border-color: #2e3440;
+        }
+        body.dark-mode .date-time {
+            background-color: rgba(18, 20, 26, 0.9);
+            color: #88c0d0;
+            border-color: #3b4252;
+        }
+        body.dark-mode .arrow {
+            background-color: rgba(36, 41, 51, 0.8);
+            border-color: #434c5e;
+            color: #eceff4;
+        }
+        body.dark-mode .arrow:hover {
+            background-color: #434c5e;
+        }
+        body.dark-mode .yt-control-bar {
+            background: linear-gradient(180deg, #1e222a 0%, #12141a 100%);
+            border-color: #2e3440;
+        }
+        body.dark-mode .yt-btn {
+            background: #242933;
+            border-color: #3b4252;
+            color: #eceff4;
+        }
+        body.dark-mode .yt-btn:hover {
+            background: #3b4252;
+            color: #ffffff;
+        }
+        body.dark-mode .music-player-container iframe {
+            border-color: #2e3440;
+        }
+        body.dark-mode .crossover-render {
+            border-color: #2e3440;
+            background: #12141a;
+        }
+        body.dark-mode .crossover-title {
+            color: #88c0d0;
+        }
+        body.dark-mode .bottom-sketch {
             border-color: #2e3440;
         }
 
@@ -530,6 +668,9 @@
             background: #1a0011;
             border-color: #aa0066;
             color: #ffcce6;
+        }
+        body.hot-pink .fidget-title {
+            color: #ff8888;
         }
         body.hot-pink .switch-btn,
         body.hot-pink .squish-btn {
@@ -1110,7 +1251,7 @@
         }
     </style>
 </head>
-<body class="hot-pink">
+<body>
 
     <!-- MySpace / YouTube Hybrid Top Header Banner -->
     <header class="myspace-header-card">
@@ -1179,7 +1320,7 @@
                 <div class="module-body">
                     <div class="fidget-title" style="margin-bottom: 6px;">music that im listening to right now</div>
                     <div class="music-player-container">
-                        <iframe src="https://www.youtube.com/embed/Dy57dGbwSWk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/r_F9gnHqI2s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </section>
@@ -1252,7 +1393,7 @@
                             <div class="yt-buttons">
                                 <button class="yt-btn" onclick="document.getElementById('galleryImage').click()">Fullscreen</button>
                             </div>
-                            <div class="star-rating"> <span style="color:#aaa; font-size:11px;">(4.9/5)</span></div>
+                            <div class="star-rating"></div>
                         </div>
                     </div>
 
@@ -1460,12 +1601,12 @@
             }, 400);
         });
    
+        // === SKULL CRUSHER WIDGET LOGIC ===
         const bugIcon = document.getElementById('bugIcon');
         const squishBtn = document.getElementById('squishBtn');
         const bugCountDisplay = document.getElementById('bugCount');
         let bugCount = 0;
 
-        // Display initial skull emoji
         bugIcon.textContent = '💀';
    
         squishBtn.addEventListener('click', () => {
@@ -1489,7 +1630,7 @@
             }, 250);
         });
 
-        // === THEME SWITCHER HANDLERS ===
+        // === THEME SWITCHER & SYSTEM PREFERENCE DETECTION ===
         const themeDefaultBtn = document.getElementById('themeDefaultBtn');
         const themeDemonicGreenBtn = document.getElementById('themeDemonicGreenBtn');
         const themeLightModeBtn = document.getElementById('themeLightModeBtn');
@@ -1500,6 +1641,29 @@
             document.body.classList.remove('demonic-green', 'light-mode', 'dark-mode', 'hot-pink');
         }
 
+        // Automatic Theme Detection based on OS/Browser Color Scheme
+        function detectAndApplySystemTheme() {
+            clearThemes();
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                document.body.classList.add('light-mode');
+            } else {
+                document.body.classList.add('hot-pink');
+            }
+        }
+
+        // Initial check on page load
+        detectAndApplySystemTheme();
+
+        // Listen for live system theme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                detectAndApplySystemTheme();
+            });
+        }
+
+        // Manual Theme Switcher Button Event Handlers
         themeDefaultBtn.addEventListener('click', () => {
             clearThemes();
         });
