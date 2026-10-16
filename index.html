@@ -23,7 +23,6 @@
     <link rel="icon" type="image/x-icon" href="/assets/hamafavi.ico">
     <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preconnect" href="https://store.steampowered.com">
-    <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
     <style>
         @font-face {
             font-family: 'FSEX300';
@@ -57,6 +56,7 @@
         }
 
         body {
+            zoom: 0.9;
             background: #180303;
             background-image: 
                 linear-gradient(rgba(0, 0, 0, 0.4) 1px, transparent 1px),
@@ -69,44 +69,6 @@
             margin: 0;
             padding: 20px;
             padding-bottom: 120px;
-        }
-
-        body::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.85) 150%);
-            opacity: 0.6;
-            z-index: 9999;
-            pointer-events: none;
-            transition: opacity 0.5s ease, background 0.5s ease;
-        }
-
-        body.lights-out {
-            background: #070101;
-            color: #ff4444;
-        }
-        body.lights-out::before {
-            background: radial-gradient(circle, transparent 20%, rgba(10, 0, 0, 0.95) 130%);
-            opacity: 0.95;
-            animation: pulseVignette 6s ease-in-out infinite alternate;
-        }
-        body.lights-out .retro-module,
-        body.lights-out .myspace-header-card {
-            background: rgba(12, 2, 2, 0.95);
-            border-color: #aa1111;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.25);
-        }
-        body.lights-out .module-header {
-            background: linear-gradient(180deg, #550000 0%, #220000 100%);
-            border-bottom: 1px solid #ff0000;
-        }
-        body.lights-out .publisher-notice {
-            background: #1a0000;
-            border-color: #ff0000;
-            color: #ff4444;
-            box-shadow: inset 0 0 8px rgba(255, 0, 0, 0.4);
         }
 
         /* Demonic Green Theme Overrides */
@@ -177,25 +139,17 @@
             border-color: #114411;
             color: #ccffcc;
         }
-        body.demonic-green .switch-btn,
-        body.demonic-green .squish-btn {
+        body.demonic-green .fidget-title {
+            color: #aaffaa;
+        }
+        body.demonic-green .switch-btn {
             background: #052a05;
             border: 2px outset #117711;
             color: #ffffff;
         }
-        body.demonic-green .switch-btn:active,
-        body.demonic-green .squish-btn:active {
+        body.demonic-green .switch-btn:active {
             border-style: inset;
             background: #115511;
-        }
-        body.demonic-green .ball-sphere {
-            background: #010a01;
-            border-color: #228822;
-            color: #44ff44;
-            box-shadow: inset 0 0 10px #00ff00;
-        }
-        body.demonic-green .bug-counter {
-            color: #77aa77;
         }
         body.demonic-green .badge-btn {
             border-color: #116611;
@@ -205,16 +159,6 @@
             border-color: #33ff33;
             color: #ffffff;
             background: #003300;
-        }
-        body.demonic-green .publisher-notice {
-            background: #082a08;
-            border-color: #33ff55;
-            color: #88ff99;
-            box-shadow: inset 0 0 8px rgba(0, 255, 68, 0.2);
-        }
-        body.demonic-green .publisher-notice:hover {
-            text-shadow: 0 0 8px #00ff00;
-            background: #0d3a0d;
         }
         body.demonic-green .youtube-player-frame {
             background: #010a01;
@@ -260,23 +204,6 @@
         }
         body.demonic-green .bottom-sketch {
             border-color: #115511;
-        }
-        body.demonic-green.lights-out {
-            background: #010701;
-            color: #44ff44;
-        }
-        body.demonic-green.lights-out::before {
-            background: radial-gradient(circle, transparent 20%, rgba(0, 10, 0, 0.95) 130%);
-        }
-        body.demonic-green.lights-out .retro-module,
-        body.demonic-green.lights-out .myspace-header-card {
-            background: rgba(2, 12, 2, 0.95);
-            border-color: #11aa11;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.25);
-        }
-        body.demonic-green.lights-out .module-header {
-            background: linear-gradient(180deg, #005500 0%, #002200 100%);
-            border-bottom: 1px solid #00ff00;
         }
 
         /* Light Mode Theme Overrides */
@@ -358,24 +285,13 @@
         body.light-mode .fidget-title {
             color: #333333;
         }
-        body.light-mode .switch-btn,
-        body.light-mode .squish-btn {
+        body.light-mode .switch-btn {
             background: #e0e0e0;
             border: 2px outset #aaaaaa;
             color: #111111;
         }
-        body.light-mode .switch-btn:active,
-        body.light-mode .squish-btn:active {
+        body.light-mode .switch-btn:active {
             background: #cccccc;
-        }
-        body.light-mode .ball-sphere {
-            background: #e8e8e8;
-            border-color: #888888;
-            color: #222222;
-            box-shadow: inset 0 0 10px #cccccc;
-        }
-        body.light-mode .bug-counter {
-            color: #555555;
         }
         body.light-mode .badge-btn {
             background: #f0f0f0;
@@ -386,18 +302,6 @@
             background: #dddddd;
             border-color: #666666;
             color: #000000;
-        }
-        body.light-mode .publisher-notice {
-            background: #ffffff;
-            border-color: #888888;
-            color: #222222;
-            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
-        }
-        body.light-mode .publisher-notice:hover {
-            background: #e8e8e8;
-            border-color: #333333;
-            color: #000000 !important;
-            text-shadow: none;
         }
         body.light-mode .youtube-player-frame,
         body.light-mode .image-container {
@@ -521,24 +425,13 @@
         body.dark-mode .fidget-title {
             color: #81a1c1;
         }
-        body.dark-mode .switch-btn,
-        body.dark-mode .squish-btn {
+        body.dark-mode .switch-btn {
             background: #242933;
             border: 2px outset #3b4252;
             color: #eceff4;
         }
-        body.dark-mode .switch-btn:active,
-        body.dark-mode .squish-btn:active {
+        body.dark-mode .switch-btn:active {
             background: #3b4252;
-        }
-        body.dark-mode .ball-sphere {
-            background: #12141a;
-            border-color: #3b4252;
-            color: #88c0d0;
-            box-shadow: inset 0 0 10px #2e3440;
-        }
-        body.dark-mode .bug-counter {
-            color: #81a1c1;
         }
         body.dark-mode .badge-btn {
             background: #12141a;
@@ -549,18 +442,6 @@
             background: #2e3440;
             border-color: #5e81ac;
             color: #ffffff;
-        }
-        body.dark-mode .publisher-notice {
-            background: #1a202c;
-            border-color: #5e81ac;
-            color: #88c0d0;
-            box-shadow: inset 0 0 8px rgba(94, 129, 172, 0.2);
-        }
-        body.dark-mode .publisher-notice:hover {
-            background: #242c3d;
-            border-color: #81a1c1;
-            color: #ffffff !important;
-            text-shadow: 0 0 8px #88c0d0;
         }
         body.dark-mode .youtube-player-frame,
         body.dark-mode .image-container {
@@ -674,24 +555,13 @@
         body.hot-pink .fidget-title {
             color: #ff8888;
         }
-        body.hot-pink .switch-btn,
-        body.hot-pink .squish-btn {
+        body.hot-pink .switch-btn {
             background: #4a0033;
             border: 2px outset #ff007f;
             color: #ffffff;
         }
-        body.hot-pink .switch-btn:active,
-        body.hot-pink .squish-btn:active {
+        body.hot-pink .switch-btn:active {
             background: #ff007f;
-        }
-        body.hot-pink .ball-sphere {
-            background: #10000a;
-            border-color: #ff007f;
-            color: #ff66cc;
-            box-shadow: inset 0 0 10px #ff007f;
-        }
-        body.hot-pink .bug-counter {
-            color: #ff80bf;
         }
         body.hot-pink .badge-btn {
             border-color: #ff007f;
@@ -701,18 +571,6 @@
             border-color: #ffffff;
             color: #ffffff;
             background: #aa0066;
-        }
-        body.hot-pink .publisher-notice {
-            background: #3d002a;
-            border-color: #ff66cc;
-            color: #ffb3e6;
-            box-shadow: inset 0 0 8px rgba(255, 102, 204, 0.3);
-        }
-        body.hot-pink .publisher-notice:hover {
-            text-shadow: 0 0 8px #ff007f;
-            background: #5e0040;
-            color: #ffffff !important;
-            border-color: #ffffff;
         }
         body.hot-pink .youtube-player-frame,
         body.hot-pink .image-container {
@@ -895,39 +753,10 @@
             justify-content: space-between;
             align-items: center;
             letter-spacing: 0.5px;
-            text-transform: uppercase;
         }
 
         .module-body {
             padding: 14px;
-        }
-
-        /* Publisher Bulletin Notice */
-        .publisher-notice {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: #ff9988;
-            text-decoration: none;
-            font-size: 16px;
-            text-align: center;
-            padding: 12px;
-            border: 2px dashed #ff5533;
-            background: #2a0808;
-            box-shadow: inset 0 0 8px rgba(255, 68, 0, 0.2);
-            animation: smoothRandomBob 7s ease-in-out infinite;
-            user-select: none;
-        }
-        .publisher-notice:hover {
-            color: #ffffff !important;
-            border-color: #ffffff;
-            background: #3a0d0d;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        .publisher-gif {
-            height: 24px;
-            width: auto;
         }
 
         /* Retro YouTube Video Player Container */
@@ -1035,10 +864,15 @@
             min-height: 55px;
         }
 
-        /* Pinned Section / Tweet Box */
-        .pinned-tweet-wrapper {
+        /* Side-by-Side Compact Container for Community Works & Sandbox */
+        .side-by-side-container {
+            display: flex;
+            gap: 20px;
             width: 100%;
-            min-height: 420px;
+        }
+        .side-by-side-container > .retro-module {
+            flex: 1;
+            min-width: 0;
         }
 
         /* Crossover Container */
@@ -1052,25 +886,26 @@
         }
         .crossover-render {
             width: 100%;
-            max-height: 480px;
+            max-height: 180px;
             object-fit: contain;
             border: 1px solid #551111;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             background: #120202;
         }
         .crossover-title {
-            font-size: 22px;
+            font-size: 16px;
             color: #ff8866;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: bold;
         }
         .crossover-desc {
-            font-size: 15px;
+            font-size: 13px;
             color: #ffcccc;
-            line-height: 1.4;
+            line-height: 1.3;
             background: #140303;
-            padding: 12px;
+            padding: 8px;
             border: 1px inset #330a0a;
+            text-align: left;
         }
 
         /* Fidget Widgets Sidebar Box */
@@ -1088,7 +923,6 @@
             font-size: 14px;
             color: #ff8888;
             margin-bottom: 8px;
-            text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: bold;
         }
@@ -1107,31 +941,6 @@
             border-style: inset;
             background: #551111;
         }
-
-        .ball-sphere {
-            width: 70px;
-            height: 70px;
-            background: #0a0101;
-            border: 3px double #882222;
-            border-radius: 50%;
-            margin: 8px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 12px;
-            color: #ff4444;
-            font-weight: bold;
-            padding: 4px;
-            user-select: none;
-            box-shadow: inset 0 0 10px #ff0000;
-        }
-        .ball-sphere.shake-anim { animation: ballShake 0.4s ease-in-out; }
-
-        .bug-display { font-size: 28px; margin: 4px 0; height: 35px; display: flex; align-items: center; justify-content: center; }
-        .squish-btn { background: #2a0505; border: 2px outset #771111; color: #fff; padding: 6px; font-size: 13px; width: 100%; cursor: pointer; font-weight: bold; }
-        .squish-btn:active { border-style: inset; background: #551111; }
-        .bug-counter { font-size: 13px; color: #aa7777; margin-top: 6px; }
 
         /* Music Player Module */
         .music-player-container iframe {
@@ -1164,31 +973,32 @@
             background: #330000;
         }
 
-        /* Bottom Promo Section */
+        /* Bottom Promo Section (Compact) */
         .bottom-promo-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             text-align: center;
         }
         .bottom-promo-container a {
             display: inline-block;
             width: 100%;
-            max-width: 500px;
         }
         .bottom-sketch {
             width: 100%;
-            height: auto;
+            max-height: 180px;
             border: 2px outset #551111;
             object-fit: contain;
+            background: #120202;
         }
         .promo-text {
-            font-size: 16px;
+            font-size: 13px;
             color: #ffcccc;
             background: #140303;
-            padding: 10px 16px;
+            padding: 8px 12px;
             border: 1px solid #441111;
+            line-height: 1.3;
         }
 
         /* Floating Retro Gifs */
@@ -1224,17 +1034,6 @@
             90% { transform: translate(-2px, 3px); }
             100% { transform: translate(0px, 0px); }
         }
-        @keyframes ballShake {
-            0%, 100% { transform: translate(0, 0); }
-            20% { transform: translate(-4px, 4px) rotate(-3deg); }
-            40% { transform: translate(4px, -4px) rotate(3deg); }
-            60% { transform: translate(-4px, -4px) rotate(-1deg); }
-            80% { transform: translate(4px, 4px) rotate(1deg); }
-        }
-        @keyframes pulseVignette {
-            0% { opacity: 0.90; }
-            100% { opacity: 0.98; }
-        }
 
         /* Responsive behavior */
         @media screen and (max-width: 1024px) {
@@ -1243,6 +1042,9 @@
             }
             .left-sidebar {
                 width: 100%;
+            }
+            .side-by-side-container {
+                flex-direction: column;
             }
             #gif1, #gif2, #gif3, #gif4, #gif5 { display: none; }
         }
@@ -1267,26 +1069,26 @@
     <header class="myspace-header-card">
         <div class="channel-top-bar">
             <div class="channel-title-group">
-                <h1>HAMACHI THE PSYCHOTIC KILLER // DEV ROOM</h1>
-                <div class="channel-subtext">Official Developer Blog</div>
-                <img src="https://gavinoriley.github.io/assets/hamaprofilepicture.png" alt="Developer Profile Picture" class="dev-profile-pic">
+                <h1>hamachi the psychotic killer // dev room</h1>
+                <div class="channel-subtext">official developer blog</div>
+                <img src="https://gavinoriley.github.io/assets/hamaprofilepicture.png" alt="developer profile picture" class="dev-profile-pic">
             </div>
             <div class="myspace-stats-bar">
-                <div>Status: <span>GONE 4 NOW</span></div>
-                <div>Mood: <span>PSYCHOTIC </span></div>
-                <div>Views: <span>666</span></div>
+                <div>status: <span>gone 4 now</span></div>
+                <div>mood: <span>psychotic</span></div>
+                <div>views: <span>666</span></div>
             </div>
         </div>
 
         <!-- Navigation buttons styled like classic MySpace tabs -->
         <nav class="navbar">
-            <a href="https://hamachithepsychotickiller.com/about/">[ GAME INFO ]</a>
-            <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank" class="buy-game-link">[ BUY ON STEAM ]</a>
-            <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank">[ PLAY DEMO ]</a>
-            <a href="https://hamachithepsychotickiller.com">[ HOME PAGE ]</a>
+            <a href="https://hamachithepsychotickiller.com/about/">[ game info ]</a>
+            <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank">[ play demo ]</a>
+            <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank" class="buy-game-link">[ buy on steam ]</a>
+            <a href="https://hamachithepsychotickiller.com">[ home page ]</a>
         </nav>
 
-        <div class="page-purpose-box possessed" id="pagePurpose">
+        <div class="page-purpose-box" id="pagePurpose">
             a place where i share work in progress stuffs, the game is complete and publicly available but i continuously experiment, polish and add new things outside of the public game which you can see here, no estimated time on when new stuff will be pushed to the main game atm
         </div>
     </header>
@@ -1296,35 +1098,11 @@
         
         <!-- Left Sidebar Module Column -->
         <aside class="left-sidebar">
-            
-            <!-- Interactive Desktop Gadgets Module -->
-            <section class="retro-module">
-                <div class="module-header">
-                    <span>Desktop Widgets</span>
-                    <span>[x]</span>
-                </div>
-                <div class="module-body">
-                    <div class="fidget-box" id="lightSwitchWidget">
-                        <div class="fidget-title">Room Lighting</div>
-                        <button class="switch-btn" id="lightBtn">LIGHTS OUT</button>
-                    </div>
-                    <div class="fidget-box" id="eightBallWidget">
-                        <div class="fidget-title">Demonic Orb</div>
-                        <div class="ball-sphere" id="eightBall">CLICK ME</div>
-                    </div>
-                    <div class="fidget-box" id="bugSquisherWidget">
-                        <div class="fidget-title">Skull Crusher</div>
-                        <div class="bug-display" id="bugIcon"></div>
-                        <button class="squish-btn" id="squishBtn">CRUSH SKULL</button>
-                        <div class="bug-counter">broken skulls: <span id="bugCount">0</span></div>
-                    </div>
-                </div>
-            </section>
 
            <!-- Embedded Music Player Module -->
             <section class="retro-module">
                 <div class="module-header">
-                    <span>MP3 Player</span>
+                    <span>mp3 player</span>
                     <span></span>
                 </div>
                 <div class="module-body">
@@ -1338,7 +1116,7 @@
             <!-- Favorite Video Module -->
             <section class="retro-module">
                 <div class="module-header">
-                    <span>MP4 Player</span>
+                    <span>mp4 player</span>
                     <span></span>
                 </div>
                 <div class="module-body">
@@ -1352,15 +1130,14 @@
             <!-- Web Badges / Featured Links -->
             <section class="retro-module">
                 <div class="module-header">
-                    <span>Web Badges</span>
+                    <span>web badges</span>
                     <span>88x31</span>
                 </div>
                 <div class="module-body">
                     <div class="badges-grid">
-                        <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank" class="badge-btn">STEAM_NOW</a>
-                        <a href="https://gamejolt.com/games/hamachithepsychotillersandbox/1076404" target="_blank" class="badge-btn">GAMEJOLT</a>
-                        <a href="https://x.com/imgavinoriley" target="_blank" class="badge-btn">TWITTER/X</a>
-                        <a href="mailto:contact@hamachithepsychotickiller.com" class="badge-btn">MAIL_ME</a>
+                        <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank" class="badge-btn">steam page</a>
+                        <a href="https://gamejolt.com/games/hamachithepsychotillersandbox/1076404" target="_blank" class="badge-btn">gamejolt</a>
+                        <a href="https://x.com/imgavinoriley" target="_blank" class="badge-btn">twitter/x</a>
                     </div>
                 </div>
             </section>
@@ -1368,18 +1145,18 @@
             <!-- Change Theme Module -->
             <section class="retro-module">
                 <div class="module-header">
-                    <span>CHANGE THEME</span>
+                    <span>change theme</span>
                     <span></span>
                 </div>
                 <div class="module-body">
                     <div class="fidget-box">
-                        <div class="fidget-title" style="margin-bottom: 8px;">SELECT COLOR</div>
+                        <div class="fidget-title" style="margin-bottom: 8px;">select color</div>
                         <div style="display: flex; gap: 8px; flex-direction: column;">
-                            <button class="switch-btn" id="themeDefaultBtn">Blood Red</button>
-                            <button class="switch-btn" id="themeDemonicGreenBtn" style="border-color: #11aa11; color: #44ff44;">Demonic Green</button>
-                            <button class="switch-btn" id="themeLightModeBtn" style="border-color: #aaaaaa; color: #ffffff;">Light Mode</button>
-                            <button class="switch-btn" id="themeDarkModeBtn" style="border-color: #555588; color: #aaaaff;">Dark Mode</button>
-                            <button class="switch-btn" id="themeHotPinkBtn" style="border-color: #ff007f; color: #ff66cc;">Hot Pink</button>
+                            <button class="switch-btn" id="themeDefaultBtn">blood red</button>
+                            <button class="switch-btn" id="themeDemonicGreenBtn" style="border-color: #11aa11; color: #44ff44;">demonic green</button>
+                            <button class="switch-btn" id="themeLightModeBtn" style="border-color: #aaaaaa; color: #ffffff;">light mode</button>
+                            <button class="switch-btn" id="themeDarkModeBtn" style="border-color: #555588; color: #aaaaff;">dark mode</button>
+                            <button class="switch-btn" id="themeHotPinkBtn" style="border-color: #ff007f; color: #ff66cc;">hot pink</button>
                         </div>
                     </div>
                 </div>
@@ -1390,24 +1167,17 @@
         <!-- Main Content Area Column -->
         <main class="main-content">
 
-            <!-- Publisher Inquiry Banner Module -->
-            <a href="mailto:contact@hamachithepsychotickiller.com?subject=Publisher%20Inquiry%20-%20Hamachi%20the%20Psychotic%20Killer" class="publisher-notice">
-                <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
-                <span>[ BULLETIN ] If you're a publisher and wish to reach me, click here!</span>
-                <img src="https://gavinoriley.github.io/assets/0f4ce95d.gif" alt="" class="publisher-gif">
-            </a>
-
             <!-- Classic YouTube Video Player Carousel Section -->
             <section class="retro-module">
                 <div class="module-header">
-                    <span>Media Showcase Player</span>
+                    <span>dev log</span>
                     <span></span>
                 </div>
                 <div class="module-body">
                     <div class="youtube-player-frame">
                         <div class="image-container" id="imageContainer">
                             <div class="date-time" id="dateTime"></div>
-                            <img class="gallery-image" id="galleryImage" src="" alt="Game Image">
+                            <img class="gallery-image" id="galleryImage" src="" alt="game image">
                             <div class="arrow left" id="leftArrow">&larr;</div>
                             <div class="arrow right" id="rightArrow">&rarr;</div>
                         </div>
@@ -1415,65 +1185,51 @@
                         <!-- 2000s Classic Player Controls & Rating -->
                         <div class="yt-control-bar">
                             <div class="yt-buttons">
-                                <button class="yt-btn" onclick="document.getElementById('galleryImage').click()">Fullscreen</button>
+                                <button class="yt-btn" onclick="document.getElementById('galleryImage').click()">fullscreen</button>
                             </div>
-                            <div class="star-rating"></div>
+                            <div class="star-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                         </div>
                     </div>
 
-                    <div class="description possessed" id="description"></div>
+                    <div class="description" id="description"></div>
                 </div>
             </section>
 
-            <!-- Twitter Pinned Tweet Module -->
-            <section class="retro-module">
-                <div class="module-header">
-                    <span>Pinned Announcement / Feed</span>
-                    <span>UPDATES</span>
-                </div>
-                <div class="module-body">
-                    <div class="pinned-tweet-wrapper">
-                        <blockquote class="twitter-tweet" data-theme="dark" data-align="center">
-                            <a href="https://x.com/imgavinoriley/status/2068302846442000537"></a>
-                        </blockquote>
+            <!-- Side-by-Side Compact Container for Community Works & Sandbox -->
+            <div class="side-by-side-container">
+                <!-- Crossover / Community Works Box -->
+                <section class="retro-module crossover-container">
+                    <div class="module-header">
+                        <span>community works</span>
+                        <span></span>
                     </div>
-                </div>
-            </section>
-
-            <!-- Crossover / Community Works Box -->
-            <section class="retro-module crossover-container">
-                <div class="module-header">
-                    <span>COMMUNITY WORKS </span>
-                    <span></span>
-                </div>
-                <div class="module-body">
-                    <a href="https://x.com/TheDeepRoblox" target="_blank" rel="noopener noreferrer" class="crossover-link">
-                        <img src="https://gavinoriley.github.io/assets/Hamachi_RenderAlt.png" alt="Hamachi 3D Model" class="crossover-render">
-                        <div class="crossover-title">The Deep Silence</div>
-                        <div class="crossover-desc">
-                            <div id="crossoverMain" class="possessed">Hamachi will be featured as a playable killer in the upcoming Roblox game, The Deep Silence, which is currently in development. Click here to view their work & support the creators!</div>
-                            <br>
-                            <div id="crossoverNote" class="possessed" style="font-style: italic;">Note: I am not affiliated with the development of The Deep Silence, and its developers are not affiliated with Hamachi the Psychotic Killer. The Deep Silence is an independent project, and all credit belongs to its development team.</div>
-                        </div>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Sandbox Concept Promo Box -->
-            <section class="retro-module">
-                <div class="module-header">
-                    <span>HAMACHI SANDBOX</span>
-                    <span>SANDBOX</span>
-                </div>
-                <div class="module-body">
-                    <div class="bottom-promo-container">
-                        <a href="https://gamejolt.com/games/hamachithepsychotillersandbox/1076404" target="_blank" rel="noopener noreferrer">
-                            <img src="https://gavinoriley.github.io/assets/1gavinorileyhamasketch.png" alt="Hamachi Concept Sketch" class="bottom-sketch">
+                    <div class="module-body">
+                        <a href="https://x.com/TheDeepRoblox" target="_blank" rel="noopener noreferrer" class="crossover-link">
+                            <img src="https://gavinoriley.github.io/assets/Hamachi_RenderAlt.png" alt="hamachi 3d model" class="crossover-render">
+                            <div class="crossover-title">the deep silence</div>
+                            <div class="crossover-desc">
+                                <div id="crossoverMain">hamachi will be featured as a playable killer in the upcoming roblox game, the deep silence. click here to view their work!</div>
+                            </div>
                         </a>
-                        <div class="promo-text possessed">click the drawing to visit 'hamachi sandbox' on gamejolt</div>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                <!-- Sandbox Concept Promo Box -->
+                <section class="retro-module">
+                    <div class="module-header">
+                        <span>hamachi sandbox</span>
+                        <span></span>
+                    </div>
+                    <div class="module-body">
+                        <div class="bottom-promo-container">
+                            <a href="https://gamejolt.com/games/hamachithepsychotillersandbox/1076404" target="_blank" rel="noopener noreferrer">
+                                <img src="https://gavinoriley.github.io/assets/1gavinorileyhamasketch.png" alt="hamachi concept sketch" class="bottom-sketch">
+                            </a>
+                            <div class="promo-text">click the drawing to visit 'hamachi sandbox' on gamejolt</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
 
         </main>
     </div>
@@ -1504,13 +1260,20 @@
             { type: 'image', src: 'https://gavinoriley.github.io/assets/dev9.gif', date: '2025-08-26T12:33:00-07:00', ampm: 'PM', description: 'interesting glitch' },
             { type: 'image', src: 'https://gavinoriley.github.io/assets/dev8.png', date: '2025-08-22T6:18:00-07:00', ampm: 'PM', description: 'not sure what this game is coming to' },
             { type: 'image', src: 'https://gavinoriley.github.io/assets/dev7.png', date: '2025-08-13T4:37:00-07:00', ampm: 'PM', description: 'pacify' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev6.png', date: '2025-08-12T7:57:00-07:00', ampm: 'AM', description: 'added volume slider and options now save...' },
+            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev6.png', date: '2025-08-12T7:57:00-07:00', ampm: 'AM', description: 'added volume slider and your options now save' },
             { type: 'image', src: 'https://gavinoriley.github.io/assets/dev5.png', date: '2025-08-07T4:54:00-07:00', ampm: 'PM', description: '' },
             { type: 'image', src: 'https://gavinoriley.github.io/assets/dev4.png', date: '2025-08-07T4:31:00-07:00', ampm: 'PM', description: 'can now save and load games, insanity' },
             { type: 'image', src: 'https://gavinoriley.github.io/assets/dev3.png', date: '2025-08-04T4:50:00-07:00', ampm: 'PM', description: 'programming a cinematic' },
             { type: 'image', src: 'https://gavinoriley.github.io/assets/dev2.png', date: '2025-08-03T3:27:00-07:00', ampm: 'PM', description: 'happy fun time yippie' },
             { type: 'image', src: 'https://gavinoriley.github.io/assets/dev1.png', date: '2025-08-02T02:06:00-07:00', ampm: 'AM', description: 'end world scene brainstorming.' }
         ];
+
+        // Preload all gallery images in background for instant, reliable loading
+        images.forEach(item => {
+            const preloader = new Image();
+            preloader.src = item.src;
+        });
+
         let currentImageIndex = 0;
         const imageContainer = document.getElementById('imageContainer');
         const galleryImage = document.getElementById('galleryImage');
@@ -1533,14 +1296,14 @@
                     if (dateParts[1]) {
                         time = dateParts[1].split(':').slice(0, 2).join(':');
                     }
-                    dateTime.textContent = `UPLOADED: ${date}, ${time} ${currentImage.ampm}`;
+                    dateTime.textContent = `uploaded: ${date}, ${time} ${currentImage.ampm}`;
                 } else {
-                    dateTime.textContent = 'Circa 2011 (Wayback Machine)';
+                    dateTime.textContent = 'circa 2011 (wayback machine)';
                 }
                 description.textContent = currentImage.description || '';
             
                 galleryImage.style.opacity = '1';
-            }, 150);
+            }, 100);
        
             leftArrow.style.display = currentImageIndex === 0 ? 'none' : 'block';
             rightArrow.style.display = currentImageIndex === images.length - 1 ? 'none' : 'block';
@@ -1568,94 +1331,7 @@
             }
         });
 
-        // === POSSESSED TYPOGRAPHY GLITCH ===
-        function possessText(element) {
-            if (!element) return;
-            const text = element.textContent;
-            const chars = text.split('');
-        
-            element.innerHTML = chars.map((char, i) => {
-                if (char.trim() === '') return char;
-                return `<span class="glitch-char" data-index="${i}">${char}</span>`;
-            }).join('');
-        
-            const glitchSpans = element.querySelectorAll('.glitch-char');
-        
-            setInterval(() => {
-                const randomSpan = glitchSpans[Math.floor(Math.random() * glitchSpans.length)];
-                if (!randomSpan) return;
-            
-                const original = randomSpan.textContent;
-                const demonicChars = ['†', '×', '§', '', ''];
-                const randomDemonic = demonicChars[Math.floor(Math.random() * demonicChars.length)];
-            
-                randomSpan.style.transform = 'scale(1.15) rotate(8deg)';
-                randomSpan.style.color = '#ff4444';
-                randomSpan.textContent = randomDemonic;
-            
-                setTimeout(() => {
-                    randomSpan.style.transform = 'scale(1) rotate(0deg)';
-                    randomSpan.style.color = '';
-                    randomSpan.textContent = original;
-                }, 110);
-            }, 2200 + Math.random() * 2300);
-        }
-    
-        window.addEventListener('load', () => {
-            possessText(document.getElementById('pagePurpose'));
-            possessText(document.getElementById('description'));
-            possessText(document.getElementById('crossoverMain'));
-            possessText(document.getElementById('crossoverNote'));
-            possessText(document.querySelector('.promo-text'));
-        });
-   
-        const lightBtn = document.getElementById('lightBtn');
-        lightBtn.addEventListener('click', () => {
-            document.body.classList.toggle('lights-out');
-            lightBtn.textContent = document.body.classList.contains('lights-out') ? "LIGHTS ON" : "LIGHTS OUT";
-        });
-   
-        const eightBall = document.getElementById('eightBall');
-        const fortunes = ["", "†", "", "", "DEATH", "DEMONS", ":3", "×"];
-        eightBall.addEventListener('click', () => {
-            eightBall.classList.add('shake-anim');
-            eightBall.textContent = "...";
-            setTimeout(() => {
-                eightBall.textContent = fortunes[Math.floor(Math.random() * fortunes.length)];
-                eightBall.classList.remove('shake-anim');
-            }, 400);
-        });
-   
-        // === SKULL CRUSHER WIDGET LOGIC ===
-        const bugIcon = document.getElementById('bugIcon');
-        const squishBtn = document.getElementById('squishBtn');
-        const bugCountDisplay = document.getElementById('bugCount');
-        let bugCount = 0;
-
-        bugIcon.textContent = '';
-   
-        squishBtn.addEventListener('click', () => {
-            bugIcon.textContent = '';
-            bugCount++;
-            bugCountDisplay.textContent = bugCount;
-       
-            if (bugCount === 6) {
-                document.title = "he is watching you";
-                document.body.style.transform = "rotate(0.5deg)";
-            } else if (bugCount === 13) {
-                document.title = "STOP CRUSHING THEM";
-                document.body.style.transform = "rotate(-0.5deg) scale(0.99)";
-            } else if (bugCount === 66) {
-                document.title = "HELL";
-                document.body.style.filter = "invert(1) hue-rotate(180deg)";
-            }
-       
-            setTimeout(() => {
-                bugIcon.textContent = '';
-            }, 250);
-        });
-
-        // === THEME SWITCHER & SYSTEM PREFERENCE DETECTION ===
+        // === THEME SWITCHER ===
         const themeDefaultBtn = document.getElementById('themeDefaultBtn');
         const themeDemonicGreenBtn = document.getElementById('themeDemonicGreenBtn');
         const themeLightModeBtn = document.getElementById('themeLightModeBtn');
@@ -1666,26 +1342,12 @@
             document.body.classList.remove('demonic-green', 'light-mode', 'dark-mode', 'hot-pink');
         }
 
-        // Automatic Theme Detection based on OS/Browser Color Scheme
-        function detectAndApplySystemTheme() {
-            clearThemes();
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.body.classList.add('dark-mode');
-            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                document.body.classList.add('light-mode');
-            } else {
-                document.body.classList.add('hot-pink');
-            }
-        }
-
-        // Initial check on page load
-        detectAndApplySystemTheme();
-
-        // Listen for live system theme changes
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-                detectAndApplySystemTheme();
-            });
+        // Set a random theme on load
+        const themes = ['', 'demonic-green', 'light-mode', 'dark-mode', 'hot-pink'];
+        const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+        clearThemes();
+        if (randomTheme) {
+            document.body.classList.add(randomTheme);
         }
 
         // Manual Theme Switcher Button Event Handlers
