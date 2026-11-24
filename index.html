@@ -27,53 +27,53 @@
 <link rel="preconnect" href="https://www.youtube.com">
 <link rel="preconnect" href="https://store.steampowered.com">
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
-    <style>
+<style>
 @font-face {
-    font-family: 'FSEX300';
-    src: url('/assets/FSEX300.woff2') format('woff2'),
-         url('/assets/FSEX300.woff') format('woff'),
-         url('/assets/FSEX300.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+font-family: 'FSEX300';
+src: url('/assets/FSEX300.woff2') format('woff2'),
+url('/assets/FSEX300.woff') format('woff'),
+url('/assets/FSEX300.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
 }
 html { scrollbar-gutter: stable; scrollbar-color: #2a2a2a #000; }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'FSEX300', Arial, sans-serif;
-    cursor: url('https://gavinoriley.github.io/assets/sprCursor_3.png'), auto;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'FSEX300', Arial, sans-serif;
+cursor: url('https://gavinoriley.github.io/assets/sprCursor_3.png'), auto;
 }
 html, body { background: #000; color: #c8c8c8; overflow-x: hidden; width: 100%; }
 body { position: relative; min-height: 100vh; }
 
 @property --nav-menu-o { syntax: '<number>'; inherits: false; initial-value: 1; }
 .top-nav-bar {
-    position: fixed; top: 0; left: 0; right: 0; height: 46px; z-index: 200;
-    display: flex; align-items: center; justify-content: space-between; padding: 0 22px;
+position: fixed; top: 0; left: 0; right: 0; height: 46px; z-index: 200;
+display: flex; align-items: center; justify-content: space-between; padding: 0 22px;
 }
 .top-nav-bar::before {
-    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-    background: rgba(10, 10, 10, 0.55);
-    backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
-    --nav-menu-o: 1; opacity: calc(var(--nav-in, 1) * var(--nav-menu-o));
-    transition: --nav-menu-o 0.4s ease; will-change: opacity;
+content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+background: rgba(10, 10, 10, 0.55);
+backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
+--nav-menu-o: 1; opacity: calc(var(--nav-in, 1) * var(--nav-menu-o));
+transition: --nav-menu-o 0.4s ease; will-change: opacity;
 }
 .top-nav-bar.menu-open::before { --nav-menu-o: 0; }
 .nav-center-logo {
-    position: absolute; top: env(safe-area-inset-top, 0px); bottom: 0; left: 50%;
-    transform: translateX(-50%); padding: 5px 0; display: flex; align-items: center;
-    justify-content: center; pointer-events: none; z-index: 205;
+position: absolute; top: env(safe-area-inset-top, 0px); bottom: 0; left: 50%;
+transform: translateX(-50%); padding: 5px 0; display: flex; align-items: center;
+justify-content: center; pointer-events: none; z-index: 205;
 }
 .nav-center-logo img { display: block; height: 100%; width: auto; max-width: 100%; aspect-ratio: 1010 / 233; object-fit: contain; }
 @media (max-width: 560px) {
-    .nav-center-logo { position: static; transform: none; flex: 1 1 0; min-width: 0; align-self: stretch; padding: 5px 10px; }
+.nav-center-logo { position: static; transform: none; flex: 1 1 0; min-width: 0; align-self: stretch; padding: 5px 10px; }
 }
 .menu-toggle {
-    position: relative; width: 22px; height: 16px; background: none; border: none;
-    display: flex; flex-direction: column; justify-content: space-between;
-    z-index: 210; flex-shrink: 0; opacity: 0.55; transition: opacity 0.2s;
+position: relative; width: 22px; height: 16px; background: none; border: none;
+display: flex; flex-direction: column; justify-content: space-between;
+z-index: 210; flex-shrink: 0; opacity: 0.55; transition: opacity 0.2s;
 }
 .menu-toggle::after { content: ''; position: absolute; inset: -12px -10px; }
 .menu-toggle:hover, .menu-toggle:focus-visible, .menu-toggle.open { opacity: 1; }
@@ -86,27 +86,27 @@ body { position: relative; min-height: 100vh; }
 .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .nav-overlay {
-    position: fixed; inset: 0; background: rgba(7, 7, 7, 0.55);
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 150;
-    display: flex; flex-direction: column; justify-content: center; padding: 80px 40px 60px;
-    opacity: 0; visibility: hidden; pointer-events: none;
-    transition: opacity 0.4s ease, visibility 0.4s ease; overflow-y: auto; overscroll-behavior: contain;
+position: fixed; inset: 0; background: rgba(7, 7, 7, 0.55);
+backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 150;
+display: flex; flex-direction: column; justify-content: center; padding: 80px 40px 60px;
+opacity: 0; visibility: hidden; pointer-events: none;
+transition: opacity 0.4s ease, visibility 0.4s ease; overflow-y: auto; overscroll-behavior: contain;
 }
 .nav-overlay.open {
-    transition: opacity 0.4s ease, visibility 0.4s ease, background-color 1.2s ease-in-out;
-    opacity: 1; visibility: visible; pointer-events: auto;
+transition: opacity 0.4s ease, visibility 0.4s ease, background-color 1.2s ease-in-out;
+opacity: 1; visibility: visible; pointer-events: auto;
 }
 .nav-links-wrapper {
-    display: flex; flex-direction: column; gap: 18px; max-width: 420px; opacity: 1;
-    transition: opacity 0.35s ease, visibility 0.35s ease;
+display: flex; flex-direction: column; gap: 18px; max-width: 420px; opacity: 1;
+transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 .nav-links-wrapper.hidden { opacity: 0; visibility: hidden; pointer-events: none; position: absolute; }
 .nav-overlay a { color: #aaa; text-decoration: none; font-size: 22px; letter-spacing: 1px; transition: color 0.2s; }
 .nav-overlay .menu-link { position: relative; align-self: flex-start; }
 .nav-overlay .menu-link::after {
-    content: ''; position: absolute; left: 0; bottom: -3px; width: 100%; height: 2px;
-    background-color: currentColor; transform: scaleX(0); transform-origin: left center;
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); pointer-events: none;
+content: ''; position: absolute; left: 0; bottom: -3px; width: 100%; height: 2px;
+background-color: currentColor; transform: scaleX(0); transform-origin: left center;
+transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); pointer-events: none;
 }
 .nav-overlay .menu-link:hover::after, .nav-overlay .menu-link:focus-visible::after { transform: scaleX(1); }
 @media (prefers-reduced-motion: reduce) { .nav-overlay .menu-link::after { transition: none; } }
@@ -122,9 +122,9 @@ body { position: relative; min-height: 100vh; }
 .nav-overlay a:nth-child(8):hover, .nav-overlay a:nth-child(8):focus-visible { color: #c9a83a; }
 
 .panel {
-    max-width: 640px; color: #bbb; font-size: 16px; line-height: 1.7;
-    opacity: 0; visibility: hidden; pointer-events: none; position: absolute;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+max-width: 640px; color: #bbb; font-size: 16px; line-height: 1.7;
+opacity: 0; visibility: hidden; pointer-events: none; position: absolute;
+transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 .panel.active { opacity: 1; visibility: visible; pointer-events: auto; position: relative; }
 .panel h2 { font-size: 18px; color: #888; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; font-weight: normal; }
@@ -136,8 +136,8 @@ body { position: relative; min-height: 100vh; }
 .meta-line { font-size: 14px; color: #777; margin-bottom: 6px; }
 .meta-line strong { color: #999; display: inline-block; width: 110px; font-weight: normal; }
 .copy-email-btn {
-    background: none; border: 1px solid #444; color: #aaa; padding: 10px 20px; font-size: 15px;
-    letter-spacing: 1px; margin-top: 20px; transition: border-color 0.2s, color 0.2s;
+background: none; border: 1px solid #444; color: #aaa; padding: 10px 20px; font-size: 15px;
+letter-spacing: 1px; margin-top: 20px; transition: border-color 0.2s, color 0.2s;
 }
 .copy-email-btn:hover, .copy-email-btn.copied { border-color: #888; color: #fff; }
 
@@ -146,88 +146,88 @@ body { position: relative; min-height: 100vh; }
 .hero-socials a:hover { opacity: 1; }
 .hero-socials img { height: 22px; width: auto; }
 .x-hover-card {
-    position: absolute; top: 28px; right: 0; background: #0c0c0c; border: 1px solid #2a2a2a;
-    border-radius: 50px; padding: 4px; display: flex; flex-direction: column; gap: 0; z-index: 500;
-    opacity: 0; visibility: hidden; pointer-events: none; box-shadow: 0 8px 24px rgba(18, 22, 60, 0);
-    transition: opacity 0.25s ease, visibility 0.25s ease, background-color 1.2s ease-in-out, border-color 1.2s ease-in-out, box-shadow 1.2s ease-in-out;
+position: absolute; top: 28px; right: 0; background: #0c0c0c; border: 1px solid #2a2a2a;
+border-radius: 50px; padding: 4px; display: flex; flex-direction: column; gap: 0; z-index: 500;
+opacity: 0; visibility: hidden; pointer-events: none; box-shadow: 0 8px 24px rgba(18, 22, 60, 0);
+transition: opacity 0.25s ease, visibility 0.25s ease, background-color 1.2s ease-in-out, border-color 1.2s ease-in-out, box-shadow 1.2s ease-in-out;
 }
 .x-hover-wrapper:hover .x-hover-card, .x-hover-card:hover { opacity: 1; visibility: visible; pointer-events: auto; }
 .x-hover-wrapper::after { content: ''; position: absolute; top: 100%; left: -20px; right: -20px; height: 20px; }
 .x-hover-card .share-opt-link { justify-content: center; text-align: center; padding: 9px 20px; white-space: nowrap; border-radius: 50px; }
 .share-opt-link {
-    display: flex; align-items: center; gap: 10px; padding: 8px 10px; color: #999; font-size: 14px;
-    text-decoration: none; border: 1px solid transparent; transition: color 0.2s, border-color 0.2s;
-    background: none; width: 100%; text-align: left;
+display: flex; align-items: center; gap: 10px; padding: 8px 10px; color: #999; font-size: 14px;
+text-decoration: none; border: 1px solid transparent; transition: color 0.2s, border-color 0.2s;
+background: none; width: 100%; text-align: left;
 }
 .share-opt-link:hover { color: #ddd; border-color: #333; }
 
 @property --stage-h { syntax: '<length>'; inherits: true; initial-value: 420px; }
 .room {
-    --stage-h: clamp(240px, 54vh, 540px);
-    --bar-h: 46px;
-    --accent: #c33a3a; --accent-rgb: 195, 58, 58;
-    min-height: 100vh;
-    display: flex; justify-content: center; align-items: flex-start;
-    padding: 0 16px 64px;
+--stage-h: clamp(240px, 54vh, 540px);
+--bar-h: 46px;
+--accent: #c33a3a; --accent-rgb: 195, 58, 58;
+min-height: 100vh;
+display: flex; justify-content: center; align-items: flex-start;
+padding: 0 16px 64px;
 
-    padding-top: max(76px, calc(50vh - var(--stage-h) / 2 - var(--bar-h)));
-    padding-top: max(76px, calc(50dvh - var(--stage-h) / 2 - var(--bar-h)));
-    transition: --stage-h 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    overflow: clip;
+padding-top: max(76px, calc(50vh - var(--stage-h) / 2 - var(--bar-h)));
+padding-top: max(76px, calc(50dvh - var(--stage-h) / 2 - var(--bar-h)));
+transition: --stage-h 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+overflow: clip;
 }
 .room.enlarged { --stage-h: clamp(280px, 70vh, 780px); }
 
 .viewer {
-    width: min(980px, 100%);
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 0 90px rgba(var(--accent-rgb), 0.12);
-    animation: viewerIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+width: min(980px, 100%);
+background: transparent;
+border: 1px solid rgba(255, 255, 255, 0.16);
+border-radius: 6px;
+overflow: hidden;
+box-shadow: 0 0 90px rgba(var(--accent-rgb), 0.12);
+animation: viewerIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 @keyframes viewerIn { from { opacity: 0; transform: translateY(10px) scale(0.985); } to { opacity: 1; transform: none; } }
 
 .viewer-bar {
-    height: var(--bar-h); display: flex; align-items: center; justify-content: space-between;
-    gap: 12px; padding: 0 14px 0 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.38));
-    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+height: var(--bar-h); display: flex; align-items: center; justify-content: space-between;
+gap: 12px; padding: 0 14px 0 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.38));
+backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
 }
 .timestamp {
-    display: flex; align-items: center; gap: 10px; min-width: 0;
-    font-size: 14px; color: #ccc; letter-spacing: 0.6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+display: flex; align-items: center; gap: 10px; min-width: 0;
+font-size: 14px; color: #ccc; letter-spacing: 0.6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 .timestamp::before {
-    content: ''; flex: none; width: 7px; height: 7px; border-radius: 50%;
-    background: var(--accent); box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.9);
+content: ''; flex: none; width: 7px; height: 7px; border-radius: 50%;
+background: var(--accent); box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.9);
 }
 .viewer-tools { display: flex; align-items: center; gap: 12px; flex: none; }
 .counter { font-size: 13px; color: #999; letter-spacing: 1px; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); }
 .tool-btn {
-    background: none; border: 1px solid #333; color: #aaa; padding: 4px 10px;
-    font-size: 13px; letter-spacing: 1px; border-radius: 3px; transition: border-color 0.2s, color 0.2s;
+background: none; border: 1px solid #333; color: #aaa; padding: 4px 10px;
+font-size: 13px; letter-spacing: 1px; border-radius: 3px; transition: border-color 0.2s, color 0.2s;
 }
 .tool-btn:hover, .tool-btn:focus-visible { border-color: var(--accent); color: #fff; outline: none; }
 
 .stage {
-    position: relative; height: var(--stage-h); background: rgba(0, 0, 0, 0.18); overflow: hidden;
-    touch-action: pan-y;
+position: relative; height: var(--stage-h); background: rgba(0, 0, 0, 0.18); overflow: hidden;
+touch-action: pan-y;
 }
 .gallery-image {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
-    transition: opacity 0.18s ease, transform 0.3s ease;
+position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+transition: opacity 0.18s ease, transform 0.3s ease;
 }
 .gallery-image.is-swapping { opacity: 0; transform: scale(0.985); }
 
 .arrow {
-    position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 54px;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255, 255, 255, 0.16); color: #ddd;
-    font-size: 22px; border-radius: 4px; z-index: 5; user-select: none;
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    opacity: 0; transition: opacity 0.2s, border-color 0.2s, background-color 0.2s, color 0.2s;
+position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 54px;
+display: flex; align-items: center; justify-content: center;
+background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255, 255, 255, 0.16); color: #ddd;
+font-size: 22px; border-radius: 4px; z-index: 5; user-select: none;
+backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+opacity: 0; transition: opacity 0.2s, border-color 0.2s, background-color 0.2s, color 0.2s;
 }
 .arrow.left { left: 12px; }
 .arrow.right { right: 12px; }
@@ -238,14 +238,14 @@ body { position: relative; min-height: 100vh; }
 
 .progress { height: 2px; background: rgba(255, 255, 255, 0.07); }
 .progress span {
-    display: block; height: 100%; width: 0; background: var(--accent);
-    box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.8); transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+display: block; height: 100%; width: 0; background: var(--accent);
+box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.8); transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .description {
-    padding: 20px 24px 24px; font-size: 16px; line-height: 1.7; color: #c8c8c8;
-    letter-spacing: 0.3px; overflow-wrap: anywhere; white-space: pre-wrap; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-    background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+padding: 20px 24px 24px; font-size: 16px; line-height: 1.7; color: #c8c8c8;
+letter-spacing: 0.3px; overflow-wrap: anywhere; white-space: pre-wrap; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
 }
 .description:empty { display: none; }
 
@@ -254,328 +254,418 @@ body { position: relative; min-height: 100vh; }
 .scene-art { position: absolute; z-index: -1; pointer-events: none; user-select: none; -webkit-user-drag: none; display: block; height: auto; }
 
 .scene-lily {
-    left: 50%; top: calc(var(--bar-h) + var(--stage-h) / 2);
-    transform: translate(-50%, -50%);
-    width: clamp(680px, 165%, 1750px); max-width: none;
+left: 50%; top: calc(var(--bar-h) + var(--stage-h) / 2);
+transform: translate(-50%, -50%);
+width: clamp(680px, 165%, 1750px); max-width: none;
 }
 
 @media (max-width: 700px) {
-    .top-nav-bar { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); padding-top: env(safe-area-inset-top); }
-    .hero-socials { gap: 10px; }
-    .hero-socials img { width: 20px; height: 20px; }
-    .x-hover-card { right: -4px; }
-    .nav-overlay { padding: max(60px, calc(56px + env(safe-area-inset-top))) max(20px, env(safe-area-inset-right)) max(40px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); }
-    .nav-links-wrapper { gap: 14px; }
-    .nav-overlay a { font-size: 20px; }
-    .panel { font-size: 14px; line-height: 1.6; }
-    .panel h2 { font-size: 16px; margin-bottom: 16px; }
-    .room { padding-left: 10px; padding-right: 10px; }
-    .viewer-bar { padding: 0 10px 0 12px; }
-    .timestamp { font-size: 12px; }
-    .description { font-size: 15px; padding: 16px 16px 20px; }
+.top-nav-bar { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); padding-top: env(safe-area-inset-top); }
+.hero-socials { gap: 10px; }
+.hero-socials img { width: 20px; height: 20px; }
+.x-hover-card { right: -4px; }
+.nav-overlay { padding: max(60px, calc(56px + env(safe-area-inset-top))) max(20px, env(safe-area-inset-right)) max(40px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); }
+.nav-links-wrapper { gap: 14px; }
+.nav-overlay a { font-size: 20px; }
+.panel { font-size: 14px; line-height: 1.6; }
+.panel h2 { font-size: 16px; margin-bottom: 16px; }
+.room { padding-left: 10px; padding-right: 10px; }
+.viewer-bar { padding: 0 10px 0 12px; }
+.timestamp { font-size: 12px; }
+.description { font-size: 15px; padding: 16px 16px 20px; }
 }
 @media (max-width: 480px) {
-    .hero-socials { gap: 8px; }
-    .hero-socials img { width: 18px; height: 18px; }
-    .meta-line strong { width: 90px; }
-    .copy-email-btn { width: 100%; }
-    .counter { display: none; }
+.hero-socials { gap: 8px; }
+.hero-socials img { width: 18px; height: 18px; }
+.meta-line strong { width: 90px; }
+.copy-email-btn { width: 100%; }
+.counter { display: none; }
+}
+/* ===== Dev log: mobile layout (phones in portrait, plus phones in landscape) ===== */
+.mobile-controls { display: none; }
+@media (max-width: 700px), (max-height: 500px) and (pointer: coarse) {
+.room {
+--bar-h: 42px;
+min-height: 100vh; min-height: 100dvh;
+align-items: flex-start;
+padding-top: calc(env(safe-area-inset-top, 0px) + 46px + 18px);
+padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 32px);
+padding-left: max(12px, env(safe-area-inset-left, 0px));
+padding-right: max(12px, env(safe-area-inset-right, 0px));
+}
+.scene { width: 100%; }
+.viewer { width: 100%; border-radius: 8px; }
+.viewer-bar { padding: 0 12px; }
+.timestamp { font-size: 12px; letter-spacing: 0.4px; }
+
+/* zoom in / zoom out is removed on mobile (the image already fills the screen width) */
+.viewer-tools, #expandBtn { display: none !important; }
+
+/* stage follows each image's own shape instead of a fixed tall box */
+.stage {
+height: auto;
+aspect-ratio: var(--img-ar, 1.6);
+min-height: 170px;
+max-height: calc(100vh - 210px); max-height: calc(100dvh - 210px);
+transition: aspect-ratio 0.25s ease;
+-webkit-tap-highlight-color: transparent;
+-webkit-user-select: none; user-select: none;
+}
+.gallery-image { -webkit-user-drag: none; }
+
+/* overlay arrows cover the artwork on a small screen; thumb-sized buttons sit under the image instead */
+.arrow { display: none; }
+.mobile-controls {
+display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+background: rgba(0, 0, 0, 0.4); border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.m-btn {
+height: 48px; min-width: 44px; background: none; border: 0; color: #ddd;
+font-size: 15px; letter-spacing: 1px; -webkit-tap-highlight-color: transparent;
+transition: background-color 0.15s, color 0.15s, opacity 0.15s;
+}
+.m-btn.prev { text-align: left; padding-left: 16px; }
+.m-btn.next { text-align: right; padding-right: 16px; }
+.m-btn:active:not(:disabled) { background: rgba(var(--accent-rgb), 0.28); color: #fff; }
+.m-btn:disabled { opacity: 0.25; }
+.m-count { font-size: 13px; color: #999; letter-spacing: 1px; padding: 0 8px; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); }
+
+.description { font-size: 15px; line-height: 1.6; padding: 14px 16px 20px; }
+
+/* lily artwork: sized relative to the viewer so it always fills the frame, whatever its height */
+.scene-lily {
+top: 50%; left: 50%; width: 140%; height: 140%; max-width: none;
+object-fit: cover; transform: translate(-50%, -50%);
+}
 }
 @media (prefers-reduced-motion: reduce) {
-    .viewer { animation: none; }
-    .room, .gallery-image, .progress span { transition: none; }
+.viewer { animation: none; }
+.room, .gallery-image, .progress span { transition: none; }
 }
 </style>
 </head>
 <body>
 
 <div class="top-nav-bar">
-    <button class="menu-toggle" aria-label="Toggle Navigation" id="menuToggleBtn"><span></span><span></span><span></span></button>
-    <h1 class="nav-center-logo"><img src="https://gavinoriley.github.io/assets/hamanavibar.png" alt="Hamachi the Psychotic Killer" width="1010" height="233" decoding="async"></h1>
-    <div class="hero-socials">
-        <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/#game_area_purchase" target="_blank" rel="noopener noreferrer" aria-label="Steam"><img src="https://gavinoriley.github.io/assets/whitesteam.png" alt="Steam"></a>
-        <a href="https://www.tiktok.com/@hamachi_psychotickiller" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="https://gavinoriley.github.io/assets/whitetiktok.png" alt="TikTok"></a>
-        <div class="x-hover-wrapper" style="position:relative;">
-            <a href="https://x.com/imgavinoriley" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="https://gavinoriley.github.io/assets/whitex.png" alt="X"></a>
-            <div class="x-hover-card"><a href="https://x.com/search?q=%23hamachithepsychotickiller&src=hashtag_click" target="_blank" rel="noopener noreferrer" class="share-opt-link">#hamachithepsychotickiller</a></div>
-        </div>
-    </div>
+<button class="menu-toggle" aria-label="Toggle Navigation" id="menuToggleBtn"><span></span><span></span><span></span></button>
+<h1 class="nav-center-logo"><img src="https://gavinoriley.github.io/assets/hamanavibar.png" alt="Hamachi the Psychotic Killer" width="1010" height="233" decoding="async"></h1>
+<div class="hero-socials">
+<a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/#game_area_purchase" target="_blank" rel="noopener noreferrer" aria-label="Steam"><img src="https://gavinoriley.github.io/assets/whitesteam.png" alt="Steam"></a>
+<a href="https://www.tiktok.com/@hamachi_psychotickiller" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="https://gavinoriley.github.io/assets/whitetiktok.png" alt="TikTok"></a>
+<div class="x-hover-wrapper" style="position:relative;">
+<a href="https://x.com/imgavinoriley" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="https://gavinoriley.github.io/assets/whitex.png" alt="X"></a>
+<div class="x-hover-card"><a href="https://x.com/search?q=%23hamachithepsychotickiller&src=hashtag_click" target="_blank" rel="noopener noreferrer" class="share-opt-link">#hamachithepsychotickiller</a></div>
+</div>
+</div>
 </div>
 
 <nav class="nav-overlay" id="mainNavOverlay">
-    <div class="nav-links-wrapper" id="menuLinksWrapper">
-        <a href="https://hamachithepsychotickiller.com/" class="menu-link" id="homeLink">home</a>
-        <a href="#" class="menu-link" id="synopsisTriggerBtn">synopsis</a>
-        <a href="https://hamachithepsychotickiller.com/about/" class="menu-link">game info</a>
-        <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" rel="noopener noreferrer" class="menu-link" id="menuPlayDemoLink">play demo</a>
-        <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/#game_area_purchase" target="_blank" rel="noopener noreferrer" class="menu-link">buy game</a>
-        <a href="#" class="menu-link" id="contactTriggerBtn">contact</a>
-        <a href="https://gavinoriley.github.io/assets/Hama_WallPaper.zip" download class="menu-link">wallpaper</a>
-        <a href="https://hamachithepsychotickiller.com/hamachipresskit/" class="menu-link" id="pressKitLink">press kit</a>
-        <a href="https://hamachithepsychotickiller.com/publishingpartnerships/" class="menu-link">publishing</a>
-    </div>
-    <div class="panel" id="synopsisContentPanel">
-        <h2>synopsis</h2>
-        <p>In this platformer, you control a piece of tofu named Hamachi, who unexpectedly falls into the possession of Demon Queen Deity, an evil fiend who intends to use him as a vessel to conquer the world through mass murder.</p>
-        <p class="panel-subhead" style="font-size:14px;margin-top:20px;">features</p>
-        <ul>
-            <li>Play as the villain: Choose to kill, spare, or ignore every civilian.</li>
-            <li>Three distinct routes: Pacifist, Neutral, and Genocide, each with its own ending.</li>
-            <li>Defeat or pacify demonic bosses, pacified bosses will join your side.</li>
-            <li>Journey through 8 visually distinct worlds built with original pixel art.</li>
-            <li>Chainsaw power-up, The Psycho Saw, grants temporary invincibility and destroys any being you touch.</li>
-            <li>Collect souls from dead civilians or sushi dropped by Penelope Pom Pom Pink to restore health.</li>
-            <li>Your crimes will not go unnoticed by the authorities.</li>
-        </ul>
-        <div style="margin-top:28px;">
-            <div class="meta-line"><strong>title</strong> Hamachi the Psychotic Killer</div>
-            <div class="meta-line"><strong>genre</strong> Action, Indie</div>
-            <div class="meta-line"><strong>developer</strong> gavinoriley</div>
-            <div class="meta-line"><strong>publisher</strong> Self-Published</div>
-            <div class="meta-line"><strong>release</strong> Feb 27, 2026</div>
-            <div class="meta-line"><strong>platform</strong> Windows/Mac</div>
-        </div>
-    </div>
-    <div class="panel" id="contactContentPanel">
-        <h2>contact</h2>
-        <p>publishing inquiries / pitch deck requests / content creator steam keys</p>
-        <button class="copy-email-btn" id="copyEmailBtn">copy email</button>
-    </div>
+<div class="nav-links-wrapper" id="menuLinksWrapper">
+<a href="https://hamachithepsychotickiller.com/" class="menu-link" id="homeLink">home</a>
+<a href="#" class="menu-link" id="synopsisTriggerBtn">synopsis</a>
+<a href="https://hamachithepsychotickiller.com/about/" class="menu-link">game info</a>
+<a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" rel="noopener noreferrer" class="menu-link" id="menuPlayDemoLink">play demo</a>
+<a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/#game_area_purchase" target="_blank" rel="noopener noreferrer" class="menu-link">buy game</a>
+<a href="#" class="menu-link" id="contactTriggerBtn">contact</a>
+<a href="https://gavinoriley.github.io/assets/Hama_WallPaper.zip" download class="menu-link">wallpaper</a>
+<a href="https://hamachithepsychotickiller.com/hamachipresskit/" class="menu-link" id="pressKitLink">press kit</a>
+<a href="https://hamachithepsychotickiller.com/publishingpartnerships/" class="menu-link">publishing</a>
+</div>
+<div class="panel" id="synopsisContentPanel">
+<h2>synopsis</h2>
+<p>In this platformer, you control a piece of tofu named Hamachi, who unexpectedly falls into the possession of Demon Queen Deity, an evil fiend who intends to use him as a vessel to conquer the world through mass murder.</p>
+<p class="panel-subhead" style="font-size:14px;margin-top:20px;">features</p>
+<ul>
+<li>Play as the villain: Choose to kill, spare, or ignore every civilian.</li>
+<li>Three distinct routes: Pacifist, Neutral, and Genocide, each with its own ending.</li>
+<li>Defeat or pacify demonic bosses, pacified bosses will join your side.</li>
+<li>Journey through 8 visually distinct worlds built with original pixel art.</li>
+<li>Chainsaw power-up, The Psycho Saw, grants temporary invincibility and destroys any being you touch.</li>
+<li>Collect souls from dead civilians or sushi dropped by Penelope Pom Pom Pink to restore health.</li>
+<li>Your crimes will not go unnoticed by the authorities.</li>
+</ul>
+<div style="margin-top:28px;">
+<div class="meta-line"><strong>title</strong> Hamachi the Psychotic Killer</div>
+<div class="meta-line"><strong>genre</strong> Action, Indie</div>
+<div class="meta-line"><strong>developer</strong> gavinoriley</div>
+<div class="meta-line"><strong>publisher</strong> Self-Published</div>
+<div class="meta-line"><strong>release</strong> Feb 27, 2026</div>
+<div class="meta-line"><strong>platform</strong> Windows/Mac</div>
+</div>
+</div>
+<div class="panel" id="contactContentPanel">
+<h2>contact</h2>
+<p>publishing inquiries / pitch deck requests / content creator steam keys</p>
+<button class="copy-email-btn" id="copyEmailBtn">copy email</button>
+</div>
 </nav>
 
 <main class="room" id="room">
-    <div class="scene">
-        <img class="scene-art scene-lily" src="https://gavinoriley.github.io/assets/funerallilly.png" alt="" width="2946" height="2056" decoding="async" draggable="false">
-    <section class="viewer" id="viewer" aria-label="Dev log">
-        <div class="viewer-bar">
-            <div class="timestamp" id="dateTime"></div>
-            <div class="viewer-tools">
-                <span class="counter" id="counter"></span>
-                <button class="tool-btn" id="expandBtn" type="button" aria-pressed="false">zoom in</button>
-            </div>
-        </div>
-        <div class="stage" id="imageContainer">
-            <img class="gallery-image" id="galleryImage" src="" alt="dev log image" decoding="async">
-            <button class="arrow left" id="leftArrow" type="button" aria-label="Previous image">&larr;</button>
-            <button class="arrow right" id="rightArrow" type="button" aria-label="Next image">&rarr;</button>
-        </div>
-        <div class="progress"><span id="progressFill"></span></div>
-        <p class="description" id="description"></p>
-    </section>
-    </div>
+<div class="scene">
+<img class="scene-art scene-lily" src="https://gavinoriley.github.io/assets/funerallilly.png" alt="" width="2946" height="2056" decoding="async" draggable="false">
+<section class="viewer" id="viewer" aria-label="Dev log">
+<div class="viewer-bar">
+<div class="timestamp" id="dateTime"></div>
+<div class="viewer-tools">
+<span class="counter" id="counter"></span>
+<button class="tool-btn" id="expandBtn" type="button" aria-pressed="false">enlarge</button>
+</div>
+</div>
+<div class="stage" id="imageContainer">
+<img class="gallery-image" id="galleryImage" src="" alt="dev log image" decoding="async">
+<button class="arrow left" id="leftArrow" type="button" aria-label="Previous image">&larr;</button>
+<button class="arrow right" id="rightArrow" type="button" aria-label="Next image">&rarr;</button>
+</div>
+<div class="progress"><span id="progressFill"></span></div>
+<div class="mobile-controls" id="mobileControls">
+<button class="m-btn prev" id="mPrevBtn" type="button" aria-label="Previous image">&larr; prev</button>
+<span class="m-count" id="mobileCounter" aria-live="polite"></span>
+<button class="m-btn next" id="mNextBtn" type="button" aria-label="Next image">next &rarr;</button>
+</div>
+<p class="description" id="description"></p>
+</section>
+</div>
 </main>
 
 <script>
 
-    const menuToggle = document.getElementById('menuToggleBtn');
-    const navOverlay = document.getElementById('mainNavOverlay');
-    const topNavBar = document.querySelector('.top-nav-bar');
-    const menuLinksWrapper = document.getElementById('menuLinksWrapper');
-    const synopsisContentPanel = document.getElementById('synopsisContentPanel');
-    const contactContentPanel = document.getElementById('contactContentPanel');
-    const synopsisTriggerBtn = document.getElementById('synopsisTriggerBtn');
-    const contactTriggerBtn = document.getElementById('contactTriggerBtn');
-    const copyEmailBtn = document.getElementById('copyEmailBtn');
-    const menuPlayDemoLink = document.getElementById('menuPlayDemoLink');
+const menuToggle = document.getElementById('menuToggleBtn');
+const navOverlay = document.getElementById('mainNavOverlay');
+const topNavBar = document.querySelector('.top-nav-bar');
+const menuLinksWrapper = document.getElementById('menuLinksWrapper');
+const synopsisContentPanel = document.getElementById('synopsisContentPanel');
+const contactContentPanel = document.getElementById('contactContentPanel');
+const synopsisTriggerBtn = document.getElementById('synopsisTriggerBtn');
+const contactTriggerBtn = document.getElementById('contactTriggerBtn');
+const copyEmailBtn = document.getElementById('copyEmailBtn');
+const menuPlayDemoLink = document.getElementById('menuPlayDemoLink');
 
-    function lockScroll(lock) { document.body.style.overflow = lock ? 'hidden' : ''; }
+function lockScroll(lock) { document.body.style.overflow = lock ? 'hidden' : ''; }
 
-    function syncMenuState() {
-        const open = navOverlay.classList.contains('open');
-        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        topNavBar.classList.toggle('menu-open', open);
-    }
-    menuToggle.setAttribute('aria-controls', 'mainNavOverlay');
+function syncMenuState() {
+const open = navOverlay.classList.contains('open');
+menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+topNavBar.classList.toggle('menu-open', open);
+}
+menuToggle.setAttribute('aria-controls', 'mainNavOverlay');
 
-    function toggleMenu() {
-        const isOpen = menuToggle.classList.contains('open');
-        menuToggle.classList.toggle('open');
-        navOverlay.classList.toggle('open');
-        syncMenuState();
-        if (isOpen) {
-            lockScroll(false);
-            setTimeout(() => {
-                menuLinksWrapper.classList.remove('hidden');
-                synopsisContentPanel.classList.remove('active');
-                contactContentPanel.classList.remove('active');
-            }, 400);
-        } else {
-            lockScroll(true);
-        }
-    }
+function toggleMenu() {
+const isOpen = menuToggle.classList.contains('open');
+menuToggle.classList.toggle('open');
+navOverlay.classList.toggle('open');
+syncMenuState();
+if (isOpen) {
+lockScroll(false);
+setTimeout(() => {
+menuLinksWrapper.classList.remove('hidden');
+synopsisContentPanel.classList.remove('active');
+contactContentPanel.classList.remove('active');
+}, 400);
+} else {
+lockScroll(true);
+}
+}
 
-    menuToggle.addEventListener('click', toggleMenu);
+menuToggle.addEventListener('click', toggleMenu);
 
-    synopsisTriggerBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        menuLinksWrapper.classList.add('hidden');
-        contactContentPanel.classList.remove('active');
-        synopsisContentPanel.classList.add('active');
-        requestAnimationFrame(() => { navOverlay.scrollTop = 0; });
-    });
+synopsisTriggerBtn.addEventListener('click', (e) => {
+e.preventDefault();
+menuLinksWrapper.classList.add('hidden');
+contactContentPanel.classList.remove('active');
+synopsisContentPanel.classList.add('active');
+requestAnimationFrame(() => { navOverlay.scrollTop = 0; });
+});
 
-    contactTriggerBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        menuLinksWrapper.classList.add('hidden');
-        synopsisContentPanel.classList.remove('active');
-        contactContentPanel.classList.add('active');
-        requestAnimationFrame(() => { navOverlay.scrollTop = 0; });
-    });
+contactTriggerBtn.addEventListener('click', (e) => {
+e.preventDefault();
+menuLinksWrapper.classList.add('hidden');
+synopsisContentPanel.classList.remove('active');
+contactContentPanel.classList.add('active');
+requestAnimationFrame(() => { navOverlay.scrollTop = 0; });
+});
 
-    copyEmailBtn.addEventListener('click', () => {
-        const email = "img.oriley@gmail.com";
-        const done = () => {
-            copyEmailBtn.textContent = "copied";
-            copyEmailBtn.classList.add('copied');
-            setTimeout(() => { copyEmailBtn.textContent = "copy email"; copyEmailBtn.classList.remove('copied'); }, 2200);
-        };
-        navigator.clipboard.writeText(email).then(done).catch(() => {
-            const ta = document.createElement("textarea");
-            ta.value = email;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand("copy");
-            document.body.removeChild(ta);
-            done();
-        });
-    });
+copyEmailBtn.addEventListener('click', () => {
+const email = "img.oriley@gmail.com";
+const done = () => {
+copyEmailBtn.textContent = "copied";
+copyEmailBtn.classList.add('copied');
+setTimeout(() => { copyEmailBtn.textContent = "copy email"; copyEmailBtn.classList.remove('copied'); }, 2200);
+};
+navigator.clipboard.writeText(email).then(done).catch(() => {
+const ta = document.createElement("textarea");
+ta.value = email;
+document.body.appendChild(ta);
+ta.select();
+document.execCommand("copy");
+document.body.removeChild(ta);
+done();
+});
+});
 
-    navOverlay.addEventListener('click', (e) => { if (e.target === navOverlay) toggleMenu(); });
+navOverlay.addEventListener('click', (e) => { if (e.target === navOverlay) toggleMenu(); });
 
-    const MOBILE_DEMO_URL = 'https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/#game_area_purchase';
-    function isMobileDevice() {
-        return window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.matchMedia('(max-width: 768px)').matches;
-    }
-    menuPlayDemoLink.addEventListener('click', (e) => {
-        if (isMobileDevice()) { e.preventDefault(); window.open(MOBILE_DEMO_URL, '_blank', 'noopener,noreferrer'); }
-    });
+const MOBILE_DEMO_URL = 'https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/#game_area_purchase';
+function isMobileDevice() {
+return window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.matchMedia('(max-width: 768px)').matches;
+}
+menuPlayDemoLink.addEventListener('click', (e) => {
+if (isMobileDevice()) { e.preventDefault(); window.open(MOBILE_DEMO_URL, '_blank', 'noopener,noreferrer'); }
+});
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navOverlay.classList.contains('open')) toggleMenu();
-    });
-    syncMenuState();
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape' && navOverlay.classList.contains('open')) toggleMenu();
+});
+syncMenuState();
 
-    const images = [
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/devlog_pinkblud.gif', date: '2026-11-24T11:53:00-08:00', ampm: 'AM', description: "pink blud does a thing (incomplete multiplayer)" },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/devlog_2player.gif', date: '2026-11-24T2:00:00-08:00', ampm: 'AM', description: "working on multiplayer" },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/attentionmessage.png', date: '2026-7-13T12:58:07-07:00', ampm: 'PM', description: "a crude depiction i felt compelled to make of a room and printed message i saw in a recent dream i had. fyi im bored." },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/defiance.png', date: '2026-6-23T11:18:07-07:00', ampm: 'PM', description: "" },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/eyecu.gif', date: '2026-6-22T8:36:07-07:00', ampm: 'PM', description: "giving him pupils so he can look at u" },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/titleseason.gif', date: '2026-6-14T4:35:07-07:00', ampm: 'PM', description: "adding a thing to the title screen to make it change based on the irl season" },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/demonicbuild.png', date: '2026-6-10T11:52:07-07:00', ampm: 'PM', description: "..." },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/Harlequin.png', date: '2026-5-25T1:30:07-07:00', ampm: 'AM', description: "..." },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev15.gif', date: '2026-1-3T4:33:07-07:00', ampm: 'PM', description: 'wip costume room' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev14.gif', date: '2025-12-31T1:00:07-07:00', ampm: 'PM', description: '' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev13.gif', date: '2025-09-25T4:10:07-07:00', ampm: 'PM', description: 'police mini boss' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev12.gif', date: '2025-09-15T4:10:00-07:00', ampm: 'PM', description: ' ' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev11.gif', date: '2025-08-28T8:50:00-07:00', ampm: 'PM', description: '1,000 lines of code later, 2nd boss' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev10.gif', date: '2025-08-28T1:00:00-07:00', ampm: 'AM', description: '(randomly) exploring' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev9.gif', date: '2025-08-26T12:33:00-07:00', ampm: 'PM', description: 'interesting glitch' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev8.png', date: '2025-08-22T6:18:00-07:00', ampm: 'PM', description: 'not sure what this game is coming to' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev7.png', date: '2025-08-13T4:37:00-07:00', ampm: 'PM', description: 'pacify' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev6.png', date: '2025-08-12T7:57:00-07:00', ampm: 'AM', description: 'added volume slider and your options now save' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev5.png', date: '2025-08-07T4:54:00-07:00', ampm: 'PM', description: '' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev4.png', date: '2025-08-07T4:31:00-07:00', ampm: 'PM', description: 'can now save and load games, insanity' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev3.png', date: '2025-08-04T4:50:00-07:00', ampm: 'PM', description: 'programming a cinematic' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev2.png', date: '2025-08-03T3:27:00-07:00', ampm: 'PM', description: 'happy fun time yippie' },
-            { type: 'image', src: 'https://gavinoriley.github.io/assets/dev1.png', date: '2025-08-02T02:06:00-07:00', ampm: 'AM', description: 'end world scene brainstorming.' }
-        ];
+const images = [
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/devlog_pinkblud.gif', date: '2026-11-24T11:53:00-08:00', ampm: 'AM', description: "pink blud does a thing (incomplete multiplayer)" },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/devlog_2player.gif', date: '2026-11-24T2:00:00-08:00', ampm: 'AM', description: "working on multiplayer" },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/attentionmessage.png', date: '2026-7-13T12:58:07-07:00', ampm: 'PM', description: "a crude depiction i felt compelled to make of a room and printed message i saw in a recent dream i had. fyi im bored." },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/defiance.png', date: '2026-6-23T11:18:07-07:00', ampm: 'PM', description: "" },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/eyecu.gif', date: '2026-6-22T8:36:07-07:00', ampm: 'PM', description: "giving him pupils so he can look at u" },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/titleseason.gif', date: '2026-6-14T4:35:07-07:00', ampm: 'PM', description: "adding a thing to the title screen to make it change based on the irl season" },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/demonicbuild.png', date: '2026-6-10T11:52:07-07:00', ampm: 'PM', description: "..." },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/Harlequin.png', date: '2026-5-25T1:30:07-07:00', ampm: 'AM', description: "..." },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev15.gif', date: '2026-1-3T4:33:07-07:00', ampm: 'PM', description: 'wip costume room' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev14.gif', date: '2025-12-31T1:00:07-07:00', ampm: 'PM', description: '' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev13.gif', date: '2025-09-25T4:10:07-07:00', ampm: 'PM', description: 'police mini boss' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev12.gif', date: '2025-09-15T4:10:00-07:00', ampm: 'PM', description: ' ' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev11.gif', date: '2025-08-28T8:50:00-07:00', ampm: 'PM', description: '1,000 lines of code later, 2nd boss' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev10.gif', date: '2025-08-28T1:00:00-07:00', ampm: 'AM', description: '(randomly) exploring' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev9.gif', date: '2025-08-26T12:33:00-07:00', ampm: 'PM', description: 'interesting glitch' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev8.png', date: '2025-08-22T6:18:00-07:00', ampm: 'PM', description: 'not sure what this game is coming to' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev7.png', date: '2025-08-13T4:37:00-07:00', ampm: 'PM', description: 'pacify' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev6.png', date: '2025-08-12T7:57:00-07:00', ampm: 'AM', description: 'added volume slider and your options now save' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev5.png', date: '2025-08-07T4:54:00-07:00', ampm: 'PM', description: '' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev4.png', date: '2025-08-07T4:31:00-07:00', ampm: 'PM', description: 'can now save and load games, insanity' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev3.png', date: '2025-08-04T4:50:00-07:00', ampm: 'PM', description: 'programming a cinematic' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev2.png', date: '2025-08-03T3:27:00-07:00', ampm: 'PM', description: 'happy fun time yippie' },
+{ type: 'image', src: 'https://gavinoriley.github.io/assets/dev1.png', date: '2025-08-02T02:06:00-07:00', ampm: 'AM', description: 'end world scene brainstorming.' }
+];
 
-    images.forEach(item => { const p = new Image(); p.src = item.src; });
+images.forEach(item => { const p = new Image(); p.onload = () => { item.w = p.naturalWidth; item.h = p.naturalHeight; }; p.src = item.src; });
 
-    const ACCENTS = [
-        ['#c33a3a', '195, 58, 58'],
-        ['#3a9a4a', '58, 154, 74'],
-        ['#3a6aaa', '58, 106, 170'],
-        ['#c9a83a', '201, 168, 58']
-    ];
+const ACCENTS = [
+['#c33a3a', '195, 58, 58'],
+['#3a9a4a', '58, 154, 74'],
+['#3a6aaa', '58, 106, 170'],
+['#c9a83a', '201, 168, 58']
+];
 
-    const room = document.getElementById('room');
-    const stage = document.getElementById('imageContainer');
-    const galleryImage = document.getElementById('galleryImage');
-    const dateTime = document.getElementById('dateTime');
-    const description = document.getElementById('description');
-    const counter = document.getElementById('counter');
-    const progressFill = document.getElementById('progressFill');
-    const leftArrow = document.getElementById('leftArrow');
-    const rightArrow = document.getElementById('rightArrow');
-    const expandBtn = document.getElementById('expandBtn');
+const room = document.getElementById('room');
+const stage = document.getElementById('imageContainer');
+const galleryImage = document.getElementById('galleryImage');
+const dateTime = document.getElementById('dateTime');
+const description = document.getElementById('description');
+const counter = document.getElementById('counter');
+const progressFill = document.getElementById('progressFill');
+const leftArrow = document.getElementById('leftArrow');
+const rightArrow = document.getElementById('rightArrow');
+const expandBtn = document.getElementById('expandBtn');
+const mobileCounter = document.getElementById('mobileCounter');
+const mPrevBtn = document.getElementById('mPrevBtn');
+const mNextBtn = document.getElementById('mNextBtn');
 
-    let currentImageIndex = 0;
-    let swapToken = 0;
+// Same query as the mobile CSS block above: phones in portrait, or phones in landscape
+const mobileView = window.matchMedia('(max-width: 700px), (max-height: 500px) and (pointer: coarse)');
 
-    function showImage(first) {
-        const item = images[currentImageIndex];
-        const token = ++swapToken;
-        const pad = n => String(n).padStart(String(images.length).length, '0');
+// Mobile only: let the stage take the shape of the current image (clamped so extreme shapes stay usable)
+function fitStage(w, h) {
+if (!w || !h) return;
+stage.style.setProperty('--img-ar', Math.min(2.4, Math.max(0.8, w / h)).toFixed(4));
+}
 
-        const [hex, rgb] = ACCENTS[currentImageIndex % ACCENTS.length];
-        room.style.setProperty('--accent', hex);
-        room.style.setProperty('--accent-rgb', rgb);
+let currentImageIndex = 0;
+let swapToken = 0;
 
-        counter.textContent = pad(currentImageIndex + 1) + ' / ' + images.length;
-        progressFill.style.width = ((currentImageIndex + 1) / images.length * 100) + '%';
-        leftArrow.classList.toggle('gone', currentImageIndex === 0);
-        rightArrow.classList.toggle('gone', currentImageIndex === images.length - 1);
+function showImage(first) {
+const item = images[currentImageIndex];
+const token = ++swapToken;
+const pad = n => String(n).padStart(String(images.length).length, '0');
 
-        const apply = () => {
-            if (token !== swapToken) return;
-            const reveal = () => { if (token === swapToken) galleryImage.classList.remove('is-swapping'); };
-            galleryImage.onload = reveal;
-            galleryImage.onerror = reveal;
-            galleryImage.src = item.src;
-            galleryImage.alt = 'dev log image ' + (currentImageIndex + 1);
-            if (galleryImage.complete) reveal();
-            setTimeout(reveal, 4000);
+const [hex, rgb] = ACCENTS[currentImageIndex % ACCENTS.length];
+room.style.setProperty('--accent', hex);
+room.style.setProperty('--accent-rgb', rgb);
 
-            if (item.date && item.date.trim() !== '') {
-                const parts = item.date.split('T');
-                const time = parts[1] ? parts[1].split(':').slice(0, 2).join(':') : '';
-                dateTime.textContent = 'uploaded: ' + parts[0] + ', ' + time + ' ' + item.ampm;
-            } else {
-                dateTime.textContent = 'circa 2011 (wayback machine)';
-            }
-            description.textContent = (item.description || '').trim();
-        };
+counter.textContent = pad(currentImageIndex + 1) + ' / ' + images.length;
+mobileCounter.textContent = counter.textContent;
+mPrevBtn.disabled = currentImageIndex === 0;
+mNextBtn.disabled = currentImageIndex === images.length - 1;
+progressFill.style.width = ((currentImageIndex + 1) / images.length * 100) + '%';
+leftArrow.classList.toggle('gone', currentImageIndex === 0);
+rightArrow.classList.toggle('gone', currentImageIndex === images.length - 1);
 
-        if (first) { apply(); }
-        else { galleryImage.classList.add('is-swapping'); setTimeout(apply, 130); }
-    }
+const apply = () => {
+if (token !== swapToken) return;
+const reveal = () => { if (token === swapToken) galleryImage.classList.remove('is-swapping'); };
+galleryImage.onload = () => { fitStage(galleryImage.naturalWidth, galleryImage.naturalHeight); reveal(); };
+galleryImage.onerror = reveal;
+if (item.w) fitStage(item.w, item.h);
+galleryImage.src = item.src;
+galleryImage.alt = 'dev log image ' + (currentImageIndex + 1);
+if (galleryImage.complete) { fitStage(galleryImage.naturalWidth, galleryImage.naturalHeight); reveal(); }
+setTimeout(reveal, 4000);
 
-    function go(step) {
-        const next = currentImageIndex + step;
-        if (next < 0 || next >= images.length) return;
-        currentImageIndex = next;
-        showImage(false);
-    }
+if (item.date && item.date.trim() !== '') {
+const parts = item.date.split('T');
+const time = parts[1] ? parts[1].split(':').slice(0, 2).join(':') : '';
+dateTime.textContent = 'uploaded: ' + parts[0] + ', ' + time + ' ' + item.ampm;
+} else {
+dateTime.textContent = 'circa 2011 (wayback machine)';
+}
+description.textContent = (item.description || '').trim();
+};
 
-    function setEnlarged(on) {
-        room.classList.toggle('enlarged', on);
-        expandBtn.textContent = on ? 'zoom out' : 'zoom in';
-        expandBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    }
+if (first) { apply(); }
+else { galleryImage.classList.add('is-swapping'); setTimeout(apply, 130); }
+}
 
-    leftArrow.addEventListener('click', (e) => { e.stopPropagation(); go(-1); });
-    rightArrow.addEventListener('click', (e) => { e.stopPropagation(); go(1); });
-    expandBtn.addEventListener('click', () => setEnlarged(!room.classList.contains('enlarged')));
-    galleryImage.addEventListener('click', () => setEnlarged(!room.classList.contains('enlarged')));
+function go(step) {
+const next = currentImageIndex + step;
+if (next < 0 || next >= images.length) return;
+currentImageIndex = next;
+showImage(false);
+}
 
-    document.addEventListener('keydown', (e) => {
-        if (navOverlay.classList.contains('open')) return;
-        if (e.key === 'ArrowLeft') go(-1);
-        else if (e.key === 'ArrowRight') go(1);
-    });
+function setEnlarged(on) {
+if (mobileView.matches) on = false; // zoom is desktop-only
+room.classList.toggle('enlarged', on);
+expandBtn.textContent = on ? 'zoom out' : 'zoom in';
+expandBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+}
 
-    let touchX = null;
-    stage.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
-    stage.addEventListener('touchend', (e) => {
-        if (touchX === null) return;
-        const dx = e.changedTouches[0].clientX - touchX;
-        touchX = null;
-        if (Math.abs(dx) > 50) go(dx > 0 ? -1 : 1);
-    }, { passive: true });
+leftArrow.addEventListener('click', (e) => { e.stopPropagation(); go(-1); });
+rightArrow.addEventListener('click', (e) => { e.stopPropagation(); go(1); });
+expandBtn.addEventListener('click', () => setEnlarged(!room.classList.contains('enlarged')));
+mPrevBtn.addEventListener('click', () => go(-1));
+mNextBtn.addEventListener('click', () => go(1));
 
-    showImage(true);
+// if the window becomes "mobile" (e.g. phone rotated) while zoomed in, drop back to normal size
+const onViewChange = (e) => { if (e.matches) setEnlarged(false); };
+if (mobileView.addEventListener) mobileView.addEventListener('change', onViewChange);
+else if (mobileView.addListener) mobileView.addListener(onViewChange);
+galleryImage.addEventListener('click', () => setEnlarged(!room.classList.contains('enlarged')));
+
+document.addEventListener('keydown', (e) => {
+if (navOverlay.classList.contains('open')) return;
+if (e.key === 'ArrowLeft') go(-1);
+else if (e.key === 'ArrowRight') go(1);
+});
+
+let touchX = null, touchY = null;
+stage.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; touchY = e.touches[0].clientY; }, { passive: true });
+stage.addEventListener('touchcancel', () => { touchX = touchY = null; }, { passive: true });
+stage.addEventListener('touchend', (e) => {
+if (touchX === null) return;
+const dx = e.changedTouches[0].clientX - touchX;
+const dy = e.changedTouches[0].clientY - touchY;
+touchX = touchY = null;
+// only a mostly-horizontal swipe changes image, so scrolling the page up/down never flips it
+if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) go(dx > 0 ? -1 : 1);
+}, { passive: true });
+
+showImage(true);
 </script>
 </body>
 </html>
