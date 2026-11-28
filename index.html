@@ -281,7 +281,7 @@ width: clamp(680px, 165%, 1750px); max-width: none;
 .copy-email-btn { width: 100%; }
 .counter { display: none; }
 }
-/* ===== Dev log: mobile layout (phones in portrait, plus phones in landscape) ===== */
+
 .mobile-controls { display: none; }
 @media (max-width: 700px), (max-height: 500px) and (pointer: coarse) {
 .room {
@@ -298,10 +298,10 @@ padding-right: max(12px, env(safe-area-inset-right, 0px));
 .viewer-bar { padding: 0 12px; }
 .timestamp { font-size: 12px; letter-spacing: 0.4px; }
 
-/* zoom in / zoom out is removed on mobile (the image already fills the screen width) */
+
 .viewer-tools, #expandBtn { display: none !important; }
 
-/* stage follows each image's own shape instead of a fixed tall box */
+
 .stage {
 height: auto;
 aspect-ratio: var(--img-ar, 1.6);
@@ -313,7 +313,7 @@ transition: aspect-ratio 0.25s ease;
 }
 .gallery-image { -webkit-user-drag: none; }
 
-/* overlay arrows cover the artwork on a small screen; thumb-sized buttons sit under the image instead */
+
 .arrow { display: none; }
 .mobile-controls {
 display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
@@ -333,7 +333,7 @@ transition: background-color 0.15s, color 0.15s, opacity 0.15s;
 
 .description { font-size: 15px; line-height: 1.6; padding: 14px 16px 20px; }
 
-/* lily artwork: sized relative to the viewer so it always fills the frame, whatever its height */
+
 .scene-lily {
 top: 50%; left: 50%; width: 140%; height: 140%; max-width: none;
 object-fit: cover; transform: translate(-50%, -50%);
@@ -519,7 +519,7 @@ if (e.key === 'Escape' && navOverlay.classList.contains('open')) toggleMenu();
 syncMenuState();
 
 const images = [
-  { type: 'image', src: 'https://gavinoriley.github.io/assets/devlog_recolor.png', date: '2026-11-27T04:40:00-08:00', ampm: 'PM', description: "🩷 (multiplayer wip)" },
+  { type: 'image', src: 'https://gavinoriley.github.io/assets/devlog_recolor2.png', date: '2026-11-27T04:40:00-08:00', ampm: 'PM', description: "🩷 (multiplayer wip)" },
 { type: 'image', src: 'https://gavinoriley.github.io/assets/devlog_friends.gif', date: '2026-11-24T07:24:00-08:00', ampm: 'PM', description: "friends (multiplayer wip)" },
 { type: 'image', src: 'https://gavinoriley.github.io/assets/devlog_pinkblud.gif', date: '2026-11-24T11:53:00-08:00', ampm: 'AM', description: "pink blud does a thing (multiplayer wip)" },
 { type: 'image', src: 'https://gavinoriley.github.io/assets/devlog_2player.gif', date: '2026-11-24T2:00:00-08:00', ampm: 'AM', description: "wip multiplayer" },
@@ -569,7 +569,7 @@ const mobileCounter = document.getElementById('mobileCounter');
 const mPrevBtn = document.getElementById('mPrevBtn');
 const mNextBtn = document.getElementById('mNextBtn');
 
-// Same query as the mobile CSS block above: phones in portrait, or phones in landscape
+
 const mobileView = window.matchMedia('(max-width: 700px), (max-height: 500px) and (pointer: coarse)');
 
 // Mobile only: let the stage take the shape of the current image (clamped so extreme shapes stay usable)
@@ -643,7 +643,7 @@ expandBtn.addEventListener('click', () => setEnlarged(!room.classList.contains('
 mPrevBtn.addEventListener('click', () => go(-1));
 mNextBtn.addEventListener('click', () => go(1));
 
-// if the window becomes "mobile" (e.g. phone rotated) while zoomed in, drop back to normal size
+
 const onViewChange = (e) => { if (e.matches) setEnlarged(false); };
 if (mobileView.addEventListener) mobileView.addEventListener('change', onViewChange);
 else if (mobileView.addListener) mobileView.addListener(onViewChange);
@@ -663,7 +663,7 @@ if (touchX === null) return;
 const dx = e.changedTouches[0].clientX - touchX;
 const dy = e.changedTouches[0].clientY - touchY;
 touchX = touchY = null;
-// only a mostly-horizontal swipe changes image, so scrolling the page up/down never flips it
+
 if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) go(dx > 0 ? -1 : 1);
 }, { passive: true });
 
